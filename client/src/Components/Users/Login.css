@@ -1,0 +1,17 @@
+h1{
+    font-size: 50px;
+  }
+
+
+.signInContainer{    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonContainer{
+  text-align: center;
+}
+
