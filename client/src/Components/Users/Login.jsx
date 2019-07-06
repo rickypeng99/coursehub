@@ -20,15 +20,12 @@ class Login extends Component {
     }
 
     submitHandler = () => {
-        console.log(this.state.username);
-        console.log(this.state.password);
         this.props.dispatch(userActions.login(this.state.username, this.state.password));
-        this.setState({
-            currentUser: this.props.user,
-            loggedIn: this.props.loggedIn
-        })
-        window.location.reload();
-
+        // this.setState({
+        //     currentUser: this.props.user,
+        //     loggedIn: this.props.loggedIn
+        // })
+        this.props.history.push("/main");
     }
 
     logoutHandler = () => {
@@ -37,8 +34,6 @@ class Login extends Component {
             currentUser: this.props.user,
             loggedIn: this.props.loggedIn
         })
-        window.location.reload();
-
     }
 
 
@@ -46,18 +41,19 @@ class Login extends Component {
         this.setState({ [event.target.name]: event.target.value });
     })
 
+    // shouldComponentUpdate(nextProps){
+    //     return nextProps.loggedIn !== this.state.loggedIn
+    // }
 
-    componentDidMount() {
-        //localStorage.removeItem('user')
-        this.setState({
-            currentUser: this.props.user,
-            loggedIn: this.props.loggedIn
-        })
-
-    }
+    // componentWillUpdate(){
+    //     this.setState({
+    //         currentUser: this.props.user,
+    //         loggedIn: this.props.loggedIn
+    //     })
+    // }
 
     render() {
-
+        //console.log(this.state.loggedIn)
         if (this.state.loggedIn) {
             return (
                 <div>
