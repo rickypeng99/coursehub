@@ -1,0 +1,808 @@
+﻿Subject,Number,Name,Special Title,CRN,Credit,Type,Session,Time,Day,Location,Instructor
+CS,100,Freshman Orientation,,30094,,Lecture,AL1,04:30PM - 05:20PM,W,THEAT Lincoln Hall,"Gunter, E"
+CS,101,Intro Computing: Engrg & Sci,,35879,,Lecture,AL1,09:00AM - 09:50AM,MW,AUD Foellinger Auditorium,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35886,,Laboratory-Discussion,AYA,01:00PM - 02:50PM,M,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35889,,Laboratory-Discussion,AYB,03:00PM - 04:50PM,M,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35890,,Laboratory-Discussion,AYC,05:00PM - 06:50PM,M,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35893,,Laboratory-Discussion,AYD,09:00AM - 10:50AM,T,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,61077,,Laboratory-Discussion,AYE,11:00AM - 12:50PM,T,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35915,,Laboratory-Discussion,AYF,01:00PM - 02:50PM,T,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35896,,Laboratory-Discussion,AYG,03:00PM - 04:50PM,T,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35902,,Laboratory-Discussion,AYH,01:00PM - 02:50PM,W,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35907,,Laboratory-Discussion,AYI,03:00PM - 04:50PM,W,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35899,,Laboratory-Discussion,AYJ,05:00PM - 06:50PM,W,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35918,,Laboratory-Discussion,AYK,09:00AM - 10:50AM,R,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,61078,,Laboratory-Discussion,AYL,11:00AM - 12:50PM,R,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35910,,Laboratory-Discussion,AYM,01:00PM - 02:50PM,R,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,35913,,Laboratory-Discussion,AYN,03:00PM - 04:50PM,R,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,62682,,Laboratory-Discussion,AYO,09:00AM - 10:50AM,F,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,62683,,Laboratory-Discussion,AYP,11:00AM - 12:50PM,F,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,62913,,Laboratory-Discussion,AYQ,01:00PM - 02:50PM,F,L416 Digital Computer Laboratory,"Davis, N"
+CS,101,Intro Computing: Engrg & Sci,,62914,,Laboratory-Discussion,AYR,03:00PM - 04:50PM,F,L416 Digital Computer Laboratory,"Davis, N"
+CS,105,Intro Computing: Non-Tech,,35823,,Lecture,AL1,09:00AM - 10:45AM,F,AUD Foellinger Auditorium,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,47174,,Laboratory-Discussion,AYA,12:30PM - 01:50PM,M,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35827,,Laboratory-Discussion,AYB,02:00PM - 03:20PM,M,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35828,,Laboratory-Discussion,AYC,03:30PM - 04:50PM,M,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35847,,Laboratory-Discussion,AYD,05:00PM - 06:20PM,M,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35831,,Laboratory-Discussion,AYE,06:30PM - 07:50PM,M,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35833,,Laboratory-Discussion,AYG,12:30PM - 01:50PM,T,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35835,,Laboratory-Discussion,AYH,02:00PM - 03:20PM,T,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35836,,Laboratory-Discussion,AYI,03:30PM - 04:50PM,T,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35837,,Laboratory-Discussion,AYJ,05:00PM - 06:20PM,T,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35838,,Laboratory-Discussion,AYK,06:30PM - 07:50PM,T,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35843,,Laboratory-Discussion,AYM,12:30PM - 01:50PM,W,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,47175,,Laboratory-Discussion,AYN,02:00PM - 03:20PM,W,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35854,,Laboratory-Discussion,AYP,03:30PM - 04:50PM,W,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35856,,Laboratory-Discussion,AYQ,05:00PM - 06:20PM,W,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,105,Intro Computing: Non-Tech,,35858,,Laboratory-Discussion,AYR,06:30PM - 07:50PM,W,101 901 W Oregon,"Harris, A
+Zilles, C"
+CS,107,Data Science Discovery,,71813,,Lecture,AL1,12:00PM - 12:50PM,MWF,THEAT Lincoln Hall,"Fagen-Ulmschneider, W
+Flanagan, K"
+CS,107,Data Science Discovery,,71814,,Laboratory-Discussion,AYA,02:00PM - 03:50PM,W,1038 Foreign Languages Building,
+CS,107,Data Science Discovery,,71815,,Laboratory-Discussion,AYB,02:00PM - 03:50PM,W,331 Gregory Hall,
+CS,107,Data Science Discovery,,71816,,Laboratory-Discussion,AYC,04:00PM - 05:50PM,W,203 Noyes Laboratory,
+CS,107,Data Science Discovery,,71817,,Laboratory-Discussion,AYD,04:00PM - 05:50PM,W,G27 Foreign Languages Building,
+CS,107,Data Science Discovery,,71818,,Laboratory-Discussion,AYE,08:00AM - 09:50AM,F,2078 Natural History Building,
+CS,107,Data Science Discovery,,71819,,Laboratory-Discussion,AYF,08:00AM - 09:50AM,F,206 Transportation Building,
+CS,107,Data Science Discovery,,71820,,Laboratory-Discussion,AYG,10:00AM - 11:50AM,F,313 Davenport Hall,
+CS,107,Data Science Discovery,,71821,,Laboratory-Discussion,AYH,10:00AM - 11:50AM,F,312 Davenport Hall,
+CS,107,Data Science Discovery,,71822,,Laboratory-Discussion,AYI,02:00PM - 03:50PM,F,207 Gregory Hall,
+CS,107,Data Science Discovery,,71823,,Laboratory-Discussion,AYJ,02:00PM - 03:50PM,F,113 Gregory Hall,
+CS,107,Data Science Discovery,,71824,,Laboratory-Discussion,AYK,04:00PM - 05:50PM,F,1051 Lincoln Hall,
+CS,107,Data Science Discovery,,71825,,Laboratory-Discussion,AYL,04:00PM - 05:50PM,F,G27 Foreign Languages Building,
+CS,125,Intro to Computer Science,,35876,,Lecture,AL1,11:00AM - 11:50AM,MWF,AUD Foellinger Auditorium,"Challen, G"
+CS,125,Intro to Computer Science,,72282,,Lecture,ALP,11:00AM - 11:50AM,MWF,AUD Foellinger Auditorium,"Challen, G"
+CS,125,Intro to Computer Science,,35881,,Laboratory-Discussion,AYA,09:00AM - 09:50AM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35885,,Laboratory-Discussion,AYB,10:00AM - 10:50AM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35888,,Laboratory-Discussion,AYC,11:00AM - 11:50AM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35891,,Laboratory-Discussion,AYD,12:00PM - 12:50PM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35898,,Laboratory-Discussion,AYE,01:00PM - 01:50PM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35901,,Laboratory-Discussion,AYF,02:00PM - 02:50PM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35904,,Laboratory-Discussion,AYG,03:00PM - 03:50PM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35906,,Laboratory-Discussion,AYH,04:00PM - 04:50PM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35908,,Laboratory-Discussion,AYI,05:00PM - 05:50PM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35911,,Laboratory-Discussion,AYJ,06:00PM - 06:50PM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35914,,Laboratory-Discussion,AYK,07:00PM - 07:50PM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,65058,,Laboratory-Discussion,AYL,08:00PM - 08:50PM,T,0403 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,35894,,Laboratory-Discussion,AYM,09:00AM - 09:50AM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,65865,,Laboratory-Discussion,AYN,10:00AM - 10:50AM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,65059,,Laboratory-Discussion,AYP,11:00AM - 11:50AM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,65061,,Laboratory-Discussion,AYQ,12:00PM - 12:50PM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,65866,,Laboratory-Discussion,AYR,01:00PM - 01:50PM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,65060,,Laboratory-Discussion,AYS,02:00PM - 02:50PM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,69488,,Laboratory-Discussion,AYT,03:00PM - 03:50PM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,69489,,Laboratory-Discussion,AYU,04:00PM - 04:50PM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,69490,,Laboratory-Discussion,AYV,05:00PM - 05:50PM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,71886,,Laboratory-Discussion,AYW,06:00PM - 06:50PM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,71922,,Laboratory-Discussion,AYX,07:00PM - 07:50PM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,125,Intro to Computer Science,,71923,,Laboratory-Discussion,AYY,08:00PM - 08:50PM,T,1105 Siebel Center for Comp Sci,"Challen, G"
+CS,126,Software Design Studio,,69200,,Laboratory,SD1,ARRANGED,,ARR Siebel Center for Comp Sci,"Woodley, M"
+CS,126,Software Design Studio,,66322,,Lecture-Discussion,SL1,02:00PM - 03:15PM,TR,1404 Siebel Center for Comp Sci,"Woodley, M"
+CS,173,Discrete Structures,,51495,,Discussion/ Recitation,ADA,09:00AM - 09:50AM,F,1111 Siebel Center for Comp Sci,"Varodayan, D"
+CS,173,Discrete Structures,,51497,,Discussion/ Recitation,ADC,10:00AM - 10:50AM,F,1111 Siebel Center for Comp Sci,"Varodayan, D"
+CS,173,Discrete Structures,,51499,,Discussion/ Recitation,ADE,12:00PM - 12:50PM,F,1111 Siebel Center for Comp Sci,"Varodayan, D"
+CS,173,Discrete Structures,,63143,,Discussion/ Recitation,ADG,01:00PM - 01:50PM,F,1111 Siebel Center for Comp Sci,"Varodayan, D"
+CS,173,Discrete Structures,,63145,,Discussion/ Recitation,ADI,03:00PM - 03:50PM,F,1111 Siebel Center for Comp Sci,"Varodayan, D"
+CS,173,Discrete Structures,,63146,,Discussion/ Recitation,ADJ,04:00PM - 04:50PM,F,1111 Siebel Center for Comp Sci,"Varodayan, D"
+CS,173,Discrete Structures,,30102,,Lecture,AL1,11:00AM - 12:15PM,TR,1320 Digital Computer Laboratory,"Varodayan, D"
+CS,173,Discrete Structures,,72280,,Lecture,ALP,11:00AM - 12:15PM,TR,1320 Digital Computer Laboratory,"Varodayan, D"
+CS,173,Discrete Structures,,51500,,Discussion/ Recitation,BDA,09:00AM - 09:50AM,R,1111 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,51469,,Discussion/ Recitation,BDB,10:00AM - 10:50AM,R,1111 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,58923,,Discussion/ Recitation,BDC,11:00AM - 11:50AM,R,1111 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,59602,,Discussion/ Recitation,BDD,12:00PM - 12:50PM,R,1111 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,59603,,Discussion/ Recitation,BDE,01:00PM - 01:50PM,R,1111 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,60279,,Discussion/ Recitation,BDF,02:00PM - 02:50PM,R,1111 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,63147,,Discussion/ Recitation,BDG,03:00PM - 03:50PM,R,1111 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,71539,,Discussion/ Recitation,BDH,04:00PM - 04:50PM,R,1111 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,71541,,Discussion/ Recitation,BDI,05:00PM - 05:50PM,R,1111 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,45748,,Discussion/ Recitation,BDJ,09:00AM - 09:50AM,R,1105 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,71542,,Discussion/ Recitation,BDK,10:00AM - 10:50AM,R,1105 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,63144,,Discussion/ Recitation,BDL,11:00AM - 11:50AM,R,1105 Siebel Center for Comp Sci,"Viswanathan, M"
+CS,173,Discrete Structures,,40083,,Lecture,BL2,03:00PM - 03:50PM,MWF,1002 Electrical & Computer Eng Bldg,"Viswanathan, M"
+CS,173,Discrete Structures,,72281,,Lecture,BLR,03:00PM - 03:50PM,MWF,1002 Electrical & Computer Eng Bldg,"Viswanathan, M"
+CS,173,Discrete Structures,,51496,,Discussion/ Recitation,CDB,11:00AM - 11:50AM,F,1111 Siebel Center for Comp Sci,
+CS,173,Discrete Structures,,51498,,Discussion/ Recitation,CDD,02:00PM - 02:50PM,F,1111 Siebel Center for Comp Sci,
+CS,173,Discrete Structures,,60278,,Discussion/ Recitation,CDF,05:00PM - 05:50PM,F,1111 Siebel Center for Comp Sci,
+CS,173,Discrete Structures,,71734,,Lecture,CL3,09:30AM - 10:45AM,TR,1310 Digital Computer Laboratory,
+CS,196,Freshman Honors,,31508,,Lecture-Discussion,25,07:00PM - 07:50PM,TR,1404 Siebel Center for Comp Sci,"Challen, G"
+CS,196,Freshman Honors,,58187,,Lecture-Discussion,73,ARRANGED,,,
+CS,199,Undergraduate Open Seminar in Computer Science,Intro Pedagogy Practicum,69686,1,Discussion/ Recitation,125,05:00PM - 05:50PM,W,1404 Siebel Center for Comp Sci,"Challen, G"
+CS,199,Undergraduate Open Seminar in Computer Science,Pedagogy Practicum,69687,1,Discussion/ Recitation,196,ARRANGED,,ARR Siebel Center for Comp Sci,"Challen, G"
+CS,199,Undergraduate Open Seminar in Computer Science,Even More Practice,55186,1,Lecture,EMP,05:00PM - 06:50PM,R,2310 Everitt Laboratory,"Challen, G"
+CS,199,Undergraduate Open Seminar in Computer Science,Python and Linear Algebra Rev,31513,1,Lecture-Discussion,LD1,11:00AM - 12:20PM,T,2101 Everitt Laboratory,"Shaffer, E
+Silva, M"
+CS,199,Undergraduate Open Seminar in Computer Science,Python and Linear Algebra Rev,31514,1,Lecture-Discussion,LD2,11:00AM - 12:20PM,T,2101 Everitt Laboratory,"Shaffer, E
+Silva, M"
+CS,210,Ethical & Professional Issues,,64582,,Discussion/ Recitation,ADA,11:00AM - 11:50AM,M,1304 Siebel Center for Comp Sci,"Cunningham, R"
+CS,210,Ethical & Professional Issues,,64583,,Discussion/ Recitation,ADB,12:00PM - 12:50PM,M,1304 Siebel Center for Comp Sci,"Cunningham, R"
+CS,210,Ethical & Professional Issues,,64584,,Discussion/ Recitation,ADC,01:00PM - 01:50PM,M,1304 Siebel Center for Comp Sci,"Cunningham, R"
+CS,210,Ethical & Professional Issues,,64585,,Discussion/ Recitation,ADD,02:00PM - 02:50PM,M,1304 Siebel Center for Comp Sci,"Cunningham, R"
+CS,210,Ethical & Professional Issues,,64586,,Discussion/ Recitation,ADE,03:00PM - 03:50PM,M,1304 Siebel Center for Comp Sci,"Cunningham, R"
+CS,210,Ethical & Professional Issues,,64587,,Discussion/ Recitation,ADF,04:00PM - 04:50PM,M,1304 Siebel Center for Comp Sci,"Cunningham, R"
+CS,210,Ethical & Professional Issues,,31516,,Lecture-Discussion,AE1,03:00PM - 03:50PM,F,1404 Siebel Center for Comp Sci,
+CS,210,Ethical & Professional Issues,,31517,,Lecture-Discussion,CSP,ARRANGED,,,"Winter, G"
+CS,225,Data Structures,,35917,,Lecture,AL1,11:00AM - 11:50AM,MWF,1002 Electrical & Computer Eng Bldg,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35919,,Lecture,AL2,02:00PM - 02:50PM,MWF,1002 Electrical & Computer Eng Bldg,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,72271,,Lecture,ALP,11:00AM - 11:50AM,MWF,1002 Electrical & Computer Eng Bldg,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,72273,,Lecture,ALR,02:00PM - 02:50PM,MWF,1002 Electrical & Computer Eng Bldg,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35926,,Laboratory-Discussion,AYB,07:00PM - 08:50PM,W,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35944,,Laboratory-Discussion,AYC,09:00AM - 10:50AM,R,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35947,,Laboratory-Discussion,AYD,11:00AM - 12:50PM,R,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35950,,Laboratory-Discussion,AYE,01:00PM - 02:50PM,R,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35952,,Laboratory-Discussion,AYF,03:00PM - 04:50PM,R,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35954,,Laboratory-Discussion,AYG,05:00PM - 06:50PM,R,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35956,,Laboratory-Discussion,AYH,07:00PM - 08:50PM,R,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35959,,Laboratory-Discussion,AYI,09:00AM - 10:50AM,F,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,35923,,Laboratory-Discussion,AYK,01:00PM - 02:50PM,F,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,58757,,Laboratory-Discussion,AYL,03:00PM - 04:50PM,F,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,58758,,Laboratory-Discussion,AYM,05:00PM - 06:50PM,F,0224 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,62137,,Laboratory-Discussion,AYN,09:00AM - 10:50AM,R,1109 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,62139,,Laboratory-Discussion,AYO,03:30PM - 05:20PM,R,1302 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,62140,,Laboratory-Discussion,AYP,04:30PM - 06:20PM,R,0218 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,62833,,Laboratory-Discussion,AYQ,05:00PM - 06:50PM,R,1109 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,62834,,Laboratory-Discussion,AYR,05:30PM - 07:20PM,R,1302 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,65051,,Laboratory-Discussion,AYS,06:30PM - 08:20PM,R,0218 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,65053,,Laboratory-Discussion,AYT,07:00PM - 08:50PM,R,1109 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,65054,,Laboratory-Discussion,AYU,09:00AM - 10:50AM,F,0218 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,225,Data Structures,,65184,,Laboratory-Discussion,AYV,09:00AM - 10:50AM,F,1109 Siebel Center for Comp Sci,"Beckman, A
+Evans, G"
+CS,233,Computer Architecture,,63733,,Lecture,AL1,11:00AM - 11:50AM,MWF,1320 Digital Computer Laboratory,"Herman, G"
+CS,233,Computer Architecture,,64513,,Lecture,AL2,12:00PM - 12:50PM,MWF,1320 Digital Computer Laboratory,"Herman, G"
+CS,233,Computer Architecture,,72275,,Lecture,ALP,11:00AM - 11:50AM,MWF,1320 Digital Computer Laboratory,"Herman, G"
+CS,233,Computer Architecture,,72276,,Lecture,ALR,12:00PM - 12:50PM,MWF,1320 Digital Computer Laboratory,"Herman, G"
+CS,233,Computer Architecture,,63734,,Discussion/ Recitation,AYA,10:00AM - 10:50AM,T,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,63735,,Discussion/ Recitation,AYB,12:00PM - 12:50PM,M,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,63736,,Discussion/ Recitation,AYC,01:00PM - 01:50PM,M,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,63737,,Discussion/ Recitation,AYD,02:00PM - 02:50PM,M,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,63738,,Discussion/ Recitation,AYE,03:00PM - 03:50PM,M,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,63739,,Discussion/ Recitation,AYF,04:00PM - 04:50PM,M,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,63740,,Discussion/ Recitation,AYG,11:00AM - 11:50AM,T,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,64544,,Discussion/ Recitation,AYH,12:00PM - 12:50PM,T,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,64545,,Discussion/ Recitation,AYI,01:00PM - 01:50PM,T,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,64546,,Discussion/ Recitation,AYJ,02:00PM - 02:50PM,T,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,64547,,Discussion/ Recitation,AYK,03:00PM - 03:50PM,T,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,233,Computer Architecture,,64548,,Discussion/ Recitation,AYL,04:00PM - 04:50PM,T,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,241,System Programming,,59531,,Discussion/ Recitation,ADA,09:00AM - 10:20AM,R,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,51471,,Discussion/ Recitation,ADB,10:30AM - 11:50AM,R,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,51472,,Discussion/ Recitation,ADC,12:00PM - 01:20PM,R,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,51473,,Discussion/ Recitation,ADD,01:30PM - 02:50PM,R,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,51474,,Discussion/ Recitation,ADE,03:00PM - 04:20PM,R,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,51475,,Discussion/ Recitation,ADF,10:30AM - 11:50AM,W,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,66270,,Discussion/ Recitation,ADH,12:00PM - 01:20PM,W,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,66271,,Discussion/ Recitation,ADJ,01:30PM - 02:50PM,W,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,66272,,Discussion/ Recitation,ADK,03:00PM - 04:20PM,W,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,66273,,Discussion/ Recitation,ADL,04:30PM - 05:50PM,W,0218 Siebel Center for Comp Sci,"Angrave, L"
+CS,241,System Programming,,45300,,Lecture,AL1,09:00AM - 09:50AM,MWF,1320 Digital Computer Laboratory,"Angrave, L"
+CS,241,System Programming,,66268,,Lecture,AL2,10:00AM - 10:50AM,MWF,1320 Digital Computer Laboratory,"Angrave, L"
+CS,242,Programming Studio,,45328,,Laboratory,AB1,ARRANGED,,ARR Siebel Center for Comp Sci,"Woodley, M"
+CS,242,Programming Studio,,45325,,Lecture,AL1,02:00PM - 02:50PM,F,1404 Siebel Center for Comp Sci,"Woodley, M"
+CS,242,Programming Studio,,70784,,Lecture-Discussion,CPS,ARRANGED,,,"Woodley, M"
+CS,296,Honors Course,,31518,,Lecture-Discussion,25,05:00PM - 05:50PM,M,1310 Digital Computer Laboratory,"Beckman, A
+Evans, G"
+CS,296,Honors Course,,62763,1,Lecture-Discussion,33,ARRANGED,,ARR Siebel Center for Comp Sci,"Herman, G
+Zilles, C"
+CS,296,Honors Course,,57758,1,Lecture-Discussion,41,07:00PM - 08:50PM,W,1304 Siebel Center for Comp Sci,"Angrave, L"
+CS,357,Numerical Methods I,,53280,,Lecture-Discussion,M,09:30AM - 10:45AM,TR,1320 Digital Computer Laboratory,"Silva, M"
+CS,357,Numerical Methods I,,63536,,Lecture-Discussion,N,12:30PM - 01:45PM,TR,1404 Siebel Center for Comp Sci,"Silva, M"
+CS,361,Probability & Statistics for Computer Science,,66306,,Discussion/ Recitation,ADB,12:30PM - 01:20PM,M,1109 Siebel Center for Comp Sci,"Varodayan, D"
+CS,361,Probability & Statistics for Computer Science,,66303,,Discussion/ Recitation,ADD,01:30PM - 02:20PM,M,1109 Siebel Center for Comp Sci,"Varodayan, D"
+CS,361,Probability & Statistics for Computer Science,,66304,,Discussion/ Recitation,ADE,02:30PM - 03:20PM,M,1109 Siebel Center for Comp Sci,"Varodayan, D"
+CS,361,Probability & Statistics for Computer Science,,66305,,Discussion/ Recitation,ADF,03:30PM - 04:20PM,M,1109 Siebel Center for Comp Sci,"Varodayan, D"
+CS,361,Probability & Statistics for Computer Science,,66298,,Lecture,AL1,12:30PM - 01:45PM,TR,1320 Digital Computer Laboratory,
+CS,361,Probability & Statistics for Computer Science,,72361,,Online,CSP,ARRANGED,,,"Varodayan, D"
+CS,374,Introduction to Algorithms & Models of Computation,,70643,,Discussion/ Recitation,ADA,09:00AM - 09:50AM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,70644,,Discussion/ Recitation,ADB,10:00AM - 10:50AM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,70645,,Discussion/ Recitation,ADC,11:00AM - 11:50AM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,72092,,Discussion/ Recitation,ADD,12:00PM - 12:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,72094,,Discussion/ Recitation,ADE,04:00PM - 04:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,66451,,Discussion/ Recitation,ADF,01:00PM - 01:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,72201,,Discussion/ Recitation,ADG,05:00PM - 05:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,66453,,Discussion/ Recitation,ADH,02:00PM - 02:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,66455,,Discussion/ Recitation,ADK,03:00PM - 03:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,66445,,Lecture,AL1,11:00AM - 12:15PM,TR,1002 Electrical & Computer Eng Bldg,"Erickson, J"
+CS,374,Introduction to Algorithms & Models of Computation,,70641,,Lecture,BL1,09:30AM - 10:45AM,TR,1002 Electrical & Computer Eng Bldg,"Borisov, N"
+CS,374,Introduction to Algorithms & Models of Computation,,66446,,Discussion/ Recitation,BYA,09:00AM - 09:50AM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+CS,374,Introduction to Algorithms & Models of Computation,,66447,,Discussion/ Recitation,BYB,10:00AM - 10:50AM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+CS,374,Introduction to Algorithms & Models of Computation,,66448,,Discussion/ Recitation,BYC,11:00AM - 11:50AM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+CS,374,Introduction to Algorithms & Models of Computation,,66449,,Discussion/ Recitation,BYD,12:00PM - 12:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+CS,374,Introduction to Algorithms & Models of Computation,,66450,,Discussion/ Recitation,BYE,01:00PM - 01:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+CS,374,Introduction to Algorithms & Models of Computation,,66452,,Discussion/ Recitation,BYF,02:00PM - 02:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+CS,374,Introduction to Algorithms & Models of Computation,,66454,,Discussion/ Recitation,BYG,03:00PM - 03:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+CS,374,Introduction to Algorithms & Models of Computation,,72090,,Discussion/ Recitation,BYH,04:00PM - 04:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+CS,397,Individual Study,,10464,,Independent Study,,ARRANGED,,,
+CS,410,Text Information Systems,,67393,4,Online,DSO,ARRANGED,,,"Zhai, C"
+CS,410,Text Information Systems,,71013,4,Online,MCO,ARRANGED,,,"Zhai, C"
+CS,411,Database Systems,,72358,3,Online,CSP,ARRANGED,,,"Alawini, A"
+CS,411,Database Systems,,30109,3,Lecture-Discussion,Q3,11:00AM - 12:15PM,MW,1404 Siebel Center for Comp Sci,"Alawini, A"
+CS,411,Database Systems,,40086,4,Lecture-Discussion,Q4,11:00AM - 12:15PM,MW,1404 Siebel Center for Comp Sci,"Alawini, A"
+CS,412,Introduction to Data Mining,,72359,3,Online,CSP,ARRANGED,,,"Chang, K"
+CS,412,Introduction to Data Mining,,45752,,Online,ONL,ARRANGED,,,"Han, J
+Tong, H"
+CS,412,Introduction to Data Mining,,43357,3,Lecture-Discussion,P3,09:30AM - 10:45AM,TR,1404 Siebel Center for Comp Sci,"Han, J
+Tong, H"
+CS,412,Introduction to Data Mining,,43358,4,Lecture-Discussion,P4,09:30AM - 10:45AM,TR,1404 Siebel Center for Comp Sci,"Han, J
+Tong, H"
+CS,413,Intro to Combinatorics,,33540,3,Lecture-Discussion,X13,01:00PM - 01:50PM,MWF,245 Altgeld Hall,
+CS,413,Intro to Combinatorics,,39196,4,Lecture-Discussion,X14,01:00PM - 01:50PM,MWF,245 Altgeld Hall,
+CS,418,Interactive Computer Graphics,,51480,,Discussion/ Recitation,AD1,11:00AM - 11:50AM,W,1111 Siebel Center for Comp Sci,"Shaffer, E"
+CS,418,Interactive Computer Graphics,,51481,,Discussion/ Recitation,AD2,12:00PM - 12:50PM,W,1111 Siebel Center for Comp Sci,"Shaffer, E"
+CS,418,Interactive Computer Graphics,,51482,,Discussion/ Recitation,AD3,01:00PM - 01:50PM,W,1111 Siebel Center for Comp Sci,"Shaffer, E"
+CS,418,Interactive Computer Graphics,,55233,,Discussion/ Recitation,AD4,02:00PM - 02:50PM,W,1111 Siebel Center for Comp Sci,"Shaffer, E"
+CS,418,Interactive Computer Graphics,,61175,,Discussion/ Recitation,AD5,03:00PM - 03:50PM,W,1111 Siebel Center for Comp Sci,"Shaffer, E"
+CS,418,Interactive Computer Graphics,,65389,,Discussion/ Recitation,AD6,04:00PM - 04:50PM,W,1111 Siebel Center for Comp Sci,"Shaffer, E"
+CS,418,Interactive Computer Graphics,,36119,3,Lecture,AL1,09:00AM - 09:50AM,MWF,1404 Siebel Center for Comp Sci,"Shaffer, E"
+CS,418,Interactive Computer Graphics,,36121,4,Lecture,AL2,09:00AM - 09:50AM,MWF,1404 Siebel Center for Comp Sci,"Shaffer, E"
+CS,418,Interactive Computer Graphics,,67033,,Online,ONL,ARRANGED,,,"Shaffer, E"
+CS,420,Parallel Progrmg: Sci & Engrg,,53685,3,Lecture-Discussion,D3,11:00AM - 12:15PM,WF,0216 Siebel Center for Comp Sci,"Padua, D"
+CS,420,Parallel Progrmg: Sci & Engrg,,53686,4,Lecture-Discussion,D4,11:00AM - 12:15PM,WF,0216 Siebel Center for Comp Sci,"Padua, D"
+CS,421,Programming Languages & Compilers,,72203,3,Online,CSP,ARRANGED,,,"Gunter, E"
+CS,421,Programming Languages & Compilers,,30128,3,Lecture-Discussion,D3,04:00PM - 05:15PM,MF,100 Noyes Laboratory,"Gunter, E"
+CS,421,Programming Languages & Compilers,,40087,4,Lecture-Discussion,D4,04:00PM - 05:15PM,MF,100 Noyes Laboratory,"Gunter, E"
+CS,421,Programming Languages & Compilers,,71094,4,Online,DSO,ARRANGED,,,"Beckman, A"
+CS,424,Real-Time Systems,,51775,3,Lecture-Discussion,P3,02:00PM - 03:15PM,TR,1109 Siebel Center for Comp Sci,"Abdelzaher, T"
+CS,424,Real-Time Systems,,51776,4,Lecture-Discussion,P4,02:00PM - 03:15PM,TR,1109 Siebel Center for Comp Sci,"Abdelzaher, T"
+CS,425,Distributed Systems,,67394,4,Online,DSO,ARRANGED,,,"Gupta, I"
+CS,425,Distributed Systems,,71082,4,Online,DSP,ARRANGED,,,"Gupta, I"
+CS,425,Distributed Systems,,36091,3,Lecture-Discussion,P3,02:00PM - 03:15PM,TR,1320 Digital Computer Laboratory,"Gupta, I"
+CS,425,Distributed Systems,,57769,4,Lecture-Discussion,P4,02:00PM - 03:15PM,TR,1320 Digital Computer Laboratory,"Gupta, I"
+CS,425,Distributed Systems,,72128,4,Lecture-Discussion,PU4,02:00PM - 03:15PM,TR,1320 Digital Computer Laboratory,"Gupta, I"
+CS,425,Distributed Systems,,48734,3,Lecture-Discussion,Q3,ARRANGED,,,"Gupta, I"
+CS,425,Distributed Systems,,69747,4,Lecture-Discussion,Q4,ARRANGED,,,"Gupta, I"
+CS,425,Distributed Systems,,72129,4,Lecture-Discussion,QU4,ARRANGED,,,"Gupta, I"
+CS,426,Compiler Construction,,43355,3,Lecture-Discussion,N3,12:30PM - 01:45PM,TR,1302 Siebel Center for Comp Sci,"Adve, V"
+CS,426,Compiler Construction,,43356,4,Lecture-Discussion,N4,12:30PM - 01:45PM,TR,1302 Siebel Center for Comp Sci,"Adve, V"
+CS,427,Software Engineering I,,70960,4,Online,DSO,ARRANGED,,,"Xie, T"
+CS,427,Software Engineering I,,71009,4,Online,MCO,ARRANGED,,,"Xie, T"
+CS,427,Software Engineering I,,36104,3,Lecture-Discussion,S3,03:30PM - 04:45PM,TR,1320 Digital Computer Laboratory,"Rosu, G"
+CS,427,Software Engineering I,,36107,4,Lecture-Discussion,S4,03:30PM - 04:45PM,TR,1320 Digital Computer Laboratory,"Rosu, G"
+CS,433,Computer System Organization,,36069,3,Lecture-Discussion,T3,11:00AM - 12:15PM,TR,1214 Siebel Center for Comp Sci,"Adve, S"
+CS,433,Computer System Organization,,43363,4,Lecture-Discussion,T4,11:00AM - 12:15PM,TR,1214 Siebel Center for Comp Sci,"Adve, S"
+CS,438,Communication Networks,,36061,3,Lecture-Discussion,X3,03:00PM - 04:20PM,MW,1015 Electrical & Computer Eng Bldg,"Al-Hassanieh, H"
+CS,438,Communication Networks,,57772,4,Lecture-Discussion,X4,03:00PM - 04:20PM,MW,1015 Electrical & Computer Eng Bldg,"Al-Hassanieh, H"
+CS,440,Artificial Intelligence,,67003,3,Lecture-Discussion,R3,09:00AM - 09:50AM,MWF,1002 Electrical & Computer Eng Bldg,"Fleck, M"
+CS,440,Artificial Intelligence,,67004,4,Lecture-Discussion,R4,09:00AM - 09:50AM,MWF,1002 Electrical & Computer Eng Bldg,"Fleck, M"
+CS,445,Computational Photography,,65086,3,Lecture-Discussion,C3,02:00PM - 03:15PM,WF,1320 Digital Computer Laboratory,"Hoiem, D"
+CS,445,Computational Photography,,65087,4,Lecture-Discussion,C4,02:00PM - 03:15PM,WF,1320 Digital Computer Laboratory,"Hoiem, D"
+CS,446,Machine Learning,,46792,3,Lecture,D3,12:30PM - 01:45PM,MW,1404 Siebel Center for Comp Sci,"Koyejo, O"
+CS,446,Machine Learning,,46793,4,Lecture,D4,12:30PM - 01:45PM,MW,1404 Siebel Center for Comp Sci,"Koyejo, O"
+CS,447,Natural Language Processing,,63292,3,Lecture,N3,12:30PM - 01:45PM,WF,1310 Digital Computer Laboratory,"Hockenmaier, J"
+CS,447,Natural Language Processing,,63293,4,Lecture,N4,12:30PM - 01:45PM,WF,1310 Digital Computer Laboratory,"Hockenmaier, J"
+CS,447,Natural Language Processing,,70473,,Online,ONL,ARRANGED,,,"Hockenmaier, J"
+CS,450,Numerical Analysis,,36016,3,Lecture-Discussion,BL1,03:30PM - 04:45PM,MW,1320 Digital Computer Laboratory,"Olson, L"
+CS,450,Numerical Analysis,,36020,4,Lecture-Discussion,BL2,03:30PM - 04:45PM,MW,1320 Digital Computer Laboratory,"Olson, L"
+CS,450,Numerical Analysis,,72454,4,Online,DSO,ARRANGED,,,"Shaffer, E"
+CS,461,Computer Security I,,69008,,Discussion/ Recitation,ADA,11:00AM - 11:50AM,W,1214 Siebel Center for Comp Sci,"Bates, A"
+CS,461,Computer Security I,,69009,,Discussion/ Recitation,ADB,12:00PM - 12:50PM,W,1214 Siebel Center for Comp Sci,"Bates, A"
+CS,461,Computer Security I,,69010,,Discussion/ Recitation,ADC,01:00PM - 01:50PM,W,1214 Siebel Center for Comp Sci,"Bates, A"
+CS,461,Computer Security I,,69013,,Discussion/ Recitation,ADG,04:00PM - 04:50PM,W,1302 Siebel Center for Comp Sci,"Bates, A"
+CS,461,Computer Security I,,66966,,Discussion/ Recitation,ADH,02:00PM - 02:50PM,W,1103 Siebel Center for Comp Sci,"Bates, A"
+CS,461,Computer Security I,,66968,,Discussion/ Recitation,ADJ,04:00PM - 04:50PM,W,1103 Siebel Center for Comp Sci,"Bates, A"
+CS,461,Computer Security I,,49547,,Lecture,AL4,10:00AM - 10:50AM,MWF,1404 Siebel Center for Comp Sci,"Bates, A"
+CS,461,Computer Security I,,72159,,Lecture,ALG,10:00AM - 10:50AM,MWF,1404 Siebel Center for Comp Sci,"Bates, A"
+CS,461,Computer Security I,,50236,,Discussion/ Recitation,CSP,ARRANGED,,,"Bailey, M"
+CS,465,User Interface Design,,67943,,Discussion/ Recitation,AD1,08:00AM - 09:20AM,R,209 Huff Hall,"Bailey, B"
+CS,465,User Interface Design,,67945,,Discussion/ Recitation,AD2,09:30AM - 10:50AM,F,209 Huff Hall,"Bailey, B"
+CS,465,User Interface Design,,67946,,Discussion/ Recitation,AD3,11:00AM - 12:20PM,R,166 Education Building,"Bailey, B"
+CS,465,User Interface Design,,67944,,Discussion/ Recitation,AD4,03:30PM - 04:50PM,R,432 Armory,"Bailey, B"
+CS,465,User Interface Design,,67948,,Discussion/ Recitation,AD6,11:00AM - 12:20PM,F,209 Huff Hall,"Bailey, B"
+CS,465,User Interface Design,,67949,,Discussion/ Recitation,AD7,03:00PM - 04:20PM,F,11 Psychology Building,"Bailey, B"
+CS,465,User Interface Design,,43389,4,Lecture-Discussion,AE2,03:30PM - 04:45PM,MW,1404 Siebel Center for Comp Sci,"Bailey, B"
+CS,465,User Interface Design,,72163,4,Lecture-Discussion,AEG,03:30PM - 04:45PM,MW,1404 Siebel Center for Comp Sci,"Bailey, B"
+CS,465,User Interface Design,,70496,4,Discussion/ Recitation,CSP,ARRANGED,,,"Bailey, B"
+CS,466,Introduction to Bioinformatics,,51764,3,Lecture-Discussion,B3,02:00PM - 03:15PM,WF,0216 Siebel Center for Comp Sci,"El-Kebir, M"
+CS,466,Introduction to Bioinformatics,,51765,4,Lecture-Discussion,B4,02:00PM - 03:15PM,WF,0216 Siebel Center for Comp Sci,"El-Kebir, M"
+CS,473,Algorithms,,70159,,Lecture-Discussion,S4,02:00PM - 03:15PM,TR,1310 Digital Computer Laboratory,"Chekuri, C
+Forbes, M"
+CS,473,Algorithms,,72165,,Lecture-Discussion,S4G,02:00PM - 03:15PM,TR,1310 Digital Computer Laboratory,"Chekuri, C
+Forbes, M"
+CS,481,Advanced Topics in Stochastic Processes & Applications,,52040,3,Laboratory,E,04:00PM - 04:50PM,MW,1310 Digital Computer Laboratory,"Jacobson, S"
+CS,481,Advanced Topics in Stochastic Processes & Applications,,58069,4,Laboratory,G,04:00PM - 04:50PM,MW,1310 Digital Computer Laboratory,"Jacobson, S"
+CS,483,Applied Parallel Programming,,58793,,Laboratory,AB,ARRANGED,,,"Hwu, W"
+CS,483,Applied Parallel Programming,,72469,,Laboratory,ABC,ARRANGED,,,"Hwu, W"
+CS,483,Applied Parallel Programming,,67070,,Lecture,AL2,09:30AM - 10:50AM,TR,2079 Natural History Building,"Hwu, W"
+CS,483,Applied Parallel Programming,,58792,,Lecture,ALC,ARRANGED,,,"Hwu, W"
+CS,484,Parallel Programming,,67875,3,Lecture,PP3,09:30AM - 10:45AM,TR,,"Kale, L"
+CS,484,Parallel Programming,,67876,4,Lecture,PP4,09:30AM - 10:45AM,TR,,"Kale, L"
+CS,491,Seminar,Adv Competitive Algorithm Prog,65816,3,Laboratory,CAP,03:30PM - 04:20PM,MWF,0216 Siebel Center for Comp Sci,"Beckman, A
+Shang, J"
+CS,491,Seminar,Cyber Security Scholar Program,54321,2,Lecture,CB,05:00PM - 06:50PM,T,ARR Coordinated Science Lab,"Bashir, M
+Campbell, R"
+CS,491,Seminar,Functional Programming Languag,69569,1,Discussion/ Recitation,FPL,ARRANGED,,ARR Siebel Center for Comp Sci,"Beckman, A"
+CS,491,Seminar,Tradecraft for Coders,69458,2,Discussion/ Recitation,TC,02:00PM - 02:50PM,MW,0220 Siebel Center for Comp Sci,"Davis, N"
+CS,493,"Senior Project II, ACP",,67877,3,Lecture-Discussion,CS,04:00PM - 04:50PM,W,1131 Siebel Center for Comp Sci,"Woodley, M"
+CS,494,Senior Project II,,67878,3,Lecture-Discussion,CS,04:00PM - 04:50PM,W,1131 Siebel Center for Comp Sci,"Woodley, M"
+CS,497,CS Team Project,,69124,,Independent Study,,ARRANGED,,,
+CS,498,Special Topics,Applied Cryptography,68911,3,Lecture,AM3,02:00PM - 03:20PM,TR,,"Miller, A"
+CS,498,Special Topics,Applied Cryptography,68912,4,Lecture,AM4,02:00PM - 03:20PM,TR,,"Miller, A"
+CS,498,Special Topics,Cyber Dystopia,43753,3,Lecture,CD,11:00AM - 12:15PM,TR,1103 Siebel Center for Comp Sci,"Gunter, C"
+CS,498,Special Topics,Cloud Networking,70961,4,Online,CNO,ARRANGED,,,"Godfrey, P"
+CS,498,Special Topics,Computational Advertising,66333,3,Lecture-Discussion,HS3,11:00AM - 12:15PM,WF,1310 Digital Computer Laboratory,"Sundaram, H"
+CS,498,Special Topics,Computational Advertising,66399,4,Lecture-Discussion,HS4,11:00AM - 12:15PM,WF,1310 Digital Computer Laboratory,"Sundaram, H"
+CS,498,Special Topics,Internet of Things,72154,3,Lecture-Discussion,IT3,09:30AM - 10:45AM,MW,0216 Siebel Center for Comp Sci,"Caesar, M"
+CS,498,Special Topics,Internet of Things,72155,4,Lecture-Discussion,IT4,09:30AM - 10:45AM,MW,0216 Siebel Center for Comp Sci,"Caesar, M"
+CS,498,Special Topics,Internet of Things,72360,3,Online,ITC,ARRANGED,,,"Caesar, M"
+CS,498,Special Topics,Cloud Networking,71011,4,Online,MCO,ARRANGED,,,"Godfrey, P"
+CS,498,Special Topics,Intro to Randomized Algs,72152,3,Lecture-Discussion,RA3,02:00PM - 03:15PM,TR,1103 Siebel Center for Comp Sci,"Har-Peled, S"
+CS,498,Special Topics,Intro to Randomized Algs,72153,4,Lecture-Discussion,RA4,02:00PM - 03:15PM,TR,1103 Siebel Center for Comp Sci,"Har-Peled, S"
+CS,498,Special Topics,Reinforcement Learning,71965,3,Lecture-Discussion,RL3,02:00PM - 03:15PM,TR,0216 Siebel Center for Comp Sci,"Jiang, N"
+CS,498,Special Topics,Reinforcement Learning,71966,4,Lecture-Discussion,RL4,02:00PM - 03:15PM,TR,0216 Siebel Center for Comp Sci,"Jiang, N"
+CS,498,Special Topics,Virtual Reality,40091,3,Lecture,VR3,02:00PM - 03:15PM,MW,1404 Siebel Center for Comp Sci,"Shaffer, E"
+CS,498,Special Topics,Virtual Reality,40092,4,Lecture-Discussion,VR4,02:00PM - 03:15PM,MW,1404 Siebel Center for Comp Sci,"Shaffer, E"
+CS,498,Special Topics,Wireless IoT Lab,67900,3,Lecture,WN3,09:30AM - 10:45AM,TR,1302 Siebel Center for Comp Sci,"Kravets, R"
+CS,498,Special Topics,Wireless IoT Lab,67901,4,Lecture,WN4,09:30AM - 10:45AM,TR,1302 Siebel Center for Comp Sci,"Kravets, R"
+CS,499,Senior Thesis,,10465,,Independent Study,,ARRANGED,,,
+CS,510,Advanced Information Retrieval,,67827,4,Lecture,A1,11:00AM - 12:15PM,TR,0216 Siebel Center for Comp Sci,"Zhai, C"
+CS,513,Theory & Practice of Data Cleaning,,70342,,Lecture-Discussion,A,05:00PM - 07:00PM,R,131 Grad Sch of Lib & Info Science,
+CS,513,Theory & Practice of Data Cleaning,,70344,,Online,AO,ARRANGED,,,"Ludaescher, B"
+CS,523,Advanced Operating Systems,,59677,,Lecture-Discussion,E,12:30PM - 01:45PM,WF,1109 Siebel Center for Comp Sci,"Xu, T"
+CS,536,Fault-Tolerant Dig Syst Design,,54666,4,Lecture-Discussion,C,09:30AM - 10:45AM,TR,3013 Electrical & Computer Eng Bldg,"Kalbarczyk, Z"
+CS,547,Deep Learning,,72236,4,Lecture,D,08:00AM - 09:20AM,TR,1404 Siebel Center for Comp Sci,"Sirignano, J"
+CS,554,Parallel Numerical Algorithms,,57701,,Lecture-Discussion,C,11:00AM - 12:15PM,WF,1131 Siebel Center for Comp Sci,"Solomonik, E"
+CS,563,Advanced Computer Security,,54597,,Lecture,C,09:30AM - 10:45AM,MW,1109 Siebel Center for Comp Sci,"Bates, A"
+CS,571,Combinatorial Mathematics,,33563,,Lecture-Discussion,D1,11:00AM - 11:50AM,MWF,143 Altgeld Hall,"Balog, J"
+CS,576,Topics in Automated Deduction,,71847,4,Lecture-Discussion,M,03:30PM - 04:45PM,TR,1131 Siebel Center for Comp Sci,"Meseguer, J"
+CS,581,Algorithmic Genomic Biology,,70702,,Lecture-Discussion,A,11:00AM - 12:15PM,TR,1302 Siebel Center for Comp Sci,"Warnow, T"
+CS,584,Embedded System Verification,,60031,,Lecture,B,12:30PM - 01:50PM,TR,3081 Electrical & Computer Eng Bldg,"Mitra, S"
+CS,591,Advanced Seminar,Advanced Compiler Technology,35941,1,Lecture-Discussion,ACT,ARRANGED,,ARR Siebel Center for Comp Sci,"Adve, V
+Misailovic, S
+Padua, D"
+CS,591,Advanced Seminar,Cloud Computing Research,35943,1,Lecture-Discussion,CCR,05:00PM - 06:20PM,W,1304 Siebel Center for Comp Sci,"Campbell, R"
+CS,591,Advanced Seminar,Formal Methods Seminar,46417,1,Lecture-Discussion,FM,03:30PM - 04:20PM,F,ARR Siebel Center for Comp Sci,"Gunter, E"
+CS,591,Advanced Seminar,Human-Computer Interaction,35974,1,Lecture-Discussion,HCI,11:00AM - 11:50AM,T,ARR Siebel Center for Comp Sci,"Kirlik, A"
+CS,591,Advanced Seminar,Distributed Systems Seminar,43828,1,Lecture-Discussion,IG,05:00PM - 05:50PM,R,,"Gupta, I"
+CS,591,Advanced Seminar,Scientific Computing Seminar,35957,1,Lecture-Discussion,MH,ARRANGED,,ARR Siebel Center for Comp Sci,"Olson, L"
+CS,591,Advanced Seminar,PHD Orientation Seminar,41977,1,Lecture,PHD,11:00AM - 11:50AM,M,0216 Siebel Center for Comp Sci,"Bailey, B"
+CS,591,Advanced Seminar,Security Reading Seminar,41614,1,Lecture-Discussion,RHC,ARRANGED,,ARR Siebel Center for Comp Sci,"Campbell, R"
+CS,591,Advanced Seminar,Software Engineering Seminar,49716,1,Lecture-Discussion,SE,ARRANGED,,ARR Siebel Center for Comp Sci,"Marinov, D
+Xie, T"
+CS,591,Advanced Seminar,Teaching Assistant Training,35986,1,Lecture-Discussion,TA,11:00AM - 11:50AM,F,1404 Siebel Center for Comp Sci,"Beckman, A
+Chen, Y
+Johnson, B"
+CS,591,Advanced Seminar,Text Mining Seminar,67467,2,Discussion/ Recitation,TXT,ARRANGED,,,"Zhai, C"
+CS,598,Special Topics,Foundations of Data Curation,69375,4,Online,AO2,ARRANGED,,,"Renear, A"
+CS,598,Special Topics,Fast Algorithms & Intrgl Equat,64616,4,Lecture-Discussion,APK,02:00PM - 03:15PM,WF,1109 Siebel Center for Comp Sci,"Kloeckner, A"
+CS,598,Special Topics,Adversarial Machine Learning,70203,4,Lecture-Discussion,BL,03:30PM - 04:45PM,TR,1214 Siebel Center for Comp Sci,"Li, B"
+CS,598,Special Topics,Cloud Computing Capstone,49221,4,Online,CC1,ARRANGED,,,"Farivar, R"
+CS,598,Special Topics,Secure Processor Design,67238,4,Lecture-Discussion,CLF,11:00AM - 12:15PM,WF,1302 Siebel Center for Comp Sci,"Fletcher, C"
+CS,598,Special Topics,Special Topics in Cryptography,72082,4,Lecture-Discussion,DK,03:30PM - 04:45PM,WF,1109 Siebel Center for Comp Sci,"Khurana, D"
+CS,598,Special Topics,Deep Learning Theory,72098,4,Lecture-Discussion,DLT,03:30PM - 04:45PM,TR,1304 Siebel Center for Comp Sci,"Telgarsky, M"
+CS,598,Special Topics,Data Mining Capstone,70878,4,Online,DM1,ARRANGED,,,"Zhai, C"
+CS,598,Special Topics,Advanced Bayesian Modeling,69343,4,Online,DSO,ARRANGED,,,"Park, T"
+CS,598,Special Topics,,72124,,Lecture-Discussion,ELG,03:30PM - 04:50PM,TR,1109 Siebel Center for Comp Sci,
+CS,598,Special Topics,,72357,4,Lecture-Discussion,EMR,12:30PM - 01:45PM,WF,1103 Siebel Center for Comp Sci,
+CS,598,Special Topics,Learning and Comp Science,36004,4,Lecture-Discussion,GLH,08:30AM - 09:50AM,MW,1111 Siebel Center for Comp Sci,"Herman, G"
+CS,598,Special Topics,"ML for Sys, Netwrks & Security",57780,4,Lecture-Discussion,GW,12:30PM - 01:45PM,WF,0216 Siebel Center for Comp Sci,
+CS,598,Special Topics,Info Extr and Knowledge Acq,72121,4,Lecture-Discussion,HJ,02:00PM - 03:15PM,WF,1214 Siebel Center for Comp Sci,"Ji, H"
+CS,598,Special Topics,Machine Lrning Computation Bio,65089,4,Lecture-Discussion,JP,11:00AM - 12:15PM,MW,1109 Siebel Center for Comp Sci,"Peng, J"
+CS,598,Special Topics,Energy-Efficient Comp Architec,64618,4,Lecture-Discussion,JT,12:30PM - 01:45PM,WF,1131 Siebel Center for Comp Sci,"Torrellas, J"
+CS,598,Special Topics,Listening to Social Universe,36002,,Lecture-Discussion,KCC,09:30AM - 10:45AM,MF,1214 Siebel Center for Comp Sci,"Chang, K"
+CS,598,Special Topics,Social Spaces on the Internet,42378,4,Lecture-Discussion,KGK,03:30PM - 04:50PM,MF,1302 Siebel Center for Comp Sci,"Karahalios, K"
+CS,598,Special Topics,Advanced Multimedia Systems,59671,4,Lecture-Discussion,KN,02:00PM - 03:15PM,TR,1131 Siebel Center for Comp Sci,"Nahrstedt, K"
+CS,598,Special Topics,,72110,4,Lecture-Discussion,KT4,02:00PM - 03:15PM,WF,1302 Siebel Center for Comp Sci,
+CS,598,Special Topics,,57781,4,Lecture-Discussion,KT5,04:00PM - 04:50PM,MF,1103 Siebel Center for Comp Sci,
+CS,598,Special Topics,,49225,4,Lecture-Discussion,KT8,12:30PM - 02:20PM,MR,1105 Siebel Center for Comp Sci,"Gunter, E"
+CS,598,Special Topics,Consensus Algorithms,72122,4,Lecture-Discussion,LR,12:30PM - 01:45PM,TR,1214 Siebel Center for Comp Sci,"Ren, L"
+CS,598,Special Topics,Port High Perf Comp via DSL,72109,4,Lecture-Discussion,LRW,12:30PM - 01:45PM,TR,1103 Siebel Center for Comp Sci,"Rauchwerger, L"
+CS,598,Special Topics,Methods for Bld Auton Vehicles,72123,4,Lecture-Discussion,MAV,03:30PM - 04:45PM,TR,1103 Siebel Center for Comp Sci,"Forsyth, D"
+CS,598,Special Topics,Mach Lrng for Signal Processng,46989,4,Lecture-Discussion,PS,12:30PM - 01:45PM,TR,0216 Siebel Center for Comp Sci,"Smaragdis, P"
+CS,598,Special Topics,Practical Statistical Learning,70683,4,Online,PSO,ARRANGED,,,"Liang, F"
+CS,598,Special Topics,Practical Statistical Learning,71083,4,Online,PSP,ARRANGED,,,"Zhu, R"
+CS,598,Special Topics,HCI for ML,63395,4,Lecture-Discussion,RK,12:30PM - 01:45PM,TR,1109 Siebel Center for Comp Sci,"Kumar, R"
+CS,598,Special Topics,Algorithmic Game Theory,70200,4,Lecture-Discussion,RM,03:30PM - 04:45PM,WF,1214 Siebel Center for Comp Sci,"Mehta, R"
+CS,598,Special Topics,Approx & Probabilistic Comp,66867,4,Lecture-Discussion,SM,11:00AM - 12:15PM,TR,1304 Siebel Center for Comp Sci,"Misailovic, S"
+CS,598,Special Topics,Advance Bioinformatics,46042,4,Lecture-Discussion,SS,09:30AM - 10:45AM,TR,1214 Siebel Center for Comp Sci,"Sinha, S"
+CS,598,Special Topics,Geometric Data Structures,70199,4,Lecture-Discussion,TMC,11:00AM - 12:15PM,WF,1103 Siebel Center for Comp Sci,"Chan, T"
+CS,599,Thesis Research,,10469,,Independent Study,,ARRANGED,,,
+ECE,110,Introduction to Electronics,,36785,,Laboratory,AB0,09:00AM - 11:50AM,T,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36788,,Laboratory,AB1,09:00AM - 11:50AM,W,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36780,,Laboratory,AB2,09:00AM - 11:50AM,R,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36801,,Laboratory,AB3,09:00AM - 11:50AM,F,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36794,,Laboratory,AB4,12:00PM - 02:50PM,M,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,55569,,Laboratory,AB5,12:00PM - 02:50PM,T,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36798,,Laboratory,AB6,12:00PM - 02:50PM,W,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,55155,,Laboratory,AB7,12:00PM - 02:50PM,R,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36781,,Laboratory,AB8,12:00PM - 02:50PM,F,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,55156,,Laboratory,AB9,03:00PM - 05:50PM,M,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36778,,Laboratory,ABA,03:00PM - 05:50PM,T,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36800,,Laboratory,ABB,03:00PM - 05:50PM,W,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36792,,Laboratory,ABC,03:00PM - 05:50PM,R,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36783,,Laboratory,ABD,09:00AM - 11:50AM,M,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,36796,,Laboratory,ABE,06:00PM - 08:50PM,M,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,62483,,Laboratory,ABF,06:00PM - 08:50PM,W,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,55568,3,Lecture,AL1,10:00AM - 10:50AM,MW,1002 Electrical & Computer Eng Bldg,"Schmitz, C"
+ECE,110,Introduction to Electronics,,36790,3,Lecture,AL2,04:00PM - 04:50PM,MW,1013 Electrical & Computer Eng Bldg,"Chen, Y"
+ECE,110,Introduction to Electronics,,36789,3,Lecture,AL3,02:00PM - 02:50PM,MW,1015 Electrical & Computer Eng Bldg,"Gilbert, M"
+ECE,110,Introduction to Electronics,,62844,3,Lecture,AL4,09:00AM - 09:50AM,MW,1013 Electrical & Computer Eng Bldg,"Choi, H"
+ECE,110,Introduction to Electronics,,59864,1,Laboratory,BB0,09:00AM - 11:50AM,T,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59865,1,Laboratory,BB1,09:00AM - 11:50AM,W,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59866,1,Laboratory,BB2,09:00AM - 11:50AM,R,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59867,1,Laboratory,BB3,09:00AM - 11:50AM,F,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59868,1,Laboratory,BB4,12:00PM - 02:50PM,M,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59869,1,Laboratory,BB5,12:00PM - 02:50PM,T,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59870,1,Laboratory,BB6,12:00PM - 02:50PM,W,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59871,1,Laboratory,BB7,12:00PM - 02:50PM,R,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59872,1,Laboratory,BB8,12:00PM - 02:50PM,F,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59873,1,Laboratory,BB9,03:00PM - 05:50PM,M,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59875,1,Laboratory,BBA,03:00PM - 05:50PM,T,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59876,1,Laboratory,BBB,03:00PM - 05:50PM,W,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59878,1,Laboratory,BBC,03:00PM - 05:50PM,R,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59879,1,Laboratory,BBD,09:00AM - 11:50AM,M,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,59880,1,Laboratory,BBE,06:00PM - 08:50PM,M,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,62509,1,Laboratory,BBF,06:00PM - 08:50PM,W,1001 Electrical & Computer Eng Bldg,
+ECE,110,Introduction to Electronics,,71284,3,Lecture,ZJ1,08:00AM - 08:50AM,MW,ARR Zhejiang University,"Voulgaris, P"
+ECE,110,Introduction to Electronics,,71285,3,Lecture,ZJ2,09:00AM - 09:50AM,MW,ARR Zhejiang University,"Voulgaris, P"
+ECE,120,Introduction to Computing,,64596,,Discussion/ Recitation,AD1,11:00AM - 11:50AM,R,1013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,64597,,Discussion/ Recitation,AD2,12:00PM - 12:50PM,R,1013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,64598,,Discussion/ Recitation,AD3,01:00PM - 01:50PM,R,1013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,64599,,Discussion/ Recitation,AD4,02:00PM - 02:50PM,R,1013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,65253,,Discussion/ Recitation,AD5,03:00PM - 03:50PM,R,1013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,65254,,Discussion/ Recitation,AD6,04:00PM - 04:50PM,R,1013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,65255,,Discussion/ Recitation,AD7,05:00PM - 05:50PM,R,3020 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,65256,,Discussion/ Recitation,AD8,11:00AM - 11:50AM,R,3013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,65257,,Discussion/ Recitation,AD9,12:00PM - 12:50PM,R,3013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,65258,,Discussion/ Recitation,ADA,01:00PM - 01:50PM,R,3013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,65260,,Discussion/ Recitation,ADB,02:00PM - 02:50PM,R,3013 Electrical & Computer Eng Bldg,
+ECE,120,Introduction to Computing,,64595,,Lecture,AL1,09:00AM - 09:50AM,MWF,1015 Electrical & Computer Eng Bldg,"Bhowmik, U"
+ECE,120,Introduction to Computing,,65733,,Lecture,AL2,10:00AM - 10:50AM,MWF,1013 Electrical & Computer Eng Bldg,"Choi, D"
+ECE,120,Introduction to Computing,,65734,,Lecture,AL3,01:00PM - 01:50PM,MWF,1013 Electrical & Computer Eng Bldg,"Levchenko, K"
+ECE,120,Introduction to Computing,,66372,,Lecture,AL4,03:00PM - 03:50PM,MWF,3015 Electrical & Computer Eng Bldg,"Jones, D"
+ECE,198,Special Topics,Comp Apps-Discrete Mathematics,72285,1,Lecture,YH,02:00PM - 02:50PM,TR,4070 Electrical & Computer Eng Bldg,"Hu, Y"
+ECE,199,Undergraduate Open Seminar,,69256,1,Discussion/ Recitation,110,11:00AM - 12:50PM,T,3013 Electrical & Computer Eng Bldg,"Schmitz, C"
+ECE,199,Undergraduate Open Seminar,,69258,1,Discussion/ Recitation,120,01:00PM - 02:50PM,T,3013 Electrical & Computer Eng Bldg,"Schmitz, C"
+ECE,200,Seminar,,29836,,Lecture,SH,05:00PM - 06:50PM,W,1002 Electrical & Computer Eng Bldg,"Kudeki, E"
+ECE,205,Electrical and Electronic Circuits,,68302,,Laboratory,AB1,08:00AM - 09:50AM,M,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68303,,Laboratory,AB2,10:00AM - 11:50AM,M,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68304,,Laboratory,AB3,03:00PM - 04:50PM,M,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68305,,Laboratory,AB4,05:00PM - 06:50PM,M,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68306,,Laboratory,AB5,08:00AM - 09:50AM,W,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68307,,Laboratory,AB6,10:00AM - 11:50AM,W,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68308,,Laboratory,AB7,03:00PM - 04:50PM,W,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68309,,Laboratory,AB8,05:00PM - 06:50PM,W,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68310,,Laboratory,AB9,08:00AM - 09:50AM,R,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68311,,Laboratory,ABA,05:00PM - 06:50PM,R,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68312,,Laboratory,ABB,10:00AM - 11:50AM,F,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,68313,,Laboratory,ABC,03:00PM - 04:50PM,F,4074 Electrical & Computer Eng Bldg,
+ECE,205,Electrical and Electronic Circuits,,60609,,Lecture,AL,12:00PM - 12:50PM,MWF,1002 Electrical & Computer Eng Bldg,"Cheng, Z
+Radhakrishnan, C"
+ECE,206,Electrical and Electronic Circuits Lab,,36694,,Laboratory,F1,12:00PM - 01:50PM,M,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,206,Electrical and Electronic Circuits Lab,,36831,,Laboratory,F2,08:00AM - 09:50AM,T,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,206,Electrical and Electronic Circuits Lab,,36830,,Laboratory,F3,12:00PM - 01:50PM,W,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,206,Electrical and Electronic Circuits Lab,,36828,,Laboratory,F4,08:00AM - 09:50AM,F,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,206,Electrical and Electronic Circuits Lab,,36827,,Laboratory,F5,12:00PM - 01:50PM,F,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,210,Analog Signal Processing,,36863,,Laboratory,AB1,10:00AM - 11:50AM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36891,,Laboratory,AB2,10:00AM - 11:50AM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36867,,Laboratory,AB3,12:00PM - 01:50PM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36874,,Laboratory,AB4,12:00PM - 01:50PM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36875,,Laboratory,AB5,02:00PM - 03:50PM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36881,,Laboratory,AB6,02:00PM - 03:50PM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36878,,Laboratory,AB7,04:00PM - 05:50PM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36888,,Laboratory,AB8,04:00PM - 05:50PM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36883,,Laboratory,AB9,06:00PM - 07:50PM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36709,,Laboratory,ABA,06:00PM - 07:50PM,W,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36717,,Laboratory,ABB,06:00PM - 07:50PM,W,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,56612,,Laboratory,ABC,06:00PM - 07:50PM,M,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,56959,,Laboratory,ABD,06:00PM - 07:50PM,R,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,60837,,Laboratory,ABE,06:00PM - 07:50PM,T,4072 Electrical & Computer Eng Bldg,
+ECE,210,Analog Signal Processing,,36696,,Lecture,AL1,03:00PM - 03:50PM,MTWF,1013 Electrical & Computer Eng Bldg,"Jiang, J"
+ECE,210,Analog Signal Processing,,36702,,Lecture,AL2,11:00AM - 11:50AM,MTWF,1013 Electrical & Computer Eng Bldg,"Alvarez, J"
+ECE,210,Analog Signal Processing,,36706,,Lecture,AL3,12:00PM - 12:50PM,MTWF,1013 Electrical & Computer Eng Bldg,"Song, P"
+ECE,210,Analog Signal Processing,,57718,,Lecture,AL4,02:00PM - 02:50PM,MTWF,1013 Electrical & Computer Eng Bldg,"Waldrop, L"
+ECE,211,Analog Circuits & Systems,,31722,,Lecture,B,03:00PM - 03:50PM,MTWF,1013 Electrical & Computer Eng Bldg,"Jiang, J"
+ECE,211,Analog Circuits & Systems,,31723,,Lecture,C,11:00AM - 11:50AM,MTWF,1013 Electrical & Computer Eng Bldg,"Alvarez, J"
+ECE,211,Analog Circuits & Systems,,31725,,Lecture,E,12:00PM - 12:50PM,MTWF,1013 Electrical & Computer Eng Bldg,"Song, P"
+ECE,211,Analog Circuits & Systems,,57719,2,Lecture,F,02:00PM - 02:50PM,MTWF,1013 Electrical & Computer Eng Bldg,"Waldrop, L"
+ECE,220,Computer Systems & Programming,,64601,,Discussion/ Recitation,BD1,08:00AM - 08:50AM,F,2022 Electrical & Computer Eng Bldg,
+ECE,220,Computer Systems & Programming,,64602,,Discussion/ Recitation,BD2,09:00AM - 09:50AM,F,2022 Electrical & Computer Eng Bldg,
+ECE,220,Computer Systems & Programming,,64603,,Discussion/ Recitation,BD3,10:00AM - 10:50AM,F,2022 Electrical & Computer Eng Bldg,
+ECE,220,Computer Systems & Programming,,64604,,Discussion/ Recitation,BD4,11:00AM - 11:50AM,F,2022 Electrical & Computer Eng Bldg,
+ECE,220,Computer Systems & Programming,,64605,,Discussion/ Recitation,BD5,12:00PM - 12:50PM,F,2022 Electrical & Computer Eng Bldg,
+ECE,220,Computer Systems & Programming,,64606,,Discussion/ Recitation,BD6,01:00PM - 01:50PM,F,2022 Electrical & Computer Eng Bldg,
+ECE,220,Computer Systems & Programming,,64607,,Discussion/ Recitation,BD7,02:00PM - 02:50PM,F,2022 Electrical & Computer Eng Bldg,
+ECE,220,Computer Systems & Programming,,64608,,Discussion/ Recitation,BD8,03:00PM - 03:50PM,F,2022 Electrical & Computer Eng Bldg,
+ECE,220,Computer Systems & Programming,,64610,,Discussion/ Recitation,BD9,04:00PM - 04:50PM,F,2022 Electrical & Computer Eng Bldg,
+ECE,220,Computer Systems & Programming,,64600,,Lecture,BL1,12:30PM - 01:50PM,TR,1002 Electrical & Computer Eng Bldg,"Chen, Y"
+ECE,220,Computer Systems & Programming,,66373,,Lecture,BL2,11:00AM - 12:20PM,TR,1015 Electrical & Computer Eng Bldg,"Bhowmik, U"
+ECE,220,Computer Systems & Programming,,66374,,Lecture,BL3,09:30AM - 10:50AM,TR,3017 Electrical & Computer Eng Bldg,"Patel, S"
+ECE,220,Computer Systems & Programming,,66529,,Lecture,BL4,03:30PM - 04:50PM,TR,1015 Electrical & Computer Eng Bldg,"Moon, T"
+ECE,220,Computer Systems & Programming,,69593,,Lecture,ZJ1,08:00AM - 09:15AM,TR,ARR Zhejiang University,
+ECE,220,Computer Systems & Programming,,71286,,Lecture,ZJ2,10:00AM - 11:15AM,TR,ARR Zhejiang University,
+ECE,297,Individual Study,,52241,1,Independent Study,,ARRANGED,,,
+ECE,298,Special Topics,,72439,1,Lecture,ABS,03:00PM - 03:50PM,F,4070 Electrical & Computer Eng Bldg,"Banerjee, A"
+ECE,304,Photonic Devices,,59854,3,Lecture,C,10:00AM - 10:50AM,MWF,3081 Electrical & Computer Eng Bldg,"Choquette, K"
+ECE,310,Digital Signal Processing,,70543,3,Lecture,CCS,12:00PM - 12:50PM,MWF,3017 Electrical & Computer Eng Bldg,"Yarkony, E"
+ECE,310,Digital Signal Processing,,58210,3,Lecture,E,03:00PM - 03:50PM,MWF,3017 Electrical & Computer Eng Bldg,"Katselis, D"
+ECE,310,Digital Signal Processing,,58213,3,Lecture,G,10:00AM - 10:50AM,MWF,3017 Electrical & Computer Eng Bldg,"Bresler, Y"
+ECE,311,Digital Signal Processing Lab,,58591,1,Laboratory,A,08:00AM - 10:50AM,T,2022 Electrical & Computer Eng Bldg,"Bresler, Y
+Katselis, D"
+ECE,311,Digital Signal Processing Lab,,58592,1,Laboratory,B,11:00AM - 01:50PM,T,2022 Electrical & Computer Eng Bldg,"Bresler, Y
+Katselis, D"
+ECE,311,Digital Signal Processing Lab,,58593,1,Laboratory,C,05:00PM - 07:50PM,T,2022 Electrical & Computer Eng Bldg,"Bresler, Y
+Katselis, D"
+ECE,311,Digital Signal Processing Lab,,70544,1,Laboratory,CCS,02:00PM - 04:50PM,T,2022 Electrical & Computer Eng Bldg,"Bresler, Y
+Katselis, D"
+ECE,311,Digital Signal Processing Lab,,70431,1,Laboratory,CSP,02:00PM - 04:50PM,T,,
+ECE,313,Probability with Engrg Applic,,64886,3,Discussion/ Recitation,A,09:00AM - 09:50AM,MWF,3081 Electrical & Computer Eng Bldg,"Hajek, B"
+ECE,313,Probability with Engrg Applic,,49976,3,Discussion/ Recitation,C,11:00AM - 11:50AM,MWF,3017 Electrical & Computer Eng Bldg,"Ochoa-Alvarez, I"
+ECE,313,Probability with Engrg Applic,,70434,3,Discussion/ Recitation,CSP,09:00AM - 09:50AM,MWF,,"Hajek, B"
+ECE,313,Probability with Engrg Applic,,52208,3,Discussion/ Recitation,D,01:00PM - 01:50PM,MWF,3017 Electrical & Computer Eng Bldg,"Katselis, D"
+ECE,313,Probability with Engrg Applic,,61390,3,Discussion/ Recitation,E,02:00PM - 02:50PM,MWF,3017 Electrical & Computer Eng Bldg,"Do, M"
+ECE,314,Probability in Engineering Lab,,66503,,Laboratory,A,09:00AM - 10:50AM,R,2022 Electrical & Computer Eng Bldg,"Hajek, B"
+ECE,314,Probability in Engineering Lab,,66505,,Laboratory,B,11:00AM - 12:50PM,R,2022 Electrical & Computer Eng Bldg,"Hajek, B"
+ECE,314,Probability in Engineering Lab,,68868,,Laboratory,C,01:00PM - 02:50PM,R,2022 Electrical & Computer Eng Bldg,"Hajek, B"
+ECE,316,Ethics and Engineering,,36862,,Lecture-Discussion,E1,11:00AM - 12:20PM,TR,329 Gregory Hall,"Hillmer, P"
+ECE,316,Ethics and Engineering,,36869,,Lecture-Discussion,E2,02:00PM - 03:20PM,TR,329 Gregory Hall,"Hillmer, P"
+ECE,329,Fields and Waves I,,31727,,Discussion/ Recitation,C,11:00AM - 11:50AM,MWF,2017 Electrical & Computer Eng Bldg,"Lee, M"
+ECE,329,Fields and Waves I,,31729,,Discussion/ Recitation,E,01:00PM - 01:50PM,MWF,2017 Electrical & Computer Eng Bldg,"Ilie, R"
+ECE,329,Fields and Waves I,,31732,,Discussion/ Recitation,X,12:00PM - 12:50PM,MWF,2017 Electrical & Computer Eng Bldg,"Zhao, Y"
+ECE,330,Power Ckts & Electromechanics,,58237,3,Discussion/ Recitation,C,10:00AM - 10:50AM,MWF,2017 Electrical & Computer Eng Bldg,"Schuh, J"
+ECE,330,Power Ckts & Electromechanics,,58238,3,Discussion/ Recitation,N,02:00PM - 02:50PM,MWF,2017 Electrical & Computer Eng Bldg,"Zhang, R"
+ECE,333,Green Electric Energy,,54415,3,Lecture,A,09:30AM - 10:50AM,TR,2017 Electrical & Computer Eng Bldg,"Gross, G"
+ECE,340,Semiconductor Electronics,,59020,3,Discussion/ Recitation,A,12:00PM - 12:50PM,MWF,2015 Electrical & Computer Eng Bldg,"Kim, K"
+ECE,340,Semiconductor Electronics,,58224,3,Discussion/ Recitation,B,10:00AM - 10:50AM,MWF,2015 Electrical & Computer Eng Bldg,"Bayram, C"
+ECE,340,Semiconductor Electronics,,58225,3,Discussion/ Recitation,D,11:00AM - 11:50AM,MWF,2015 Electrical & Computer Eng Bldg,"Leburton, J"
+ECE,342,Electronic Circuits,,58228,3,Lecture,D,11:00AM - 11:50AM,MWF,1015 Electrical & Computer Eng Bldg,"Zhou, J"
+ECE,342,Electronic Circuits,,62848,3,Lecture,F,01:00PM - 01:50PM,MWF,1015 Electrical & Computer Eng Bldg,"Chen, X"
+ECE,343,Electronic Circuits Laboratory,,58230,1,Laboratory,N,11:00AM - 01:50PM,T,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,343,Electronic Circuits Laboratory,,58231,1,Laboratory,O,02:00PM - 04:50PM,T,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,343,Electronic Circuits Laboratory,,58233,1,Laboratory,Q,05:00PM - 07:50PM,T,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,343,Electronic Circuits Laboratory,,61458,1,Laboratory,R,11:00AM - 01:50PM,R,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,343,Electronic Circuits Laboratory,,61459,1,Laboratory,S,02:00PM - 04:50PM,R,4074 Electrical & Computer Eng Bldg,"Radhakrishnan, C"
+ECE,350,Fields and Waves II,,58235,3,Discussion/ Recitation,X,12:00PM - 12:50PM,MWF,1015 Electrical & Computer Eng Bldg,"Kudeki, E"
+ECE,365,Data Science and Engineering,,72114,,Laboratory,BB1,04:00PM - 04:50PM,W,2022 Electrical & Computer Eng Bldg,
+ECE,365,Data Science and Engineering,,72115,,Laboratory,BB2,05:00PM - 05:50PM,W,2022 Electrical & Computer Eng Bldg,
+ECE,365,Data Science and Engineering,,72116,,Laboratory,BB3,06:00PM - 06:50PM,W,2022 Electrical & Computer Eng Bldg,
+ECE,365,Data Science and Engineering,,72117,,Laboratory,BBS,ARRANGED,,,
+ECE,365,Data Science and Engineering,,72112,,Lecture,BD,03:30PM - 04:50PM,TR,2013 Electrical & Computer Eng Bldg,"Bose, S
+Do, M
+Veeravalli, V"
+ECE,365,Data Science and Engineering,,72113,,Lecture,BDS,ARRANGED,,,"Bose, S
+Do, M
+Veeravalli, V"
+ECE,374,Introduction to Algorithms & Models of Computation,,70647,,Discussion/ Recitation,ADA,09:00AM - 09:50AM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,70648,,Discussion/ Recitation,ADB,10:00AM - 10:50AM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,70649,,Discussion/ Recitation,ADC,11:00AM - 11:50AM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,72093,,Discussion/ Recitation,ADD,12:00PM - 12:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,72095,,Discussion/ Recitation,ADE,04:00PM - 04:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,66548,,Discussion/ Recitation,ADF,01:00PM - 01:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,72202,,Discussion/ Recitation,ADG,05:00PM - 05:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,66550,,Discussion/ Recitation,ADH,02:00PM - 02:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,66553,,Discussion/ Recitation,ADK,03:00PM - 03:50PM,WF,1105 Siebel Center for Comp Sci,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,66542,,Lecture,AL1,11:00AM - 12:15PM,TR,1002 Electrical & Computer Eng Bldg,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,72200,,Lecture,ALZ,11:00AM - 12:15PM,TR,1002 Electrical & Computer Eng Bldg,"Erickson, J"
+ECE,374,Introduction to Algorithms & Models of Computation,,70642,,Lecture,BL1,09:30AM - 10:45AM,TR,1002 Electrical & Computer Eng Bldg,"Borisov, N"
+ECE,374,Introduction to Algorithms & Models of Computation,,72199,,Lecture,BLZ,09:30AM - 10:45AM,TR,1002 Electrical & Computer Eng Bldg,"Borisov, N"
+ECE,374,Introduction to Algorithms & Models of Computation,,66543,,Discussion/ Recitation,BYA,09:00AM - 09:50AM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+ECE,374,Introduction to Algorithms & Models of Computation,,66544,,Discussion/ Recitation,BYB,10:00AM - 10:50AM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+ECE,374,Introduction to Algorithms & Models of Computation,,66545,,Discussion/ Recitation,BYC,11:00AM - 11:50AM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+ECE,374,Introduction to Algorithms & Models of Computation,,66546,,Discussion/ Recitation,BYD,12:00PM - 12:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+ECE,374,Introduction to Algorithms & Models of Computation,,66547,,Discussion/ Recitation,BYE,01:00PM - 01:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+ECE,374,Introduction to Algorithms & Models of Computation,,66549,,Discussion/ Recitation,BYF,02:00PM - 02:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+ECE,374,Introduction to Algorithms & Models of Computation,,66552,,Discussion/ Recitation,BYG,03:00PM - 03:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+ECE,374,Introduction to Algorithms & Models of Computation,,72091,,Discussion/ Recitation,BYH,04:00PM - 04:50PM,WF,1304 Siebel Center for Comp Sci,"Borisov, N"
+ECE,380,Biomedical Imaging,,64640,,Lecture,B,09:30AM - 10:50AM,TR,2015 Electrical & Computer Eng Bldg,"Gao, L"
+ECE,385,Digital Systems Laboratory,,36843,,Laboratory,AB1,08:00AM - 10:50AM,F,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36856,,Laboratory,AB2,03:00PM - 05:50PM,F,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36821,,Laboratory,AB3,02:00PM - 04:50PM,R,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36823,,Laboratory,AB4,08:00AM - 10:50AM,R,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36826,,Laboratory,AB5,11:00AM - 01:50PM,R,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36835,,Laboratory,AB6,12:00PM - 02:50PM,W,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36829,,Laboratory,AB7,11:00AM - 01:50PM,F,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36838,,Laboratory,AB8,09:00AM - 11:50AM,W,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36773,,Laboratory,ABC,02:00PM - 04:50PM,T,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36803,,Laboratory,ABD,08:00AM - 10:50AM,T,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36805,,Laboratory,ABE,11:00AM - 01:50PM,T,4072 Electrical & Computer Eng Bldg,
+ECE,385,Digital Systems Laboratory,,36720,,Lecture,AL1,04:00PM - 04:50PM,MW,1002 Electrical & Computer Eng Bldg,"Cheng, Z"
+ECE,391,Computer Systems Engineering,,50239,,Discussion/ Recitation,AD1,02:00PM - 02:50PM,W,3026 Electrical & Computer Eng Bldg,
+ECE,391,Computer Systems Engineering,,50240,,Discussion/ Recitation,AD2,11:00AM - 11:50AM,W,3026 Electrical & Computer Eng Bldg,
+ECE,391,Computer Systems Engineering,,50241,,Discussion/ Recitation,AD3,01:00PM - 01:50PM,W,3026 Electrical & Computer Eng Bldg,
+ECE,391,Computer Systems Engineering,,59766,,Discussion/ Recitation,AD4,03:00PM - 03:50PM,W,3026 Electrical & Computer Eng Bldg,
+ECE,391,Computer Systems Engineering,,61939,,Discussion/ Recitation,AD5,10:00AM - 10:50AM,W,3026 Electrical & Computer Eng Bldg,
+ECE,391,Computer Systems Engineering,,47766,,Discussion/ Recitation,AD6,04:00PM - 04:50PM,W,3026 Electrical & Computer Eng Bldg,
+ECE,391,Computer Systems Engineering,,66995,,Discussion/ Recitation,AD7,09:00AM - 09:50AM,W,3026 Electrical & Computer Eng Bldg,
+ECE,391,Computer Systems Engineering,,70441,,Discussion/ Recitation,ADC,ARRANGED,,,
+ECE,391,Computer Systems Engineering,,47765,,Lecture,AL,02:00PM - 03:20PM,TR,1002 Electrical & Computer Eng Bldg,"Bailey, M
+Lumetta, S"
+ECE,391,Computer Systems Engineering,,70440,,Lecture,ALC,02:00PM - 03:20PM,TR,,
+ECE,391,Computer Systems Engineering,,72312,,Lecture,ALZ,02:00PM - 03:20PM,TR,1002 Electrical & Computer Eng Bldg,"Bailey, M
+Lumetta, S"
+ECE,395,Advanced Digital Projects Lab,,29852,,Laboratory,A,ARRANGED,,,"Haken, L"
+ECE,396,Honors Project,,10013,,Independent Study,,ARRANGED,,,
+ECE,397,Individual Study in ECE,,10010,,Independent Study,,ARRANGED,,,
+ECE,402,Electronic Music Synthesis,,66381,,Laboratory,AB,ARRANGED,,3014 Electrical & Computer Eng Bldg,"Haken, L"
+ECE,402,Electronic Music Synthesis,,29932,,Discussion/ Recitation,AD,08:00AM - 09:20AM,TR,3081 Electrical & Computer Eng Bldg,"Haken, L"
+ECE,408,Applied Parallel Programming,,58791,,Laboratory,AB,ARRANGED,,,"Hwu, W"
+ECE,408,Applied Parallel Programming,,72392,,Laboratory,ABC,ARRANGED,,,"Hwu, W"
+ECE,408,Applied Parallel Programming,,67069,,Lecture,AL2,09:30AM - 10:50AM,TR,2079 Natural History Building,"Hwu, W"
+ECE,408,Applied Parallel Programming,,72391,,Lecture,ALC,ARRANGED,,,"Hwu, W"
+ECE,411,Computer Organization & Design,,29937,,Laboratory,AB1,ARRANGED,,,"Kumar, R"
+ECE,411,Computer Organization & Design,,72393,,Laboratory,ABC,ARRANGED,,,"Kumar, R"
+ECE,411,Computer Organization & Design,,29942,,Discussion/ Recitation,AD1,02:00PM - 03:20PM,TR,1015 Electrical & Computer Eng Bldg,"Kumar, R"
+ECE,411,Computer Organization & Design,,72394,,Discussion/ Recitation,ADC,ARRANGED,,,"Kumar, R"
+ECE,414,Biomedical Instrumentation,,63208,,Lecture,B,11:00AM - 11:50AM,MWF,1302 Everitt Laboratory,
+ECE,415,Biomedical Instrumentation Lab,,63211,,Laboratory,AB3,01:00PM - 03:50PM,M,0201 Everitt Laboratory,
+ECE,415,Biomedical Instrumentation Lab,,63210,,Laboratory,AB4,01:00PM - 03:50PM,W,0201 Everitt Laboratory,
+ECE,415,Biomedical Instrumentation Lab,,63209,,Lecture,AL1,12:00PM - 12:50PM,M,2310 Everitt Laboratory,
+ECE,417,Multimedia Signal Processing,,68112,4,Lecture,A,09:30AM - 10:50AM,TR,1015 Electrical & Computer Eng Bldg,"Hasegawa-Johnson, M"
+ECE,420,Embedded DSP Laboratory,,31821,,Laboratory,AB1,02:30PM - 04:20PM,T,5072 Electrical & Computer Eng Bldg,"Brokish, J"
+ECE,420,Embedded DSP Laboratory,,31826,,Laboratory,AB2,02:00PM - 03:50PM,W,5072 Electrical & Computer Eng Bldg,"Brokish, J"
+ECE,420,Embedded DSP Laboratory,,31829,,Laboratory,AB3,09:00AM - 10:50AM,W,5072 Electrical & Computer Eng Bldg,"Brokish, J"
+ECE,420,Embedded DSP Laboratory,,31833,,Laboratory,AB4,03:00PM - 04:50PM,F,5072 Electrical & Computer Eng Bldg,"Brokish, J"
+ECE,420,Embedded DSP Laboratory,,31840,,Lecture,AL1,02:00PM - 02:50PM,M,2013 Electrical & Computer Eng Bldg,"Brokish, J"
+ECE,422,Computer Security I,,69017,,Discussion/ Recitation,ADA,11:00AM - 11:50AM,W,1214 Siebel Center for Comp Sci,"Bates, A"
+ECE,422,Computer Security I,,69018,,Discussion/ Recitation,ADB,12:00PM - 12:50PM,W,1214 Siebel Center for Comp Sci,"Bates, A"
+ECE,422,Computer Security I,,69019,,Discussion/ Recitation,ADC,01:00PM - 01:50PM,W,1214 Siebel Center for Comp Sci,"Bates, A"
+ECE,422,Computer Security I,,69022,,Discussion/ Recitation,ADG,04:00PM - 04:50PM,W,1302 Siebel Center for Comp Sci,"Bates, A"
+ECE,422,Computer Security I,,66982,,Discussion/ Recitation,ADH,02:00PM - 02:50PM,W,1103 Siebel Center for Comp Sci,"Bates, A"
+ECE,422,Computer Security I,,66983,,Discussion/ Recitation,ADJ,04:00PM - 04:50PM,W,1103 Siebel Center for Comp Sci,"Bates, A"
+ECE,422,Computer Security I,,49549,,Lecture,AL4,10:00AM - 10:50AM,MWF,1404 Siebel Center for Comp Sci,"Bates, A"
+ECE,422,Computer Security I,,72176,,Lecture,ALG,10:00AM - 10:50AM,MWF,1404 Siebel Center for Comp Sci,"Bates, A"
+ECE,422,Computer Security I,,70843,,Discussion/ Recitation,CPS,ARRANGED,,,"Bailey, M"
+ECE,425,Intro to VLSI System Design,,48121,,Laboratory,AB1,ARRANGED,,,"Kindratenko, V"
+ECE,425,Intro to VLSI System Design,,36897,,Lecture,AL1,03:30PM - 04:50PM,TR,3081 Electrical & Computer Eng Bldg,"Kindratenko, V"
+ECE,428,Distributed Systems,,67400,4,Online,DSO,ARRANGED,,,"Gupta, I"
+ECE,428,Distributed Systems,,72462,4,Online,DSP,ARRANGED,,,"Gupta, I"
+ECE,428,Distributed Systems,,36102,3,Lecture-Discussion,P3,02:00PM - 03:15PM,TR,1320 Digital Computer Laboratory,"Gupta, I"
+ECE,428,Distributed Systems,,57771,4,Lecture-Discussion,P4,02:00PM - 03:15PM,TR,1320 Digital Computer Laboratory,"Gupta, I"
+ECE,428,Distributed Systems,,72170,4,Lecture-Discussion,PU4,02:00PM - 03:15PM,TR,1320 Digital Computer Laboratory,"Gupta, I"
+ECE,428,Distributed Systems,,69762,3,Lecture-Discussion,Q3,ARRANGED,,,"Gupta, I"
+ECE,428,Distributed Systems,,69764,4,Lecture-Discussion,Q4,ARRANGED,,,"Gupta, I"
+ECE,428,Distributed Systems,,72175,4,Lecture-Discussion,QU4,ARRANGED,,,"Gupta, I"
+ECE,437,Sensors and Instrumentation,,49833,,Laboratory,AB1,09:00AM - 11:50AM,T,4022 Electrical & Computer Eng Bldg,
+ECE,437,Sensors and Instrumentation,,49832,,Laboratory,AB2,09:00AM - 11:50AM,W,4022 Electrical & Computer Eng Bldg,
+ECE,437,Sensors and Instrumentation,,49831,,Lecture,AL,02:00PM - 03:20PM,M,3013 Electrical & Computer Eng Bldg,"Gruev, V"
+ECE,438,Communication Networks,,36066,3,Lecture-Discussion,X3,03:00PM - 04:20PM,MW,1015 Electrical & Computer Eng Bldg,"Al-Hassanieh, H"
+ECE,438,Communication Networks,,57774,4,Lecture-Discussion,X4,03:00PM - 04:20PM,MW,1015 Electrical & Computer Eng Bldg,"Al-Hassanieh, H"
+ECE,444,IC Device Theory & Fabrication,,36808,,Laboratory,AB1,02:00PM - 04:50PM,F,ARR Micro & Nanotechnology Lab,
+ECE,444,IC Device Theory & Fabrication,,36809,,Laboratory,AB2,08:00AM - 10:50AM,T,ARR Micro & Nanotechnology Lab,
+ECE,444,IC Device Theory & Fabrication,,36819,,Laboratory,AB3,12:00PM - 02:50PM,T,ARR Micro & Nanotechnology Lab,
+ECE,444,IC Device Theory & Fabrication,,36817,,Laboratory,AB4,02:00PM - 04:50PM,W,ARR Micro & Nanotechnology Lab,
+ECE,444,IC Device Theory & Fabrication,,36816,,Laboratory,AB5,09:00AM - 11:50AM,R,ARR Micro & Nanotechnology Lab,
+ECE,444,IC Device Theory & Fabrication,,36814,,Laboratory,AB6,02:00PM - 04:50PM,M,ARR Micro & Nanotechnology Lab,
+ECE,444,IC Device Theory & Fabrication,,41682,,Laboratory,AB7,02:00PM - 04:50PM,R,ARR Micro & Nanotechnology Lab,
+ECE,444,IC Device Theory & Fabrication,,36813,,Discussion/ Recitation,AD1,09:00AM - 09:50AM,MWF,2013 Electrical & Computer Eng Bldg,"Li, X"
+ECE,444,IC Device Theory & Fabrication,,36811,,Discussion/ Recitation,AD2,10:00AM - 10:50AM,MWF,1015 Electrical & Computer Eng Bldg,"Lyding, J"
+ECE,445,Senior Design Project Lab,,29951,,Laboratory,H,04:00PM - 05:50PM,T,3002 Electrical & Computer Eng Bldg,"Fliflet, A
+He, W
+Jiang, J
+Smith, C"
+ECE,446,Principles of Experimental Research in Electrical Engineering,,66840,,Laboratory,AB1,12:00PM - 02:50PM,F,3077 Electrical & Computer Eng Bldg,
+ECE,446,Principles of Experimental Research in Electrical Engineering,,66841,,Laboratory,AB2,03:00PM - 05:50PM,F,3077 Electrical & Computer Eng Bldg,
+ECE,446,Principles of Experimental Research in Electrical Engineering,,66837,,Lecture,AL,11:00AM - 11:50AM,MWF,4070 Electrical & Computer Eng Bldg,"Goddard, L"
+ECE,447,Active Microwave Ckt Design,,66378,,Laboratory,ABA,01:00PM - 03:50PM,W,5076 Electrical & Computer Eng Bldg,
+ECE,447,Active Microwave Ckt Design,,66379,,Laboratory,ABB,06:00PM - 08:50PM,W,5076 Electrical & Computer Eng Bldg,
+ECE,447,Active Microwave Ckt Design,,66954,,Laboratory,ABD,09:00AM - 11:50AM,W,5076 Electrical & Computer Eng Bldg,
+ECE,447,Active Microwave Ckt Design,,66955,,Laboratory,ABE,01:00PM - 03:50PM,R,5076 Electrical & Computer Eng Bldg,
+ECE,447,Active Microwave Ckt Design,,66377,,Lecture,AL,04:00PM - 05:15PM,M,4070 Electrical & Computer Eng Bldg,"Chen, X"
+ECE,448,Artificial Intelligence,,67006,3,Lecture-Discussion,R3,09:00AM - 09:50AM,MWF,1002 Electrical & Computer Eng Bldg,"Fleck, M"
+ECE,448,Artificial Intelligence,,67010,4,Lecture-Discussion,R4,09:00AM - 09:50AM,MWF,1002 Electrical & Computer Eng Bldg,"Fleck, M"
+ECE,452,Electromagnetic Fields,,29954,,Discussion/ Recitation,N,12:30PM - 01:50PM,TR,3015 Electrical & Computer Eng Bldg,"Vlasov, Y"
+ECE,453,Wireless Communication Systems,,39244,,Laboratory,AB1,09:00AM - 11:50AM,T,5080 Electrical & Computer Eng Bldg,
+ECE,453,Wireless Communication Systems,,39245,,Laboratory,AB2,02:00PM - 04:50PM,T,5080 Electrical & Computer Eng Bldg,
+ECE,453,Wireless Communication Systems,,39246,,Laboratory,AB3,10:00AM - 12:50PM,R,5080 Electrical & Computer Eng Bldg,
+ECE,453,Wireless Communication Systems,,39243,,Lecture,AL1,09:00AM - 09:50AM,MWF,3013 Electrical & Computer Eng Bldg,"Schutt-Aine, J"
+ECE,459,Communications Systems,,29959,,Lecture-Discussion,R,09:30AM - 10:50AM,TR,3081 Electrical & Computer Eng Bldg,"Alvarez, J"
+ECE,463,Digital Communications Lab,,71120,,Laboratory,AB1,09:00AM - 11:50AM,W,5080 Electrical & Computer Eng Bldg,
+ECE,463,Digital Communications Lab,,70232,,Laboratory,AB2,01:00PM - 03:50PM,R,5080 Electrical & Computer Eng Bldg,
+ECE,463,Digital Communications Lab,,71124,,Laboratory,AB3,01:00PM - 03:50PM,M,5080 Electrical & Computer Eng Bldg,
+ECE,463,Digital Communications Lab,,70233,,Laboratory,AB4,01:00PM - 03:50PM,F,5080 Electrical & Computer Eng Bldg,
+ECE,463,Digital Communications Lab,,70234,,Lecture,AL,02:00PM - 02:50PM,W,2013 Electrical & Computer Eng Bldg,"Moon, T"
+ECE,464,Power Electronics,,29963,,Discussion/ Recitation,B,08:30AM - 09:50AM,MW,2017 Electrical & Computer Eng Bldg,"Banerjee, A"
+ECE,465,Optical Communications Systems,,45178,,Lecture,A,09:30AM - 10:50AM,TR,3020 Electrical & Computer Eng Bldg,"Dragic, P"
+ECE,466,Optical Communications Lab,,45389,,Laboratory,AB1,08:00AM - 10:50AM,W,5074 Electrical & Computer Eng Bldg,"Dragic, P"
+ECE,466,Optical Communications Lab,,61451,,Laboratory,AB2,01:00PM - 03:50PM,W,5074 Electrical & Computer Eng Bldg,"Dragic, P"
+ECE,469,Power Electronics Laboratory,,61862,,Laboratory,AB2,03:00PM - 05:50PM,W,4024 Electrical & Computer Eng Bldg,
+ECE,469,Power Electronics Laboratory,,54565,,Laboratory,AB3,12:00PM - 02:50PM,R,4024 Electrical & Computer Eng Bldg,
+ECE,469,Power Electronics Laboratory,,31891,,Laboratory,AB4,03:00PM - 05:50PM,R,4024 Electrical & Computer Eng Bldg,
+ECE,469,Power Electronics Laboratory,,31893,,Lecture,AL1,11:00AM - 11:50AM,T,3081 Electrical & Computer Eng Bldg,"Banerjee, A"
+ECE,470,Introduction to Robotics,,36913,,Laboratory,AB1,09:00AM - 10:50AM,T,3071 Electrical & Computer Eng Bldg,
+ECE,470,Introduction to Robotics,,36943,,Laboratory,AB2,09:00AM - 10:50AM,R,3071 Electrical & Computer Eng Bldg,
+ECE,470,Introduction to Robotics,,41536,,Laboratory,AB3,03:00PM - 04:50PM,T,3071 Electrical & Computer Eng Bldg,
+ECE,470,Introduction to Robotics,,59290,,Laboratory,AB4,03:00PM - 04:50PM,R,3071 Electrical & Computer Eng Bldg,
+ECE,470,Introduction to Robotics,,63483,,Laboratory,AB5,02:00PM - 03:50PM,W,3071 Electrical & Computer Eng Bldg,
+ECE,470,Introduction to Robotics,,69204,,Laboratory,AB6,09:00AM - 10:50AM,W,3071 Electrical & Computer Eng Bldg,
+ECE,470,Introduction to Robotics,,70610,,Laboratory,AB7,09:00AM - 10:50AM,M,3071 Electrical & Computer Eng Bldg,
+ECE,470,Introduction to Robotics,,36956,,Lecture,AL1,12:30PM - 01:50PM,TR,1015 Electrical & Computer Eng Bldg,"Driggs-Campbell, K"
+ECE,473,Fund of Engrg Acoustics,,36985,,Discussion/ Recitation,G4,10:00AM - 10:50AM,MWF,3015 Electrical & Computer Eng Bldg,"Oelze, M"
+ECE,473,Fund of Engrg Acoustics,,36973,3,Discussion/ Recitation,U3,10:00AM - 10:50AM,MWF,3015 Electrical & Computer Eng Bldg,"Oelze, M"
+ECE,476,Power System Analysis,,29964,,Discussion/ Recitation,R,09:30AM - 10:50AM,TR,1013 Electrical & Computer Eng Bldg,"Dominguez-Garcia, A"
+ECE,482,Digital IC Design,,29966,,Discussion/ Recitation,G,03:00PM - 03:50PM,MWF,2017 Electrical & Computer Eng Bldg,"Rosenbaum, E"
+ECE,486,Control Systems,,31775,,Laboratory,AB1,02:00PM - 04:50PM,R,3077 Electrical & Computer Eng Bldg,
+ECE,486,Control Systems,,31777,,Laboratory,AB2,09:00AM - 11:50AM,T,3077 Electrical & Computer Eng Bldg,
+ECE,486,Control Systems,,31778,,Laboratory,AB3,02:00PM - 04:50PM,T,3077 Electrical & Computer Eng Bldg,
+ECE,486,Control Systems,,61864,,Laboratory,AB4,09:00AM - 11:50AM,R,3077 Electrical & Computer Eng Bldg,
+ECE,486,Control Systems,,66456,,Laboratory,AB5,09:00AM - 11:50AM,W,3077 Electrical & Computer Eng Bldg,
+ECE,486,Control Systems,,69131,,Laboratory,AB6,02:00PM - 04:50PM,W,3077 Electrical & Computer Eng Bldg,
+ECE,486,Control Systems,,31772,,Discussion/ Recitation,AD1,12:30PM - 01:50PM,TR,3017 Electrical & Computer Eng Bldg,"Liberzon, D"
+ECE,487,Intro Quantum Electr for EEs,,29968,,Discussion/ Recitation,C,09:30AM - 10:50AM,TR,4070 Electrical & Computer Eng Bldg,"Fang, K"
+ECE,488,Compound Semicond & Devices,,66375,,Lecture,C,11:00AM - 11:50AM,MWF,3013 Electrical & Computer Eng Bldg,"Dallesasse, J"
+ECE,491,Numerical Analysis,,36027,3,Lecture-Discussion,BL1,03:30PM - 04:45PM,MW,1320 Digital Computer Laboratory,"Olson, L"
+ECE,491,Numerical Analysis,,36036,4,Lecture-Discussion,BL2,03:30PM - 04:45PM,MW,1320 Digital Computer Laboratory,"Olson, L"
+ECE,491,Numerical Analysis,,72460,4,Online,DSO,ARRANGED,,,"Shaffer, E"
+ECE,492,Parallel Progrmg: Sci & Engrg,,53689,3,Lecture-Discussion,D3,11:00AM - 12:15PM,WF,0216 Siebel Center for Comp Sci,"Padua, D"
+ECE,492,Parallel Progrmg: Sci & Engrg,,53690,4,Lecture-Discussion,D4,11:00AM - 12:15PM,WF,0216 Siebel Center for Comp Sci,"Padua, D"
+ECE,493,Advanced Engineering Math,,68402,3,Lecture-Discussion,B13,10:00AM - 10:50AM,MWF,445 Altgeld Hall,"Allen, J"
+ECE,493,Advanced Engineering Math,,69830,4,Lecture-Discussion,B14,10:00AM - 10:50AM,MWF,445 Altgeld Hall,"Allen, J"
+ECE,496,Senior Research Project,,58246,,Independent Study,,ARRANGED,,,
+ECE,498,Special Topics in ECE,Applied Cryptography,70806,3,Lecture,AC3,11:00AM - 12:20PM,TR,2013 Electrical & Computer Eng Bldg,"Miller, A"
+ECE,498,Special Topics in ECE,Applied Cryptography,70807,4,Lecture,AC4,11:00AM - 11:20AM,TR,,"Miller, A"
+ECE,498,Special Topics in ECE,Quantum Info Processing Theory,72067,3,Lecture,EC3,03:00PM - 04:20PM,TR,3020 Electrical & Computer Eng Bldg,"Chitambar, E"
+ECE,498,Special Topics in ECE,Quantum Info Processing Theory,72068,4,Lecture,EC4,03:00PM - 04:20PM,TR,3020 Electrical & Computer Eng Bldg,"Chitambar, E"
+ECE,498,Special Topics in ECE,Quantum Info Processing Theory,72069,4,Lecture,ECG,03:00PM - 04:20PM,TR,3020 Electrical & Computer Eng Bldg,"Chitambar, E"
+ECE,498,Special Topics in ECE,Deep Learning in Hardware,72070,3,Lecture,NSU,11:00AM - 12:20PM,TR,4070 Electrical & Computer Eng Bldg,"Shanbhag, N"
+ECE,499,Senior Thesis,,10018,,Independent Study,,ARRANGED,,,
+ECE,500,ECE Colloquium,,29981,,Lecture,U,04:00PM - 04:50PM,R,1002 Electrical & Computer Eng Bldg,"Veeravalli, V"
+ECE,500,ECE Colloquium,,41517,,Lecture,U2,04:00PM - 04:50PM,R,1002 Electrical & Computer Eng Bldg,"Veeravalli, V"
+ECE,515,Control System Theory & Design,,29983,,Discussion/ Recitation,N,02:00PM - 03:20PM,TR,3017 Electrical & Computer Eng Bldg,"Dong, R"
+ECE,517,Nonlinear & Adaptive Control,,30430,4,Discussion/ Recitation,P,04:00PM - 05:20PM,MW,2013 Electrical & Computer Eng Bldg,"Liberzon, D"
+ECE,518,Adv Semiconductor Nanotech,,69474,,Lecture,A,10:00AM - 11:20AM,MW,3020 Electrical & Computer Eng Bldg,"Li, X"
+ECE,524,Advanced Computer Security,,54598,,Lecture,C,09:30AM - 10:45AM,MW,1109 Siebel Center for Comp Sci,"Bates, A"
+ECE,530,Large-Scale System Analysis,,50992,4,Lecture,A,10:00AM - 11:20AM,MW,2013 Electrical & Computer Eng Bldg,"Bose, S"
+ECE,534,Random Processes,,29989,,Discussion/ Recitation,C,11:00AM - 12:20PM,TR,2017 Electrical & Computer Eng Bldg,"Shomorony, I"
+ECE,535,Theory of Semicond & Devices,,37127,,Discussion/ Recitation,E,01:00PM - 01:50PM,MWF,2013 Electrical & Computer Eng Bldg,"Leburton, J"
+ECE,540,Computational Electromagnetics,,39251,4,Lecture-Discussion,R,12:30PM - 01:50PM,TR,2013 Electrical & Computer Eng Bldg,"Jin, J"
+ECE,542,Fault-Tolerant Dig Syst Design,,49836,4,Lecture-Discussion,C,09:30AM - 10:45AM,TR,3013 Electrical & Computer Eng Bldg,"Kalbarczyk, Z"
+ECE,544,Topics in Signal Processing,Pattern Recognition,49835,4,Lecture,NA,11:00AM - 12:20PM,TR,3017 Electrical & Computer Eng Bldg,"Schwing, A"
+ECE,551,Digital Signal Processing II,,37133,,Discussion/ Recitation,F,12:30PM - 01:50PM,TR,2017 Electrical & Computer Eng Bldg,"Dokmanic, I"
+ECE,562,Advanced Digital Communication,,52327,,Lecture,A,03:30PM - 04:50PM,TR,3013 Electrical & Computer Eng Bldg,"Veeravalli, V"
+ECE,563,Information Theory,,37140,,Discussion/ Recitation,A,12:30PM - 01:50PM,TR,2015 Electrical & Computer Eng Bldg,"Milenkovic, O"
+ECE,564,Modern Light Microscopy,,66458,4,Lecture,G,11:00AM - 12:20PM,TR,3020 Electrical & Computer Eng Bldg,"Popescu, G"
+ECE,566,Computational Inference and Learning,,68111,4,Lecture,G,02:00PM - 03:20PM,TR,3081 Electrical & Computer Eng Bldg,"Moulin, P"
+ECE,574,Nanophotonics,,59664,4,Lecture,B,12:00PM - 12:50PM,MWF,2013 Electrical & Computer Eng Bldg,"Choquette, K"
+ECE,584,Embedded System Verification,,59726,,Lecture,B,12:30PM - 01:50PM,TR,3081 Electrical & Computer Eng Bldg,"Mitra, S"
+ECE,590,Grad Sem in Special Topics,"ANT, EM Optics & Remote Sen",36950,,Lecture,B,04:00PM - 05:20PM,T,3017 Electrical & Computer Eng Bldg,"Schutt-Aine, J"
+ECE,590,Grad Sem in Special Topics,Gaseous Electronics,36955,,Lecture,H,ARRANGED,,,"Eden, J"
+ECE,590,Grad Sem in Special Topics,Power Systems,36953,,Lecture,I,03:00PM - 03:50PM,M,4070 Electrical & Computer Eng Bldg,"Gross, G"
+ECE,590,Grad Sem in Special Topics,Space Science & Remote Sensing,70677,,Lecture,RSS,04:00PM - 04:50PM,W,4070 Electrical & Computer Eng Bldg,"Ilie, R"
+ECE,590,Grad Sem in Special Topics,"Signals, Inferences & Networks",36957,,Lecture,SIN,04:00PM - 04:50PM,M,3081 Electrical & Computer Eng Bldg,"Do, M"
+ECE,590,Grad Sem in Special Topics,Speech,71131,,Lecture,SIP,11:00AM - 11:50AM,M,2169 Beckman Institute,"Hasegawa-Johnson, M"
+ECE,590,Grad Sem in Special Topics,Teaching and Leadership,72440,1,Lecture-Discussion,TL,11:00AM - 11:50AM,F,1404 Siebel Center for Comp Sci,"Beckman, A
+Chen, Y
+Johnson, B"
+ECE,596,Master's Project,,10020,,Independent Study,,ARRANGED,,,
+ECE,597,Individual Study in ECE,,10023,,Independent Study,,ARRANGED,,,
+ECE,598,Special Topics in ECE,Adv Memory & Storage Systems,72498,4,Lecture,MS,02:00PM - 03:20PM,TR,,"Huang, J"
+ECE,598,Special Topics in ECE,Deep Learning in Hardware,72381,4,Lecture,NSG,11:00AM - 12:20PM,TR,4070 Electrical & Computer Eng Bldg,"Shanbhag, N"
+ECE,598,Special Topics in ECE,High-Speed/Progrmable Networks,72474,4,Laboratory,RM,ARRANGED,,,"Mittal, R"
+ECE,598,Special Topics in ECE,Learning-Based Robotics,72446,4,Lecture,SG,02:00PM - 03:20PM,TR,2015 Electrical & Computer Eng Bldg,"Gupta, S"
+ECE,598,Special Topics in ECE,2D Material Electr & Photonics,70563,4,Lecture-Discussion,WZ,09:30AM - 10:50AM,TR,3015 Electrical & Computer Eng Bldg,"Zhu, W"
+ECE,598,Special Topics in ECE,High Dimensional Geometric Dat,72081,4,Lecture,ZZ,02:00PM - 03:20PM,TR,2013 Electrical & Computer Eng Bldg,"Zhao, Z"
+ECE,599,Thesis Research,,10025,,Independent Study,,ARRANGED,,,
+ECE,599,Thesis Research,,72241,,Independent Study,XC,ARRANGED,,,"Chen, X"
