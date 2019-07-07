@@ -1,4 +1,4 @@
-## The original relational schema
+# The original relational schema
  - Course(CRN, term, dept, name, Waitlist.id)
  - Unassigned(Course.CRN, numOfStudent)
  - Group(GroupId, CourseId, studentLimit, status, description, neededSkill, name, numOfstudent)
@@ -7,7 +7,7 @@
  - userGroup(User.netId, Group.GroupId)
  - userComment(User.netId, Comment.id)
 
-## The current relational schema
+# The current relational schema
   - Courses(CRN, dept, idx, title, special_title, credit, term, type, session)
   - Matching_Queues(Course.CRN, num_students)
   - Groups(GroupId, CourseId, studentLimit, status, description, name, numOfstudent)
@@ -15,7 +15,7 @@
   - Groups_Skills(Groups.GroupId, Skill)
   - Students_Skills(Users.NetId, Skill)
 
-# Changes
+## Changes
  - ADD and CHANGE multiple attributes in table "Courses"
  - CHANGE "Unassigned/Waitlist" to "matching_queue"
  - REMOVE "Waitlist.id" from table "Courses"
@@ -25,6 +25,6 @@
  - SET "GroupId" to "AUTO_INCREMENT"
  - ADD "Founder" to table "Groups" as foreign key
 
-# TODO
+## TODO
  - ADD table "Groups_Users"
  - ADD table "Comment" and "userComment"
