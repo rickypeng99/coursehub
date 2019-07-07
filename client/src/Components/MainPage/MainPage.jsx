@@ -7,11 +7,9 @@ class MainPage extends Component {
 
     constructor(props) {
         super(props)
-
         this.state = {
             username: null
         }
-
     }
 
     componentDidMount() {
@@ -22,14 +20,14 @@ class MainPage extends Component {
     }
 
 
-    login = ((event) => {
+    login = (() => {
         this.props.history.push('/')
     })
 
-    logout = ((event) => {
-        localStorage.removeItem('user');
+    logout = (() => {
+        this.props.dispatch(userActions.logout());
         this.setState({
-            username: localStorage.getItem('user')
+            username: this.props.username
         })
     })
 
@@ -55,16 +53,11 @@ class MainPage extends Component {
                     <p>Fuck</p>
                     <Button onClick={this.login}>Login</Button>
                 </div>
-                
+
 
             )
         }
-
-
-
     }
-
-
 }
 function mapStateToProps(state) {
     const { user, loggedIn } = state.auth;

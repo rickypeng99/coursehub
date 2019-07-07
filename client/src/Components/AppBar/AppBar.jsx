@@ -35,7 +35,7 @@ export default function MenuAppBar() {
                     {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu" >
                         <MenuIcon />
                     </IconButton> */}
-                    <img style={imgStyle} src={require('./logo.png')} />
+                    <img style={imgStyle} src={require('../../Common/images/logo.png')} />
                     <Typography variant="h6" className={classes.title}>
                         Classes
                     </Typography>

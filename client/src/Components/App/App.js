@@ -8,6 +8,8 @@ import Colors from '@material-ui/core/colors';
 import connectedLoginPage from "../Users/Login"
 //import  LoginPage  from "../Users/Login"
 import connectedMainPage from "../MainPage/MainPage"
+import connectedRegisterPage from "../Users/Register"
+
 import MenuAppBar from "../AppBar/AppBar"
 
 import { ThemeProvider } from '@material-ui/styles';
@@ -33,11 +35,12 @@ class App extends Component {
 
 
         </ThemeProvider>
+        <style>{'body { background-color: #f0f0f0; }'}</style>
 
         <Switch>
           <Route exact path="/" component={connectedLoginPage} />
           <Route exact path="/main" component={connectedMainPage} />
-
+          <Route exact path="/register" component={connectedRegisterPage} />
         </Switch>
 
       </HashRouter>

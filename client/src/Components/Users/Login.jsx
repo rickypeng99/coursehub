@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Input, Checkbox } from 'semantic-ui-react';
 import { userActions } from '../../Store/actions/userActions';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 require('./Login.css');
 
 class Login extends Component {
@@ -11,57 +12,34 @@ class Login extends Component {
         super(props)
         this.state = {
             currentUser: "undefined",
-            username: "undefined",
-            password: "undefined",
+            username: null,
+            password: null,
             loggedIn: false
         }
-        this.submitHandler = this.submitHandler.bind(this)
+        //this.submitHandler = this.submitHandler.bind(this)
 
     }
 
     submitHandler = () => {
         this.props.dispatch(userActions.login(this.state.username, this.state.password));
-        // this.setState({
-        //     currentUser: this.props.user,
-        //     loggedIn: this.props.loggedIn
-        // })
         this.props.history.push("/main");
     }
 
-    logoutHandler = () => {
-        this.props.dispatch(userActions.logout());
+    changeHandler = ((event) => {
+        this.setState({ [event.target.name]: event.target.value });
+    })
+
+    componentDidMount(){
         this.setState({
             currentUser: this.props.user,
             loggedIn: this.props.loggedIn
         })
     }
 
-
-    changeHandler = ((event) => {
-        this.setState({ [event.target.name]: event.target.value });
-    })
-
-    // shouldComponentUpdate(nextProps){
-    //     return nextProps.loggedIn !== this.state.loggedIn
-    // }
-
-    // componentWillUpdate(){
-    //     this.setState({
-    //         currentUser: this.props.user,
-    //         loggedIn: this.props.loggedIn
-    //     })
-    // }
-
     render() {
-        //console.log(this.state.loggedIn)
         if (this.state.loggedIn) {
             return (
-                <div>
-                    <p>
-                        Hello, {this.state.currentUser}
-                    </p>
-                    <Button onClick={this.logoutHandler}>Logout</Button>
-                </div>
+                <Redirect to = '/main'></Redirect>
             )
         } else {
             var username = this.state.username;
@@ -79,7 +57,6 @@ class Login extends Component {
                                 onChange={this.changeHandler}
                                 type="text"
                                 placeholder="admin"
-                            //style={inputStyle}
                             />
                         </Form.Field>
                         <Form.Field>
@@ -89,7 +66,6 @@ class Login extends Component {
                                 value={password}
                                 onChange={this.changeHandler}
                                 type="password"
-                            //style={inputStyle}
                             />
                         </Form.Field>
                         <Form.Field>
