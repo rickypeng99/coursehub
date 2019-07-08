@@ -3,15 +3,13 @@ import { Form, Button, Input, Checkbox, Label, Dropdown } from 'semantic-ui-reac
 import { userActions } from '../../Store/actions/userActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
-
-import file from '../../Common/data/majors'
-import courseFile from '../../Common/data/courses'
-
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-require('./Login.css');
+import file from '../../Common/data/majors'
+import courseFile from '../../Common/data/courses'
+require('./User.css');
 
 
 const styles = theme => ({
@@ -56,16 +54,16 @@ class Register extends Component {
             password: null,
             firstName: null,
             lastName: null,
-            major: null,
             netId: null,
+            majorStudying: [],
             classTaking: [],
             gpa: null,
             registered: false,
+
+            //thsese two states are options
             majors: [],
             courses: []
         }
-        //this.submitHandler = this.submitHandler.bind(this)
-
     }
 
     submitHandler = () => {
@@ -79,15 +77,18 @@ class Register extends Component {
     })
 
     dropDownMajorHandler = ((event, data) => {
-        this.setState({major: data.value})
+        this.setState({majorStudying: data.value})
     })
 
     dropDownCourseHandler = ((event, data) => {
         this.setState({classTaking: data.value})
     })
 
+    /**
+     * For printing updated states
+     */
     componentDidUpdate (){
-        console.log(this.state.courses)
+        //console.log(this.state.majorStudying)
     }
 
     componentDidMount() {
@@ -161,9 +162,9 @@ function RegisterForm(props) {
     var password = props.password
     var firstName = props.firstName
     var lastName = props.lastName
-    var major = props.major
+    //var major = props.major
     var netId = props.netId
-    var classTaking = props.classTaking
+    //var classTaking = props.classTaking
     var gpa = props.gpa
     var changeHandler = props.changeHandler
     var submitHandler = props.submitHandler

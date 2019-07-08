@@ -8,17 +8,27 @@ class MainPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: null
+            username: null,
+            loggedIn: false
         }
     }
 
     componentDidMount() {
         this.setState({
-            username: localStorage.getItem('user')
+            username: this.props.user,
+            loggedIn: this.props.loggedIn
         })
 
     }
-
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.loggedIn !== this.state.loggedIn) {
+            this.setState(
+                {
+                    username: nextProps.user,
+                    loggedIn: nextProps.loggedIn
+                });
+        }
+    }
 
     login = (() => {
         this.props.history.push('/')
@@ -27,14 +37,15 @@ class MainPage extends Component {
     logout = (() => {
         this.props.dispatch(userActions.logout());
         this.setState({
-            username: this.props.username
+            username: this.props.username,
+            loggedIn: this.props.loggedIn
         })
     })
 
     render() {
 
-        if (this.state.username != null) {
-            console.log(this.state.username)
+        if (this.state.loggedIn) {
+            //console.log(this.state.username)
             return (
 
 

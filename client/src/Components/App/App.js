@@ -10,8 +10,8 @@ import connectedLoginPage from "../Users/Login"
 import connectedMainPage from "../MainPage/MainPage"
 import connectedRegisterPage from "../Users/Register"
 
-import MenuAppBar from "../AppBar/AppBar"
-
+import ConnectedMenuAppBar from "../AppBar/AppBar"
+import connectedUserPage from "../Users/UserPage"
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <HashRouter>
         <ThemeProvider theme={theme}>
-          <MenuAppBar />
+          <ConnectedMenuAppBar />
 
 
         </ThemeProvider>
@@ -41,6 +41,8 @@ class App extends Component {
           <Route exact path="/" component={connectedLoginPage} />
           <Route exact path="/main" component={connectedMainPage} />
           <Route exact path="/register" component={connectedRegisterPage} />
+          <Route exact path="/user/:id" component={connectedUserPage}/>
+
         </Switch>
 
       </HashRouter>

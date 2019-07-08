@@ -3,7 +3,7 @@ import { Form, Button, Input, Checkbox } from 'semantic-ui-react';
 import { userActions } from '../../Store/actions/userActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
-require('./Login.css');
+require('./User.css');
 
 class Login extends Component {
 

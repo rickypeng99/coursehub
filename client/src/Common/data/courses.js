@@ -1157,10 +1157,6 @@ const courseFile = {
             "name": "ANTH143 1"
         },
         {
-            "crn": "37058",
-            "name": "ANTH143 1"
-        },
-        {
             "crn": "57526",
             "name": "ANTH143 10"
         },
@@ -4751,10 +4747,6 @@ const courseFile = {
         {
             "crn": "64999",
             "name": "EPS310 A"
-        },
-        {
-            "crn": "33769",
-            "name": "EPS310 B"
         },
         {
             "crn": "33769",
