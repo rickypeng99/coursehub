@@ -1,0 +1,1 @@
+SELECT group_id FROM CourseHub.Groups where status = 1 and course_CRN = 99999 and students_limit > students_current;

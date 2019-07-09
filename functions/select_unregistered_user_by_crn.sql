@@ -1,0 +1,1 @@
+SELECT user_id FROM CourseHub.Users_Matching_Queue where course_CRN = 99999;

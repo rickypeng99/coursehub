@@ -1,0 +1,1 @@
+SELECT net_id FROM CourseHub.Groups_Users WHERE group_id = 99999;

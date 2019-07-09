@@ -1,0 +1,1 @@
+SELECT group_id FROM CourseHub.Groups WHERE founder = 99999;
