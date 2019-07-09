@@ -1,0 +1,1 @@
+SELECT net_id FROM coursehub.users where major = "pass-in";

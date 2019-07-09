@@ -1,0 +1,1 @@
+SELECT comment_id FROM coursehub.users_comments where net_id = weimany2;

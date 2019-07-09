@@ -1,1 +1,0 @@
-SELECT net_id FROM coursehub.users where major = "passin value";
