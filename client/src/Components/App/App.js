@@ -34,7 +34,6 @@ class App extends Component {
           <ConnectedMenuAppBar />
 
 
-        </ThemeProvider>
         <style>{'body { background-color: #f0f0f0; }'}</style>
 
         <Switch>
@@ -44,6 +43,7 @@ class App extends Component {
           <Route exact path="/user/:id" component={connectedUserPage}/>
 
         </Switch>
+        </ThemeProvider>
 
       </HashRouter>
     );
