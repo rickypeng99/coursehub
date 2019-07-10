@@ -12,6 +12,8 @@ import connectedRegisterPage from "../Users/Register"
 
 import ConnectedMenuAppBar from "../AppBar/AppBar"
 import connectedUserPage from "../Users/UserPage"
+
+import connectedCoursePage from "../Course/Course"
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -41,6 +43,7 @@ class App extends Component {
           <Route exact path="/main" component={connectedMainPage} />
           <Route exact path="/register" component={connectedRegisterPage} />
           <Route exact path="/user/:id" component={connectedUserPage}/>
+          <Route exact path="/course" component={connectedCoursePage}/>
 
         </Switch>
         </ThemeProvider>
