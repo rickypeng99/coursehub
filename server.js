@@ -4,11 +4,12 @@ var express = require('express'),
     mysql = require('mysql'),
     //local mysql db connection
     connection = mysql.createConnection({
-        host     : 'localhost',
-        user     : 'root',
-        password : 'password',
-        port: '3306',
-        database: 'coursehub'
+      host: 'coursehub.mysql.database.azure.com',
+      user: 'coursehub@coursehub',
+      password: '!Admin12345',
+      database: 'coursehub',
+      port: 3306,
+      ssl: true
     
       });
     

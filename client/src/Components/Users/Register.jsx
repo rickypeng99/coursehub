@@ -67,14 +67,14 @@ class Register extends Component {
         super(props)
         this.state = {
             //currentUser: null,
-            username: '',
-            password: '',
-            firstName: '',
-            middleName: '',
-            lastName: '',
-            description: '',
-            netId: '',
-            major: '',
+            username: undefined,
+            password: undefined,
+            firstName: undefined,
+            middleName: undefined,
+            lastName: undefined,
+            description: undefined,
+            netId: undefined,
+            major: undefined,
             //classTaking: [],
             gpa: null,
             registered: false,
@@ -229,7 +229,7 @@ function RegisterForm(props) {
     //     }
     // }
 
-    const error = firstName == null || firstName == '' || lastName == null || lastName == '' || netId == null || netId == '' || password == null || password == '' || gpa == null || gpa == '' || major == null || major == '';
+    const error = firstName == null || firstName == undefined || lastName == null || lastName == undefined || netId == null || netId == undefined || password == null || password == undefined || gpa == null || gpa == undefined || major == null || major == undefined;
 
     return (
         <div className={classes.root}>
@@ -258,7 +258,7 @@ function RegisterForm(props) {
 
                         </Grid> */}
                         <Grid item xs={12} sm={6} className={classes.grid}>
-                            <Form.Field className={classes.input} error={netId == null || netId == ''}>
+                            <Form.Field className={classes.input} error={netId == null || netId == undefined}>
                                 <p>Illinois Netid</p>
                                 <Input
                                     name="netId"
@@ -269,7 +269,7 @@ function RegisterForm(props) {
                             </Form.Field>
                         </Grid>
                         <Grid item xs={12} sm={6} className={classes.grid}>
-                            <Form.Field className={classes.input} error={password == null || password == ''}>
+                            <Form.Field className={classes.input} error={password == null || password == undefined}>
                                 <p>Password</p>
                                 <Input
                                     name="password"
@@ -285,7 +285,7 @@ function RegisterForm(props) {
                         </Grid> */}
 
                         <Grid item xs={12} sm={4} className={classes.grid} >
-                            <Form.Field className={classes.input} error={firstName == null || firstName == ''}>
+                            <Form.Field className={classes.input} error={firstName == null || firstName == undefined}>
                                 <p>First name</p>
                                 <Input
 
@@ -312,7 +312,7 @@ function RegisterForm(props) {
                             </Form.Field>
                         </Grid>
                         <Grid item xs={12} sm={4} className={classes.grid} >
-                            <Form.Field className={classes.input} error={lastName == null || lastName == ''}>
+                            <Form.Field className={classes.input} error={lastName == null || lastName == undefined}>
                                 <p>Last name</p>
                                 <Input
                                     name="lastName"
@@ -327,7 +327,7 @@ function RegisterForm(props) {
 
 
                         <Grid item xs={12} sm={6} className={classes.grid}>
-                            <Form.Field className={classes.input} error={major == null || major == ''}>
+                            <Form.Field className={classes.input} error={major == null || major == undefined}>
                                 <p>Major</p>
                                 <Dropdown
                                     placeholder="Select Major"
@@ -341,7 +341,7 @@ function RegisterForm(props) {
                         </Grid>
 
                         <Grid item xs={12} sm={6} className={classes.grid}>
-                            <Form.Field className={classes.input} error={gpa == null || gpa == ''}>
+                            <Form.Field className={classes.input} error={gpa == null || gpa == undefined}>
                                 <p>GPA(Grade point Average)</p>
                                 <Input
                                     name="gpa"
