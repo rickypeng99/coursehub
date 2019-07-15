@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import { Form, Button, Input, Checkbox, Label, Dropdown } from 'semantic-ui-react';
+import { Form, Button, Input, Checkbox, Label, Dropdown, TextArea } from 'semantic-ui-react';
 import { userActions } from '../../Store/actions/userActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-
+import axios from 'axios';
 import file from '../../Common/data/majors'
-import courseFile from '../../Common/data/courses'
+//import courseFile from '../../Common/data/courses'
+import Background from '../../Common/images/illinois.webp'
 require('./User.css');
-
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
     },
+
     paper: {
         padding: theme.spacing(2),
         //textAlign: 'center',
@@ -31,10 +32,14 @@ const styles = theme => ({
         // alignItems: "center"
     },
     outGrid: {
-        margin: "20%",
+        margin: "10%",
         padding: theme.spacing(2),
         //textAlign: 'center',
         color: theme.palette.text.secondary,
+        // backgroundImage: `url(${Background})`,
+        // backgroundSize: '100%, 100%',
+        // backgroundRepeat: 'no-repeat',
+
     }
 });
 
@@ -45,21 +50,34 @@ class Register extends Component {
 
     // User(Skills, NetId, InternalPoints, major, username, password, firstName, lastName)
 
+    // CREATE TABLE IF NOT EXISTS CourseHub.Users (
+    //     net_id VARCHAR(8) NOT NULL,
+    //     internal_point INT NOT NULL,
+    //     major VARCHAR(31) NOT NULL,
+    //     user_name VARCHAR(31) NOT NULL,
+    //     password VARCHAR(31) NOT NULL,
+    //     first_name VARCHAR(31) NOT NULL,
+    //     middle_name VARCHAR(31),
+    //     last_name VARCHAR(31) NOT NULL,
+    //     description TEXT,
+    //     PRIMARY KEY (net_id)
+    // )  ENGINE=INNODB;
 
     constructor(props) {
         super(props)
         this.state = {
             //currentUser: null,
-            username: null,
-            password: null,
-            firstName: null,
-            lastName: null,
-            netId: null,
-            majorStudying: [],
-            classTaking: [],
+            username: '',
+            password: '',
+            firstName: '',
+            middleName: '',
+            lastName: '',
+            description: '',
+            netId: '',
+            major: '',
+            //classTaking: [],
             gpa: null,
             registered: false,
-
             //thsese two states are options
             majors: [],
             courses: []
@@ -67,8 +85,27 @@ class Register extends Component {
     }
 
     submitHandler = () => {
-        this.props.dispatch(userActions.login(this.state.username, this.state.password));
-        this.props.history.push("/main");
+        // this.props.dispatch(userActions.login(this.state.username, this.state.password));
+        // this.props.history.push("/main");
+
+        //
+        // console.log(this.state.firstName)
+        // console.log(this.state.description)
+        axios.post('api/register', {
+            net_id: this.state.netId,
+            password: this.state.password,
+            first_name: this.state.firstName,
+            last_name: this.state.lastName,
+            gpa: this.state.gpa,
+            description: this.state.description,
+            major: this.state.major
+        })
+        .then(result => {
+            console.log(result.data.data)
+        })
+        .catch(error => {
+            alert(error.message)
+        })
     }
 
 
@@ -77,17 +114,17 @@ class Register extends Component {
     })
 
     dropDownMajorHandler = ((event, data) => {
-        this.setState({majorStudying: data.value})
+        this.setState({ major: data.value })
     })
 
     dropDownCourseHandler = ((event, data) => {
-        this.setState({classTaking: data.value})
+        this.setState({ classTaking: data.value })
     })
 
     /**
      * For printing updated states
      */
-    componentDidUpdate (){
+    componentDidUpdate() {
         //console.log(this.state.majorStudying)
     }
 
@@ -101,24 +138,25 @@ class Register extends Component {
                 text: read[i]['major']
             })
         }
-        var read = courseFile['data']
-        var courses = []
-        for (var i = 0; i < read.length; i++) {
-            courses.push({
-                key: read[i]['name'],
-                value: read[i]['crn'],
-                text: read[i]['name']
-            })
-        }
+        //var read = courseFile['data']
+        // var courses = []
+        // for (var i = 0; i < read.length; i++) {
+        //     courses.push({
+        //         key: read[i]['name'],
+        //         value: read[i]['crn'],
+        //         text: read[i]['name']
+        //     })
+        // }
 
 
         //console.log(courses)
 
         this.setState({
             majors: majors,
-            courses: courses,
+            //courses: courses,
             currentUser: this.props.user,
             loggedIn: this.props.loggedIn
+
         })
     }
 
@@ -135,11 +173,13 @@ class Register extends Component {
                         password={this.state.password}
                         firstName={this.state.firstName}
                         lastName={this.state.lastName}
+                        middleName={this.state.middleName}
                         major={this.state.major}
                         netId={this.state.netId}
-                        classTaking={this.state.classTaking}
+                        //classTaking={this.state.classTaking}
                         changeHandler={this.changeHandler}
                         submitHandler={this.submitHandler}
+                        description={this.description}
                         gpa={this.state.gpa}
                         majors={this.state.majors}
                         dropDownMajorHandler={this.dropDownMajorHandler}
@@ -161,8 +201,10 @@ function RegisterForm(props) {
     var username = props.username
     var password = props.password
     var firstName = props.firstName
+    var middleName = props.middleName
     var lastName = props.lastName
-    //var major = props.major
+    var description = props.description
+    var major = props.major
     var netId = props.netId
     //var classTaking = props.classTaking
     var gpa = props.gpa
@@ -170,27 +212,28 @@ function RegisterForm(props) {
     var submitHandler = props.submitHandler
     var majors = props.majors
     var dropDownMajorHandler = props.dropDownMajorHandler
-    var dropDownCourseHandler = props.dropDownCourseHandler
-    var courses = props.courses
+    //var dropDownCourseHandler = props.dropDownCourseHandler
+    //var courses = props.courses
 
-    var error = (name) => {
-        if(name == null || name == ""){
-            return(
-                <Label pointing>That name is taken!</Label>
+    // var error = (name) => {
+    //     if (name == null || name == "") {
+    //         return (
+    //             <Label pointing>That name is taken!</Label>
 
-            )
-        } else{
-            return(
-                <Label pointing>That name is taken!</Label>
+    //         )
+    //     } else {
+    //         return (
+    //             <Label pointing>That name is taken!</Label>
 
-            )
-        }
-    }
-   
+    //         )
+    //     }
+    // }
+
+    const error = firstName == null || firstName == '' || lastName == null || lastName == '' || netId == null || netId == '' || password == null || password == '' || gpa == null || gpa == '' || major == null || major == '';
 
     return (
         <div className={classes.root}>
-            <Paper className={classes.paper} className={classes.outGrid}>
+            <Paper className={classes.outGrid}>
 
                 <Form onSubmit={submitHandler}>
 
@@ -198,34 +241,8 @@ function RegisterForm(props) {
                         {/* <Grid item xs={12}>
                         <Paper className={classes.paper}>xs=12</Paper>
                     </Grid> */}
-                    <Grid item xs={12} sm={6} className={classes.grid} >
-                            <Form.Field className={classes.input}>
-                                <p>First name</p>
-                                <Input
-                                    name="firstName"
-                                    value={firstName}
-                                    onChange={changeHandler}
-                                    type="text"
-                                    placeholder="James"
-                                />
 
-                            </Form.Field>
-                        </Grid>
-                        <Grid item xs={12} sm={6} className={classes.grid} >
-                            <Form.Field className={classes.input}>
-                                <p>Last name</p>
-                                <Input
-                                    name="lastName"
-                                    value={lastName}
-                                    onChange={changeHandler}
-                                    type="text"
-                                    placeholder="Smith"
-                                />
-
-                            </Form.Field>
-                        </Grid>
-                        
-                        <Grid item xs={12} sm={6} className={classes.grid} >
+                        {/* <Grid item xs={12} sm={6} className={classes.grid} >
                             <Form.Field className={classes.input}>
                                 <p>Username</p>
                                 <Input
@@ -237,13 +254,11 @@ function RegisterForm(props) {
                                 />
 
                             </Form.Field>
-                            {/* {
-                                error(username)
-                            } */}
+                        
 
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12} sm={6} className={classes.grid}>
-                            <Form.Field className={classes.input}>
+                            <Form.Field className={classes.input} error={netId == null || netId == ''}>
                                 <p>Illinois Netid</p>
                                 <Input
                                     name="netId"
@@ -254,7 +269,7 @@ function RegisterForm(props) {
                             </Form.Field>
                         </Grid>
                         <Grid item xs={12} sm={6} className={classes.grid}>
-                            <Form.Field className={classes.input}>
+                            <Form.Field className={classes.input} error={password == null || password == ''}>
                                 <p>Password</p>
                                 <Input
                                     name="password"
@@ -264,8 +279,55 @@ function RegisterForm(props) {
                                 />
                             </Form.Field>
                         </Grid>
-                        <Grid item xs={12} sm={6} className={classes.grid}>
+
+
+                        {/* <Grid item xs={12} sm={6} className={classes.grid}>
+                        </Grid> */}
+
+                        <Grid item xs={12} sm={4} className={classes.grid} >
+                            <Form.Field className={classes.input} error={firstName == null || firstName == ''}>
+                                <p>First name</p>
+                                <Input
+
+                                    name="firstName"
+                                    value={firstName}
+                                    onChange={changeHandler}
+                                    type="text"
+                                    placeholder="James"
+                                />
+
+                            </Form.Field>
+                        </Grid>
+                        <Grid item xs={12} sm={4} className={classes.grid} >
                             <Form.Field className={classes.input}>
+                                <p>Middle name</p>
+                                <Input
+                                    name="middleName"
+                                    value={middleName}
+                                    onChange={changeHandler}
+                                    type="text"
+                                    placeholder="D"
+                                />
+
+                            </Form.Field>
+                        </Grid>
+                        <Grid item xs={12} sm={4} className={classes.grid} >
+                            <Form.Field className={classes.input} error={lastName == null || lastName == ''}>
+                                <p>Last name</p>
+                                <Input
+                                    name="lastName"
+                                    value={lastName}
+                                    onChange={changeHandler}
+                                    type="text"
+                                    placeholder="Smith"
+                                />
+
+                            </Form.Field>
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={6} className={classes.grid}>
+                            <Form.Field className={classes.input} error={major == null || major == ''}>
                                 <p>Major</p>
                                 <Dropdown
                                     placeholder="Select Major"
@@ -273,26 +335,38 @@ function RegisterForm(props) {
                                     selection
                                     onChange={dropDownMajorHandler}
                                     options={majors}
-                                    multiple
+                                //value={major}
                                 />
                             </Form.Field>
                         </Grid>
 
                         <Grid item xs={12} sm={6} className={classes.grid}>
-                            <Form.Field className={classes.input}>
+                            <Form.Field className={classes.input} error={gpa == null || gpa == ''}>
                                 <p>GPA(Grade point Average)</p>
                                 <Input
                                     name="gpa"
                                     value={gpa}
                                     onChange={changeHandler}
                                     type="number"
-                                    step = '0.01'
-                                    placeholder = 'This is only for calculation of the internal point'
+                                    step='0.01'
+                                    placeholder='This is only for calculation of the internal point'
                                 />
                             </Form.Field>
                         </Grid>
 
-                        <Grid item xs={12} sm={6} className={classes.grid}>
+                        <Grid item xs={12} sm={12} className={classes.grid}>
+                            <Form.Field className={classes.input} >
+                                <p>About me</p>
+                                <TextArea
+                                    placeholder='Tell us more'
+                                    name='description'
+                                    onChange={changeHandler}
+                                    type="text"
+                                    value={description} />
+                            </Form.Field>
+                        </Grid>
+
+                        {/* <Grid item xs={12} sm={6} className={classes.grid}>
                             <Form.Field className={classes.input}>
                                 <p>Classes taking</p>
                                 <Dropdown
@@ -304,7 +378,7 @@ function RegisterForm(props) {
                                     multiple
                                 />
                             </Form.Field>
-                        </Grid>
+                        </Grid> */}
 
                         {/* <Grid item xs={6} sm={3}>
                             <Form.Field>
@@ -326,9 +400,10 @@ function RegisterForm(props) {
                         <Grid item xs={6} sm={3}>
                             <Paper className={classes.paper}>xs=6 sm=3</Paper>
                         </Grid> */}
+                        {/* disabled = {error} */}
                     </Grid>
                     <div className="buttonContainer">
-                        <Button type='submit'>Submit</Button>
+                        <Button type='submit' >Submit</Button>
 
                     </div>
 
@@ -355,7 +430,7 @@ const RegisterPage = (props) => {
     return (
         <div>
 
-            <div className="signInContainer">
+            <div>
                 {/* <img src={require('../../Common/images/logo.png')} /> */}
 
                 <Register {...props}></Register>

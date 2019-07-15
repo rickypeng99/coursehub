@@ -8,7 +8,7 @@ var express = require('express'),
         user     : 'root',
         password : 'password',
         port: '3306',
-        database: 'hero'
+        database: 'coursehub'
     
       });
     

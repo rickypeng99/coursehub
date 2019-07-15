@@ -85,7 +85,8 @@ class Course extends Component {
                 {
                     firstName: "Ruiqi",
                     lastName: "Peng",
-                    skills: ['Fucking pussies', "being cool"]
+                    skills: ['Fucking pussies', "being cool"],
+                    major: "Statistics & Computer Science"
                 },
                 {
                     firstName: "Yipeng",

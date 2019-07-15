@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Input, Checkbox, Dropdown, Label, List, Card, Image, Rating } from 'semantic-ui-react';
+import { Form, Button, Input, Checkbox, Dropdown, Label, List, Card, Image, Rating, SearchResults } from 'semantic-ui-react';
 import { userActions } from '../../Store/actions/userActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
@@ -7,7 +7,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
-
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 const styles = theme => ({
     root: {
@@ -51,7 +52,7 @@ const styles = theme => ({
         width: '100%',
         marginBottom: "5%"
     },
-    vertical:{
+    vertical: {
         display: "flex",
         flexWrap: "wrap"
     },
@@ -91,6 +92,8 @@ class User extends Component {
         var time = now.toTimeString();
         var currentDate = month + '/' + day + '/' + year + " at " + time;
 
+        var netId = this.props.match.params.id
+
         //hardcoding comments
         var comment1 = {
             responsiveness: 5,
@@ -115,58 +118,80 @@ class User extends Component {
         comments.push(comment1)
         comments.push(comment2)
 
-        this.setState({
-            netId: this.props.match.params.id,
-            username: "rickypeng99",
-            firstName: "Ruiqi",
-            lastName: "Peng",
-            major: ['Statistics & Computer Science - LAS', 'Linguistics - LAS'],
-            classTaking: [
-                {
-                    name: "CS411 Q3",
-                    crn: "30109"
-                },
-                {
-                    name: "STAT420 1UG",
-                    crn: "63856"
-                },
-                {
-                    name: "STAT410 1GR",
-                    crn: "65078"
-                }],
-            gpa: null,
-            registered: false,
-            comments: comments,
-            loaded: true
-        })
+        axios.get('api/user/' + netId)
+            .then(result => {
+                console.log(result.data.data);
+                this.setState({
+                    netId: this.props.match.params.id,
+                    firstName: result.data.data[0].first_name,
+                    lastName: result.data.data[0].last_name,
+                    major: result.data.data[0].major,
+                    description: result.data.data[0].description,
+                    classTaking: [
+                        {
+                            name: "CS411 Q3",
+                            crn: "30109"
+                        },
+                        {
+                            name: "STAT420 1UG",
+                            crn: "63856"
+                        },
+                        {
+                            name: "STAT410 1GR",
+                            crn: "65078"
+                        }],
+                    //gpa: result.data.,
+                    registered: false,
+                    comments: comments,
+                    loaded: true
+                })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+
+
+
+        // this.setState({
+        //     netId: this.props.match.params.id,
+
+        // })
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.location !== this.props.location) {
+            window.location.reload();
+
+        }
     }
 
     render() {
         var {
-            netId, username, firstName, lastName, major, classTaking, comments, loaded
+            netId, username, firstName, lastName, major, classTaking, comments, description, loaded
         } = this.state
         if (loaded) {
             var classes = this.props.classes
 
+            console.log("hahahahaha" + firstName)
 
 
+            // const getMajorList = major.map((single, index) => {
+            //     return (
+            //         <List.Item key={single}>
+            //             <Label color='red' horizontal>
+            //                 {single.substring(single.indexOf('-') + 1)}
+            //             </Label>
+            //             <Typography color="primary">
+            //                 {single}
 
-            const getMajorList = major.map((single, index) => {
-                return (
-                    <List.Item key={single}>
-                        <Label color='red' horizontal>
-                            {single.substring(single.indexOf('-') + 1)}
-                        </Label>
-                        <Typography color="primary">
-                            {single}
-
-                        </Typography>
-                    </List.Item>
-                )
-            })
+            //             </Typography>
+            //         </List.Item>
+            //     )
+            // })
 
             const getCoursesList = classTaking.map((course, index) => {
-                console.log(course)
+                //console.log(course)
                 return (
                     <li className={classes.course}>
                         <Card className={classes.courseCard}>
@@ -180,17 +205,17 @@ class User extends Component {
 
             const getCommentList = comments.map((comment, index) => {
                 return (
-                    <List.Item className = {classes.comment}>
-                        <div className = {classes.vertical}> 
+                    <List.Item className={classes.comment}>
+                        <div className={classes.vertical}>
                             <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
                             <Typography> Efficiency: </Typography>
-                            <Rating icon="star" defaultRating = {comment.efficiency} maxRating = {5} disabled/>
+                            <Rating icon="star" defaultRating={comment.efficiency} maxRating={5} disabled />
                             <Typography> Communication: </Typography>
-                            <Rating icon="star" defaultRating = {comment.communication} maxRating = {5} disabled/>
+                            <Rating icon="star" defaultRating={comment.communication} maxRating={5} disabled />
                             <Typography> Handsomeness: </Typography>
-                            <Rating icon="star" defaultRating = {comment.handsome} maxRating = {5} disabled/>
+                            <Rating icon="star" defaultRating={comment.handsome} maxRating={5} disabled />
                             <Typography> Responsiveness: </Typography>
-                            <Rating icon="star" defaultRating = {comment.responsiveness} maxRating = {5} disabled/>
+                            <Rating icon="star" defaultRating={comment.responsiveness} maxRating={5} disabled />
                         </div>
                         <List.Content>
                             <List.Header>{comment.givenby}</List.Header>
@@ -217,6 +242,7 @@ class User extends Component {
 
                                             <Paper className={classes.paper}>
                                                 <Typography variant='h2' color='primary'>{firstName + " " + lastName}</Typography>
+                                                <p>{netId}</p>
                                             </Paper>
                                         </Grid>
 
@@ -225,8 +251,23 @@ class User extends Component {
                                                 <Typography variant='h4' color='primary'>Major</Typography>
                                                 <List selection>
 
-                                                    {getMajorList}
+                                                    <List.Item>
+                                                        <Label color='red' horizontal>
+                                                            {major.substring(major.indexOf('-') + 1)}
+                                                        </Label>
+                                                        <Typography color="primary">
+                                                            {major}
+
+                                                        </Typography>
+                                                    </List.Item>
                                                 </List>
+                                            </Paper>
+                                        </Grid>
+
+                                        <Grid item xs={12}>
+                                            <Paper className={classes.paper}>
+                                                <Typography variant='h4' color='primary'>About me</Typography>
+                                                <Typography variant='p' color='primary'>{description}</Typography>
                                             </Paper>
                                         </Grid>
 
@@ -247,7 +288,7 @@ class User extends Component {
 
                                         <Grid item xs={12}>
                                             <Paper className={classes.paper_image}>
-
+                                                
                                                 <img className={classes.image} src={require('../Users/Ricky.jpg')} onDragStart={this.preventDragHandler} />
                                                 <Button>Change profile photo</Button>
                                             </Paper>
@@ -263,11 +304,11 @@ class User extends Component {
 
                                                     </List.Item>
                                                     <List.Item>
-                                                    <Button>Follow</Button>
+                                                        <Button>Follow</Button>
 
                                                     </List.Item>
                                                     <List.Item>
-                                                    <Button>Follow</Button>
+                                                        <Button>Follow</Button>
 
                                                     </List.Item>
                                                 </List>
@@ -323,5 +364,5 @@ function mapStateToProps(state) {
 };
 const connectedUserPage = connect(mapStateToProps)(User);
 
-export default withStyles(styles)(connectedUserPage);
+export default withRouter(withStyles(styles)(connectedUserPage));
 
