@@ -100,12 +100,12 @@ class Register extends Component {
             description: this.state.description,
             major: this.state.major
         })
-        .then(result => {
-            console.log(result.data.data)
-        })
-        .catch(error => {
-            alert(error.message)
-        })
+            .then(result => {
+                console.log(result.data.data)
+            })
+            .catch(error => {
+                alert(error.message)
+            })
     }
 
 
@@ -366,44 +366,10 @@ function RegisterForm(props) {
                             </Form.Field>
                         </Grid>
 
-                        {/* <Grid item xs={12} sm={6} className={classes.grid}>
-                            <Form.Field className={classes.input}>
-                                <p>Classes taking</p>
-                                <Dropdown
-                                    placeholder="Select Courses"
-                                    search
-                                    selection
-                                    onChange={dropDownCourseHandler}
-                                    options={courses}
-                                    multiple
-                                />
-                            </Form.Field>
-                        </Grid> */}
 
-                        {/* <Grid item xs={6} sm={3}>
-                            <Form.Field>
-                                <Checkbox label='I agree to the Terms and Conditions' />
-                            </Form.Field>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-                        </Grid> */}
-                        {/* disabled = {error} */}
                     </Grid>
                     <div className="buttonContainer">
-                        <Button type='submit' >Submit</Button>
+                        <Button type='submit' disabled={error} >Submit</Button>
 
                     </div>
 

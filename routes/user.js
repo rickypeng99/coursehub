@@ -82,21 +82,12 @@ module.exports = function (router, connection) {
 
                     }
                 })
-
-               
-
-
             }
         })
-
-
-
-
-
-
     })
-    var userRoute = router.route('/user');
 
+
+    var userRoute = router.route('/user');
     //get users' detail
     userRoute.get((req, res) => {
         connection.query('SELECT * FROM users', function (error, results, fields) {
@@ -110,12 +101,8 @@ module.exports = function (router, connection) {
     })
 
 
-
-
     var registerRoute = router.route('/register')
-
     //register
-
     registerRoute.post((req, res) => {
         var password = req.body.password
         var salt = bcrypt.genSaltSync(10);
@@ -140,10 +127,6 @@ module.exports = function (router, connection) {
         })
     })
 
-
-
-
-
     var loginRoute = router.route('/login')
 
     //login
@@ -156,8 +139,6 @@ module.exports = function (router, connection) {
             }
             else {
                 if (results.length > 0) {
-                    //var salt = bcrypt.genSaltSync(10);
-                    //var hash = bcrypt.hashSync(password, salt);
                     if (bcrypt.compareSync(password, results[0].password)) {
                         res.status(200).send({ data: net_id, message: "successfully log in" })
                     } else {
