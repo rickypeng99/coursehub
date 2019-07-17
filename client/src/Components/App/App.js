@@ -39,12 +39,11 @@ class App extends Component {
         <style>{'body { background-color: #f0f0f0; }'}</style>
 
         <Switch>
-          <Route exact path="/" component={connectedLoginPage} />
-          <Route exact path="/main" component={connectedMainPage} />
+          <Route exact path="/login" component={connectedLoginPage} />
+          <Route exact path="/" component={connectedMainPage} />
           <Route exact path="/register" component={connectedRegisterPage} />
           <Route exact path="/user/:id" component={connectedUserPage}/>
-          <Route exact path="/course" component={connectedCoursePage}/>
-
+          <Route exact path="/course/:id" component={connectedCoursePage}/>
         </Switch>
         </ThemeProvider>
 

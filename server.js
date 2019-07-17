@@ -47,5 +47,7 @@ app.use(bodyParser.json());
 require('./routes')(app, router, connection);
 
 // Start the server
+app.timeout = 0;
+
 app.listen(port);
 console.log('Server running on port ' + port);

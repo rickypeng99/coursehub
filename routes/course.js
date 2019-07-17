@@ -63,17 +63,16 @@ module.exports = function (router, connection) {
     })
 
     courseIdQueueRoute = router.route('/course/:id/queue');
-    
     courseIdQueueRoute.get((req, res) => {
 
         var crn = req.params.id;
 
-        connection.query('SELECT * FROM groups WHERE course_CRN = ?', crn, function (error, results, fields) {
+        connection.query('SELECT * FROM matching_queue WHERE course_CRN = ?', crn, function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "404: Couldn't find course with crn " + crn })
             }
             else {
-                res.status(200).send({ data: results, message: "All groups of Course with CRN " + crn + " returned" })
+                res.status(200).send({ data: results, message: "Matching queue of Course with CRN " + crn + " returned" })
 
             }
         })

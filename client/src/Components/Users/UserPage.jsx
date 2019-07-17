@@ -70,9 +70,8 @@ class User extends Component {
         super(props);
 
         this.state = {
-            //currentUser: null,
+            username: null, // netid of the curren user
             netId: null,
-            username: null,
             firstName: null,
             lastName: null,
             major: null,

@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import { get } from 'http';
+import axios from 'axios';
 
 
 const styles = theme => ({
@@ -73,69 +74,93 @@ class Course extends Component {
         this.state = {
             queue: [],
             groups: [],
-            crn: null,
-            className: null,
+            crn: this.props.match.params.id,
+            courseCode: undefined,
+            courseName: undefined,
             loaded: false
         }
     }
 
     componentDidMount() {
-        this.setState({
-            queue: [
-                {
-                    firstName: "Ruiqi",
-                    lastName: "Peng",
-                    skills: ['Fucking pussies', "being cool"],
-                    major: "Statistics & Computer Science"
-                },
-                {
-                    firstName: "Yipeng",
-                    lastName: "Han",
-                    skills: ['Knows nothing']
-                },
-                {       
-                    firstName: "Weiman",
-                    lastName: "Yan",
-                    skills: ["Eating shit"]
-                }
-            ],
+        //get course data
+        var crn = this.props.match.params.id
+        axios.get('api/course/' + crn)
+        .then((response) => {
+            var course = response.data.data[0];
+            this.setState({
+                crn: crn,
+                courseCode: course.dept + course.idx,
+                courseName: course.title,
+                queue: [
+                    {
+                        firstName: "Ruiqi",
+                        lastName: "Peng",
+                        skills: ['Full stack'],
+                        major: "Statistics & Computer Science"
+                    },
+                    {
+                        firstName: "Yipeng",
+                        lastName: "Han",
+                        skills: ['Web Scraping']
+                    },
+                    {       
+                        firstName: "Weiman",
+                        lastName: "Yan",
+                        skills: ["Electric engineering"]
+                    }
+                ],
+    
+                groups: [
+                    {
+                        groupId: 1,
+                        groupName: "The Four",
+                        projectName: "Coursehub",
+                        founder: "Zhicong Fan",
+                        student_current: 1,
+                        student_limit: 4,
+                        needed_skills: ["Full stack"]
+                    },
+                    {
+                        groupId: 2,
+                        groupName: "Abdu",
+                        projectName: "Abdu",
+                        founder: "Abdu",
+                        student_current: 2,
+                        student_limit: 4,
+                        needed_skills: ["C++", "Java"]
+                    }
+    
+                ],
+                loaded: true
+            })
 
-            groups: [
-                {
-                    groupId: 1,
-                    groupName: "The Four",
-                    projectName: "Coursehub",
-                    founder: "Zhicong Fan",
-                    student_current: 1,
-                    student_limit: 4,
-                    needed_skills: ["Masturbate"]
-                },
-                {
-                    groupId: 2,
-                    groupName: "Abdu",
-                    projectName: "Abdu",
-                    founder: "Abdu",
-                    student_current: 2,
-                    student_limit: 4,
-                    needed_skills: ["C++", "Java"]
-                }
-
-            ],
-
-            crn: "30109",
-            className: "CS411 Q3",
-            loaded: true
         })
+        .catch((error) => {
+            console.log(error)
+        })
+
+        
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.loggedIn !== this.state.loggedIn) {
+            this.setState(
+                {
+                    username: nextProps.user,
+                    loggedIn: nextProps.loggedIn
+                });
+        }
+    }
+    
 
     render() {
         var classes = this.props.classes;
-
         var {
             queue,
             groups,
             crn,
-            className,
+            courseCode,
+            courseName,
             loaded
         } = this.state
 
@@ -189,7 +214,7 @@ class Course extends Component {
                     <Grid container spacing={2} direction="column">
                         <Grid item xs={12}>
                             <Paper className={classes.paper}>
-                                <Typography variant='h2' color='primary'>{className}
+                                <Typography variant='h2' color='primary'>{courseCode + " - " + courseName}
                                 </Typography>
                                 {crn}
                             </Paper>

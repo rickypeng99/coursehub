@@ -1,4 +1,5 @@
 import { userConstants } from '../constants/userConstants';
+import axios from 'axios';
 //import { userService } from '../_services';
 // import { alertActions } from './';
 // import { history } from '../_helpers';
@@ -23,8 +24,25 @@ function login(username, password) {
         //             dispatch(alertActions.error(error));
         //         }
         //     );
-        localStorage.setItem('user', username)
-        dispatch(success(username));
+
+        axios.post('api/login', {
+            net_id: username,
+            password: password
+        })
+        .then((response) => {
+            if(response.data.data[0].length > 0){
+                localStorage.setItem('user', response.data.data)
+                dispatch(success(response.data.data));
+            } else{
+                var username = response.data.data[0]
+                dispatch(failure(username));
+
+            }
+        })
+        .catch(error => {
+            console.log('error')
+        })
+
 
 
     };

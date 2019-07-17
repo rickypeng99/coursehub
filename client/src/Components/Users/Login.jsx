@@ -3,7 +3,43 @@ import { Form, Button, Input, Checkbox } from 'semantic-ui-react';
 import { userActions } from '../../Store/actions/userActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
+
 require('./User.css');
+
+const styles = theme => ({
+    root: {
+        //flexGrow: 1,
+        width: '30%',
+
+    },
+
+    paper: {
+        padding: theme.spacing(2),
+        //textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+    input: {
+        //flexShrink: 0,
+        width: "100%"
+    },
+    grid: {
+        //display: "flex",
+        // justifyContent: "center",
+        // alignItems: "center"
+    },
+    outGrid: {
+        //margin: "10%",
+        padding: theme.spacing(2),
+        //textAlign: 'center',
+        color: theme.palette.text.secondary,
+        // backgroundImage: `url(${Background})`,
+        // backgroundSize: '100%, 100%',
+        // backgroundRepeat: 'no-repeat',
+
+    }
+});
 
 class Login extends Component {
 
@@ -14,7 +50,7 @@ class Login extends Component {
             currentUser: "undefined",
             username: null,
             password: null,
-            loggedIn: false
+            loggedIn: false,
         }
         //this.submitHandler = this.submitHandler.bind(this)
 
@@ -22,14 +58,23 @@ class Login extends Component {
 
     submitHandler = () => {
         this.props.dispatch(userActions.login(this.state.username, this.state.password));
-        this.props.history.push("/main");
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.loggedIn !== this.state.loggedIn) {
+            this.setState(
+                {
+                    username: nextProps.user,
+                    loggedIn: nextProps.loggedIn
+                });
+        }
     }
 
     changeHandler = ((event) => {
         this.setState({ [event.target.name]: event.target.value });
     })
 
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
             currentUser: this.props.user,
             loggedIn: this.props.loggedIn
@@ -39,43 +84,45 @@ class Login extends Component {
     render() {
         if (this.state.loggedIn) {
             return (
-                <Redirect to = '/main'></Redirect>
+                <Redirect to='/'></Redirect>
             )
         } else {
             var username = this.state.username;
             var password = this.state.password;
 
-        
-            return (
-                <div>
-                    <Form onSubmit={this.submitHandler}>
-                        <Form.Field>
-                            <p>Username</p>
-                            <Input
-                                name="username"
-                                value={username}
-                                onChange={this.changeHandler}
-                                type="text"
-                                placeholder="admin"
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <p>Password</p>
-                            <Input
-                                name="password"
-                                value={password}
-                                onChange={this.changeHandler}
-                                type="password"
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <Checkbox label='I agree to the Terms and Conditions' />
-                        </Form.Field>
-                        <div className = "buttonContainer">
-                            <Button type='submit'>Submit</Button>
+            var classes = this.props.classes
 
-                        </div>
-                    </Form >
+            return (
+                <div className={classes.root}>
+                    <Paper className={classes.outGrid}>
+                        <Form onSubmit={this.submitHandler}>
+                            <Form.Field>
+                                <p>Username</p>
+                                <Input
+                                    name="username"
+                                    value={username}
+                                    onChange={this.changeHandler}
+                                    type="text"
+                                    placeholder="admin"
+                                />
+                            </Form.Field>
+                            <Form.Field>
+                                <p>Password</p>
+                                <Input
+                                    name="password"
+                                    value={password}
+                                    onChange={this.changeHandler}
+                                    type="password"
+                                />
+                            </Form.Field>
+                            <div className="buttonContainer">
+                                <Button type='submit'>Submit</Button>
+
+                            </div>
+                        </Form >
+                    </Paper>
+
+
                 </div>
 
 
@@ -98,7 +145,7 @@ function mapStateToProps(state) {
 
 
 const LoginPage = (props) => {
-    return(
+    return (
         <div className="signInContainer">
             <Login {...props}></Login>
         </div>
@@ -110,4 +157,4 @@ const connectedLoginPage = connect(mapStateToProps)(LoginPage);
 
 
 
-export default connectedLoginPage;
+export default withStyles(styles)(connectedLoginPage);

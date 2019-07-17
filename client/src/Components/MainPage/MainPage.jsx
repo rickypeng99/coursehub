@@ -31,7 +31,7 @@ class MainPage extends Component {
     }
 
     login = (() => {
-        this.props.history.push('/')
+        this.props.history.push('/login')
     })
 
     logout = (() => {

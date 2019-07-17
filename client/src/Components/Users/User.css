@@ -9,6 +9,8 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('../../Common/images/background_login.jpg');
+    background-size: cover;
 }
 
 .buttonContainer{
