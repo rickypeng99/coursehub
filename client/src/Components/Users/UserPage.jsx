@@ -10,6 +10,8 @@ import { Typography } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
+
+
 const styles = theme => ({
     root: {
         margin: "100px",
@@ -49,7 +51,7 @@ const styles = theme => ({
     },
     image: {
         height: "50%",
-        width: '100%',
+        width: '50%',
         marginBottom: "5%"
     },
     vertical: {
@@ -78,9 +80,12 @@ class User extends Component {
             gpa: null,
             registered: false,
             comments: [],
+            image: require('../../Common/images/user_images/default.jpg'),
+            file: null,
             loaded: false,
         }
     }
+  fileInputRef = React.createRef();
 
     componentDidMount() {
         var comments = []
@@ -118,6 +123,18 @@ class User extends Component {
         comments.push(comment1)
         comments.push(comment2)
 
+        //Checking if the user has an image
+
+        const tryRequire = (path) => {
+            try {
+                return require(`${path}`);
+            } catch (err) {
+                return require('../../Common/images/user_images/default.jpg');
+            }
+        };
+        const imageAddress = tryRequire('../../Common/images/user_images/' + netId + '.jpg')
+
+        //requests to get the user's detail
         axios.get('api/user/' + netId)
             .then(result => {
                 console.log(result.data.data);
@@ -143,6 +160,7 @@ class User extends Component {
                     //gpa: result.data.,
                     registered: false,
                     comments: comments,
+                    image: imageAddress,
                     loaded: true
                 })
             })
@@ -166,10 +184,17 @@ class User extends Component {
         }
     }
 
+    fileChange = e => {
+        this.setState({ file: e.target.files[0] }, () => {
+          console.log("File chosen --->", this.state.file);
+        });
+    };
+
     render() {
         var {
-            netId, username, firstName, lastName, major, classTaking, comments, description, loaded
+            netId, username, firstName, lastName, major, classTaking, comments, description, loaded, image
         } = this.state
+
         if (loaded) {
             var classes = this.props.classes
 
@@ -193,12 +218,12 @@ class User extends Component {
             const getCoursesList = classTaking.map((course, index) => {
                 //console.log(course)
                 return (
-                    <li className={classes.course}>
+                    <List.Item className={classes.course}>
                         <Card className={classes.courseCard}>
                             <Card.Content header={course.name} color='red' />
                             <Card.Content description={course.crn} />
                         </Card>
-                    </li>
+                    </List.Item>
 
                 )
             })
@@ -249,7 +274,7 @@ class User extends Component {
                                         <Grid item xs={12}>
                                             <Paper className={classes.paper}>
                                                 <Typography variant='h4' color='primary'>Major</Typography>
-                                                <List selection>
+                                                {/* <List selection> */}
 
                                                     <List.Item>
                                                         <Label color='red' horizontal>
@@ -260,23 +285,18 @@ class User extends Component {
 
                                                         </Typography>
                                                     </List.Item>
-                                                </List>
+                                                {/* </List> */}
                                             </Paper>
                                         </Grid>
 
-                                        <Grid item xs={12}>
-                                            <Paper className={classes.paper}>
-                                                <Typography variant='h4' color='primary'>About me</Typography>
-                                                <Typography variant='p' color='primary'>{description}</Typography>
-                                            </Paper>
-                                        </Grid>
+                                        
 
                                         <Grid item xs={12}>
                                             <Paper className={classes.paper}>
-                                                <Typography variant='h4' color='primary'>Classes taking (Fall 2019)</Typography>
-                                                <ul horizontal selection className={classes.list}>
+                                                <Typography variant='h4' color='primary'>Groups / Matching queue</Typography>
+                                                {/* <ul horizontal selection className={classes.list}> */}
                                                     {getCoursesList}
-                                                </ul>
+                                                {/* </ul> */}
                                             </Paper>
                                         </Grid>
                                     </Grid>
@@ -288,15 +308,25 @@ class User extends Component {
 
                                         <Grid item xs={12}>
                                             <Paper className={classes.paper_image}>
-                                                
-                                                <img className={classes.image} src={require('../Users/Ricky.jpg')} onDragStart={this.preventDragHandler} />
-                                                <Button>Change profile photo</Button>
+
+                                                <img className={classes.image} src={image} onDragStart={this.preventDragHandler} />
+                                                <Button
+                                                    content="Change Profile Picture"
+                                                    icon="file"
+                                                    onClick={() => this.fileInputRef.current.click()}
+                                                />
+                                                <input
+                                                    ref={this.fileInputRef}
+                                                    type="file"
+                                                    hidden
+                                                    onChange={this.fileChange}
+                                                />
                                             </Paper>
                                         </Grid>
 
 
 
-                                        <Grid item xs={12}>
+                                        {/* <Grid item xs={12}>
                                             <Paper className={classes.paper_image}>
                                                 <List horizontal>
                                                     <List.Item>
@@ -314,14 +344,13 @@ class User extends Component {
                                                 </List>
 
                                             </Paper>
-                                        </Grid>
+                                        </Grid> */}
 
                                         <Grid item xs={12}>
                                             <Paper className={classes.paper}>
-                                                <p>5</p>
-
+                                                <Typography variant='h4' color='primary'>About me</Typography>
+                                                <Typography variant='p' color='primary'>{description}</Typography>
                                             </Paper>
-
                                         </Grid>
                                     </Grid>
                                 </Grid>

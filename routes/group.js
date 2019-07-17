@@ -1,8 +1,7 @@
-module.exports = function (router, connection) {
-    
-    
-    
-    return router;
+/**
+ * Dealing with joining or managing groups
+ * 
+ */
 
 
-}
+ 

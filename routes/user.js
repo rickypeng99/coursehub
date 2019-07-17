@@ -92,7 +92,7 @@ module.exports = function (router, connection) {
     userRoute.get((req, res) => {
         connection.query('SELECT * FROM users', function (error, results, fields) {
             if (error) {
-                res.status(404).send({ data: [], message: "404: userRouteGet" })
+                res.status(404).send({ data: [], message: "Error in getting users" })
             }
             else {
                 res.status(200).send({ data: results, message: "Retrieved all users" })
