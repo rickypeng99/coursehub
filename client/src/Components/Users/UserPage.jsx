@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Input, Checkbox, Dropdown, Label, List, Card, Image, Rating, SearchResults } from 'semantic-ui-react';
+import { Form, Button, Input, Checkbox, Dropdown, Label, List, Card, Image, Rating, SearchResults, TextArea, Dimmer, Segment, Header } from 'semantic-ui-react';
 import { userActions } from '../../Store/actions/userActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
@@ -70,7 +70,11 @@ class User extends Component {
         super(props);
 
         this.state = {
-            username: null, // netid of the curren user
+            username: null, // netid of the current user
+            loggedIn: false,
+            /**
+             * basic info of this user
+             */
             netId: null,
             firstName: null,
             lastName: null,
@@ -79,12 +83,27 @@ class User extends Component {
             gpa: null,
             registered: false,
             comments: [],
+            /**
+             * for uploading images
+             */
             image: require('../../Common/images/user_images/default.jpg'),
             file: null,
+            /**
+             * checking if every async stuff have been loaded
+             */
             loaded: false,
+            /**
+             * comment section
+             */
+            commentsLoaded: false,
+            commenting: null, //contents to comment
+            efficiency: null,
+            communication: null,
+            responsiveness: null
+
         }
     }
-  fileInputRef = React.createRef();
+    fileInputRef = React.createRef();
 
     componentDidMount() {
         var comments = []
@@ -98,31 +117,11 @@ class User extends Component {
 
         var netId = this.props.match.params.id
 
-        //hardcoding comments
-        var comment1 = {
-            responsiveness: 5,
-            efficiency: 5,
-            communication: 5,
-            handsome: 5,
-            text: "Ruiqi is an awesome dude!",
-            date: currentDate,
-            givenby: "Bill Gates"
-        }
-
-        var comment2 = {
-            responsiveness: 5,
-            efficiency: 5,
-            communication: 5,
-            handsome: 5,
-            text: "I love Ruiqi, he is so awesome!",
-            date: currentDate,
-            givenby: "Mark Zuckerburg"
-        }
-
-        comments.push(comment1)
-        comments.push(comment2)
-
-        //Checking if the user has an image
+        this.setState({
+            username: this.props.user,
+            loggedIn: this.props.loggedIn
+        })
+        //Checking if the user has an image, will be implemented later in the backend
 
         const tryRequire = (path) => {
             try {
@@ -158,7 +157,6 @@ class User extends Component {
                         }],
                     //gpa: result.data.,
                     registered: false,
-                    comments: comments,
                     image: imageAddress,
                     loaded: true
                 })
@@ -167,6 +165,14 @@ class User extends Component {
                 console.log(error);
             })
 
+        axios.get('api/user/' + netId + '/comment')
+            .then(result => {
+                this.setState({
+                    comments: result.data.data,
+                    commentsLoaded: true,
+
+                })
+            })
 
 
 
@@ -177,6 +183,13 @@ class User extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if (nextProps.loggedIn !== this.state.loggedIn) {
+            this.setState(
+                {
+                    username: nextProps.user,
+                    loggedIn: nextProps.loggedIn
+                });
+        }
         if (nextProps.location !== this.props.location) {
             window.location.reload();
 
@@ -185,20 +198,70 @@ class User extends Component {
 
     fileChange = e => {
         this.setState({ file: e.target.files[0] }, () => {
-          console.log("File chosen --->", this.state.file);
+            console.log("File chosen --->", this.state.file);
         });
     };
 
+    submitHandler = (event) => {
+        axios.post('api/comment', {
+            user_id: this.state.username,
+            efficiency: this.state.efficiency,
+            responsiveness: this.state.responsiveness,
+            communication: this.state.communication,
+            content: this.state.commenting,
+            course_CRN: 30109,
+            receiver: this.state.netId
+        })
+        .then((response) => {
+            var comments = this.state.comments
+            comments.push(response.data.data)
+            this.setState({
+                comments: comments
+            })
+        })
+        .catch((error) => {
+            console.log("error")
+        })
+    }
+
+    /**
+     * Getting the values from the rating sections
+     */
+    changeHandler = ((event) => {
+        this.setState({ [event.target.name]: event.target.value });
+    })
+
+    efficiencyHandler = (event, data) => {
+        this.setState({
+            efficiency: data.rating
+        })
+    }
+
+    communicationHandler = (event, data) => {
+        this.setState({
+            communication: data.rating
+        })
+    }
+
+    responsivenessHandler = (event, data) => {
+        this.setState({
+            responsiveness: data.rating
+        })
+    }
+    login = (() => {
+        this.props.history.push('/login')
+    })
+
     render() {
         var {
-            netId, username, firstName, lastName, major, classTaking, comments, description, loaded, image
+            netId, username, loggedIn, firstName, lastName, major, classTaking, comments, description, loaded, image, commenting, commentsLoaded, efficiency, responsiveness, communication
         } = this.state
 
         if (loaded) {
             var classes = this.props.classes
 
-            console.log("hahahahaha" + firstName)
-
+            console.log(loggedIn)
+            console.log(username)
 
             // const getMajorList = major.map((single, index) => {
             //     return (
@@ -227,6 +290,21 @@ class User extends Component {
                 )
             })
 
+            const showComments = () => {
+                if (commentsLoaded) {
+                    return (
+                        <List relaxed='very' animated>
+                            {getCommentList}
+                        </List>
+                    )
+
+                } else {
+                    return (
+                        <p>Loading comments</p>
+                    )
+                }
+            }
+
             const getCommentList = comments.map((comment, index) => {
                 return (
                     <List.Item className={classes.comment}>
@@ -236,21 +314,22 @@ class User extends Component {
                             <Rating icon="star" defaultRating={comment.efficiency} maxRating={5} disabled />
                             <Typography> Communication: </Typography>
                             <Rating icon="star" defaultRating={comment.communication} maxRating={5} disabled />
-                            <Typography> Handsomeness: </Typography>
-                            <Rating icon="star" defaultRating={comment.handsome} maxRating={5} disabled />
                             <Typography> Responsiveness: </Typography>
                             <Rating icon="star" defaultRating={comment.responsiveness} maxRating={5} disabled />
                         </div>
                         <List.Content>
-                            <List.Header>{comment.givenby}</List.Header>
-                            <p>{" Commented on " + comment.date}</p>
+                            <List.Header>{comment.user_id}</List.Header>
+                            <p>{" on course with CRN: " + comment.course_CRN}</p>
+                            {/* <p>{" Commented on " + comment.date}</p> */}
                             <List.Description>
-                                {comment.text}
+                                {comment.content}
                             </List.Description>
                         </List.Content>
                     </List.Item>
                 )
             })
+
+            const commentDisabled = commenting == null || commenting.length == 0 || efficiency == null || responsiveness == null || communication == null;
 
 
             return (
@@ -275,26 +354,26 @@ class User extends Component {
                                                 <Typography variant='h4' color='primary'>Major</Typography>
                                                 {/* <List selection> */}
 
-                                                    <List.Item>
-                                                        <Label color='red' horizontal>
-                                                            {major.substring(major.indexOf('-') + 1)}
-                                                        </Label>
-                                                        <Typography color="primary">
-                                                            {major}
+                                                <List.Item select>
+                                                    <Label color='red' horizontal>
+                                                        {major.substring(major.indexOf('-') + 1)}
+                                                    </Label>
+                                                    <Typography color="primary">
+                                                        {major}
 
-                                                        </Typography>
-                                                    </List.Item>
+                                                    </Typography>
+                                                </List.Item>
                                                 {/* </List> */}
                                             </Paper>
                                         </Grid>
 
-                                        
+
 
                                         <Grid item xs={12}>
                                             <Paper className={classes.paper}>
                                                 <Typography variant='h4' color='primary'>Groups / Matching queue</Typography>
                                                 {/* <ul horizontal selection className={classes.list}> */}
-                                                    {getCoursesList}
+                                                {getCoursesList}
                                                 {/* </ul> */}
                                             </Paper>
                                         </Grid>
@@ -303,8 +382,6 @@ class User extends Component {
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Grid container spacing={2} direction="column">
-
-
                                         <Grid item xs={12}>
                                             <Paper className={classes.paper_image}>
 
@@ -327,20 +404,6 @@ class User extends Component {
 
                                         {/* <Grid item xs={12}>
                                             <Paper className={classes.paper_image}>
-                                                <List horizontal>
-                                                    <List.Item>
-                                                        <Button>Follow</Button>
-
-                                                    </List.Item>
-                                                    <List.Item>
-                                                        <Button>Follow</Button>
-
-                                                    </List.Item>
-                                                    <List.Item>
-                                                        <Button>Follow</Button>
-
-                                                    </List.Item>
-                                                </List>
 
                                             </Paper>
                                         </Grid> */}
@@ -361,9 +424,48 @@ class User extends Component {
                                 <Grid item xs={12}>
                                     <Paper className={classes.paper}>
                                         <Typography variant='h4' color='primary'>Comments</Typography>
-                                        <List relaxed='very' animated>
-                                            {getCommentList}
-                                        </List>
+                                        <Dimmer.Dimmable active={!loggedIn}>
+                                            <Form onSubmit={this.submitHandler}>
+                                                <Form.Field>
+                                                    <TextArea
+                                                        placeholder='Please comment on your teammate!'
+                                                        name='commenting'
+                                                        onChange={this.changeHandler}
+                                                        type="text"
+                                                        value={commenting} />
+                                                </Form.Field>
+                                                <Form.Field>
+                                                    <Typography variant='p' color='primary'>Efficiency: </Typography>
+
+                                                    <Rating icon="star" defaultRating={0} maxRating={5} onRate={this.efficiencyHandler} />
+                                                    <Typography variant='p' color='primary'>Communication: </Typography>
+
+                                                    <Rating icon="star" defaultRating={0} maxRating={5} onRate={this.communicationHandler} />
+                                                    <Typography variant='p' color='primary'>Responsiveness: </Typography>
+
+                                                    <Rating icon="star" defaultRating={0} maxRating={5} onRate={this.responsivenessHandler} />
+                                                </Form.Field>
+
+                                                <Button
+                                                    type='submit'
+                                                    disabled = {commentDisabled}
+                                                >Comment</Button>
+                                            </Form>
+
+                                            <Dimmer active={!loggedIn}>
+                                                <Header as='h2' icon inverted>
+                                                    Please log in to comment!
+                                                </Header>
+                                                <br></br>
+                                                <Button onClick={this.login}>Login</Button>
+                                            </Dimmer>
+
+                                        </Dimmer.Dimmable>
+
+                                        <br></br>
+                                        <Typography variant='h5' color='primary'>Previous comments</Typography>
+                                        {showComments()}
+
                                     </Paper>
                                 </Grid>
                             </Grid>

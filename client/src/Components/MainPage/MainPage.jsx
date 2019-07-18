@@ -61,7 +61,7 @@ class MainPage extends Component {
         } else {
             return (
                 <div>
-                    <p>Fuck</p>
+                    <p>This is the test main page, please log in!</p>
                     <Button onClick={this.login}>Login</Button>
                 </div>
 

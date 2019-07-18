@@ -96,8 +96,10 @@ module.exports = function (router, connection) {
     userCommentsRoute.get((req, res) => {
         var net_id = req.params.id;
         connection.query('SELECT * FROM comments WHERE comment_id IN (SELECT comment_id FROM users_comments WHERE net_id = ?)', net_id, function (error, results, fields) {
-            if (error || results.length < 1) {
-                res.status(404).send({ data: [], message: "404: Couldn't find user with netId " + net_id })
+            if (error) {
+                res.status(500).send({ data: [], message: "500: Server error in user comments " + error})
+            } else if(results.length < 1){
+                res.status(200).send({ data: [], message: "no comment found from user with netId " + net_id })
             }
             else {
                 res.status(200).send({ data: results, message: "User's comments with user's id " + net_id + " returned" })

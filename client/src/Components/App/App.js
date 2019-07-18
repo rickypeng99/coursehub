@@ -12,7 +12,7 @@ import connectedRegisterPage from "../Users/Register"
 
 import ConnectedMenuAppBar from "../AppBar/AppBar"
 import connectedUserPage from "../Users/UserPage"
-
+import connectedSettingPage from "../Users/UserSettings"
 import connectedCoursePage from "../Course/Course"
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -36,13 +36,14 @@ class App extends Component {
           <ConnectedMenuAppBar />
 
 
-        <style>{'body { background-color: #f0f0f0; }'}</style>
+        <style>{'body { background-color: #f0f0f0;}'}</style>
 
         <Switch>
           <Route exact path="/login" component={connectedLoginPage} />
           <Route exact path="/" component={connectedMainPage} />
           <Route exact path="/register" component={connectedRegisterPage} />
           <Route exact path="/user/:id" component={connectedUserPage}/>
+          <Route exact path="/user/:id/settings" component = {connectedSettingPage}/>
           <Route exact path="/course/:id" component={connectedCoursePage}/>
         </Switch>
         </ThemeProvider>

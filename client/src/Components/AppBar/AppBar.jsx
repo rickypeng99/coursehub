@@ -1,105 +1,3 @@
-// import React, {Component} from 'react';
-// import { withStyles } from '@material-ui/core/styles';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
-// import { connect } from 'react-redux';
-
-// import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
-// import Button from '@material-ui/core/Button';
-
-// const styles = theme => ({    
-//     root: {
-//         flexGrow: 1,
-//     },
-//     menuButton: {
-//         marginRight: theme.spacing(2),
-//     },
-//     title: {
-//         flexGrow: 1,
-//     },
-// });
-
-
-
-// class MenuAppBar extends Component{
-//     // const classes = useStyles();
-//     // var loggedIn = props.loggedIn;
-//     // var username = props.username;
-//     //console.log(props.username)
-
-//     constructor(props){
-//         super(props);
-//         this.state = {
-//             loggedIn: this.props.loggedIn,
-//             username: this.props.username
-//         }
-//     }
-
-
-//     //console.log(username)
-//     render(){
-
-
-//         const imgStyle = {
-//             //width: "50%",
-//             height: "50px",
-//             margin: "10px"
-//         }
-
-//         const showUsername = () => {
-//             if(loggedIn){
-//                 return(
-//                     <p>{username}</p>
-//                 )
-//             }
-//         }
-
-
-//         return (
-//             <div className={classes.root} >
-//                 <AppBar position="fixed">
-//                     <Toolbar >
-//                         {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu" >
-//                             <MenuIcon />
-//                         </IconButton> */}
-//                         <img style={imgStyle} src={require('../../Common/images/logo.png')} />
-//                         <Typography variant="h6" className={classes.title}>
-//                             Classes
-//                         </Typography>
-//                         {/* <div>
-//                             <Button color="inherit" onClick>Login</Button>
-//                         </div> */}
-//                         {
-//                             <div>
-//                                 {showUsername}
-//                             </div>
-//                         }
-//                     </Toolbar>
-//                 </AppBar>
-//             </div>
-//         );
-//     }
-
-
-// }
-
-
-// function mapStateToProps(state) {
-//     const { user, loggedIn } = state.auth;
-//     return {
-//         user, loggedIn
-//     };
-// };
-
-// const ConnectedMenuAppBar = connect(mapStateToProps)(MenuAppBar);
-
-
-
-
-// export default withStyles(styles)(ConnectedMenuAppBar);
-
 
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
@@ -117,7 +15,7 @@ import Menu from '@material-ui/core/Menu';
 import { connect } from 'react-redux';
 //import { getCookie, setCookie } from '../../Common/cookie';
 import { userActions } from '../../Store/actions/userActions';
-
+import {withRouter} from 'react-router-dom';
 
 const styles = {
     root: {
@@ -146,20 +44,33 @@ const styles = {
 };
 
 class MenuAppBar extends React.Component {
-    state = {
-        auth: false,
-        anchorEl: false,
-        username: "",
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            auth: false,
+            anchorEl: false,
+            username: "",
+
+        }
+    }
+
+    redirect = (() => {
+        this.props.history.push('/')
+    })
 
     handleMenu = event => {
-        console.log("fuck")
+        //console.log("fuck")
         this.setState({ anchorEl: event.currentTarget });
     };
 
     handleClose = () => {
         this.setState({ anchorEl: null });
     };
+
+    handleMyProfile = () => {
+        this.setState({ anchorEl: null });
+        this.props.history.push('/user/' + this.state.username)
+    }
 
     logout = () => {
         this.props.dispatch(userActions.logout());
@@ -191,7 +102,7 @@ class MenuAppBar extends React.Component {
     preventDragHandler = (e) => {
         e.preventDefault();
     }
-
+    
     render() {
         const { classes } = this.props;
         const { auth, anchorEl } = this.state;
@@ -225,7 +136,7 @@ class MenuAppBar extends React.Component {
                             open={open}
                             onClose={this.handleClose}
                         >
-                            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                            <MenuItem onClick={this.handleMyProfile}>Profile</MenuItem>
                             <MenuItem onClick={this.handleClose}>My account</MenuItem>
                             <MenuItem onClick={this.logout}>Log out</MenuItem>
                         </Menu>
@@ -239,14 +150,15 @@ class MenuAppBar extends React.Component {
             height: "50px",
             margin: "10px",
             userDrag: "none",
-            userSelect: "none"
+            userSelect: "none",
+            cursor: "pointer"
         }
 
-        
-    return(
 
-            <div className = { classes.root } >
-            {/* <FormGroup>
+        return (
+
+            <div className={classes.root} >
+                {/* <FormGroup>
           <FormControlLabel
             control={
               <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
@@ -254,14 +166,14 @@ class MenuAppBar extends React.Component {
             label={auth ? 'Logout' : 'Login'}
           />
         </FormGroup> */}
-            < AppBar position = "fixed" >
-                <Toolbar className={classes.toolBar}>
-                    <div className={classes.toolBar2}>
-                        <img style={imgStyle} src={require('../../Common/images/logo.png') } onDragStart={this.preventDragHandler}/>
-                    </div>
+                < AppBar position="fixed" >
+                    <Toolbar className={classes.toolBar}>
+                        <div className={classes.toolBar2}>
+                            <img style={imgStyle} src={require('../../Common/images/logo.png')} onDragStart={this.preventDragHandler} onClick={this.redirect} />
+                        </div>
 
-                    {showUserOrLogin()}
-                </Toolbar>
+                        {showUserOrLogin()}
+                    </Toolbar>
                 </AppBar>
             </div >
         );
@@ -280,4 +192,4 @@ const ConnectedMenuAppBar = connect(mapStateToProps)(MenuAppBar);
 
 
 
-export default withStyles(styles)(ConnectedMenuAppBar);
+export default withRouter(withStyles(styles)(ConnectedMenuAppBar));
