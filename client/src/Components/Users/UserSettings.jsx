@@ -8,6 +8,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import file from '../../Common/data/majors'
+import { Typography } from '@material-ui/core';
+
 require('./User.css');
 
 const styles = theme => ({
@@ -90,7 +92,7 @@ class UserSetting extends Component {
         })
             .then(result => {
                 console.log(result.data.data)
-                this.props.history.push('/')
+                this.props.history.push('/user/' + netId)
             })
             .catch(error => {
                 alert(error.message)
@@ -166,8 +168,8 @@ class UserSetting extends Component {
 
 
             )
-        } else{
-            return(
+        } else {
+            return (
                 <p>Loading</p>
             )
         }
@@ -193,83 +195,96 @@ function SettingForm(props) {
 
     return (
         <div className={classes.root}>
-            <Paper className={classes.outGrid}>
+            <Grid container spacing={1} direction="column">
 
-                <Form onSubmit={submitHandler}>
+                <Grid item xs={12}>
+                    <Paper className={classes.outGrid}>
+                        <Typography variant='h4'>Settings</Typography>
+                    </Paper>
+                </Grid>
 
+                <Grid item xs={12}>
+                    <Paper className={classes.outGrid}>
 
-
-                    <Form.Field className={classes.input}>
-                        <p>First name</p>
-                        <Input
-
-                            name="firstName"
-                            value={firstName}
-                            onChange={changeHandler}
-                            type="text"
-                            placeholder="James"
-                        />
-
-                    </Form.Field>
-                    <Form.Field className={classes.input}>
-                        <p>Middle name</p>
-                        <Input
-                            name="middleName"
-                            value={middleName}
-                            onChange={changeHandler}
-                            type="text"
-                            placeholder="D"
-                        />
-
-                    </Form.Field>
-                    <Form.Field className={classes.input}>
-                        <p>Last name</p>
-                        <Input
-                            name="lastName"
-                            value={lastName}
-                            onChange={changeHandler}
-                            type="text"
-                            placeholder="Smith"
-                        />
-
-                    </Form.Field>
-
-
-                    <Form.Field className={classes.input}>
-                        <p>Major</p>
-                        <Dropdown
-                            placeholder="Select Major"
-                            defaultValue={major}
-                            search
-                            selection
-                            onChange={dropDownMajorHandler}
-                            options={majors}
-                        //value={major}
-                        />
-                    </Form.Field>
-
-
-                    <Form.Field className={classes.input}>
-                        <p>About me</p>
-                        <TextArea
-                            placeholder='Tell us more'
-                            name='description'
-                            onChange={changeHandler}
-                            type="text"
-                            value={description} />
-                    </Form.Field>
-
-
-                    <div className="buttonContainer">
-                        <Button type='submit'>Submit</Button>
-
-                    </div>
+                        <Form onSubmit={submitHandler}>
 
 
 
+                            <Form.Field className={classes.input}>
+                                <p>First name</p>
+                                <Input
 
-                </Form >
-            </Paper>
+                                    name="firstName"
+                                    value={firstName}
+                                    onChange={changeHandler}
+                                    type="text"
+                                    placeholder="James"
+                                />
+
+                            </Form.Field>
+                            <Form.Field className={classes.input}>
+                                <p>Middle name</p>
+                                <Input
+                                    name="middleName"
+                                    value={middleName}
+                                    onChange={changeHandler}
+                                    type="text"
+                                    placeholder="D"
+                                />
+
+                            </Form.Field>
+                            <Form.Field className={classes.input}>
+                                <p>Last name</p>
+                                <Input
+                                    name="lastName"
+                                    value={lastName}
+                                    onChange={changeHandler}
+                                    type="text"
+                                    placeholder="Smith"
+                                />
+
+                            </Form.Field>
+
+
+                            <Form.Field className={classes.input}>
+                                <p>Major</p>
+                                <Dropdown
+                                    placeholder="Select Major"
+                                    defaultValue={major}
+                                    search
+                                    selection
+                                    onChange={dropDownMajorHandler}
+                                    options={majors}
+                                //value={major}
+                                />
+                            </Form.Field>
+
+
+                            <Form.Field className={classes.input}>
+                                <p>About me</p>
+                                <TextArea
+                                    placeholder='Tell us more'
+                                    name='description'
+                                    onChange={changeHandler}
+                                    type="text"
+                                    value={description} />
+                            </Form.Field>
+
+
+                            <div className="buttonContainer">
+                                <Button type='submit'>Submit</Button>
+
+                            </div>
+
+
+
+
+                        </Form >
+                    </Paper>
+                </Grid>
+            </Grid>
+
+
         </div>
     )
 }

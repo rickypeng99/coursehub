@@ -102,6 +102,7 @@ class Register extends Component {
         })
             .then(result => {
                 console.log(result.data.data)
+                this.props.history.push('/login')
             })
             .catch(error => {
                 alert(error.message)
@@ -163,7 +164,7 @@ class Register extends Component {
     render() {
         if (this.state.loggedIn) {
             return (
-                <Redirect to='/main'></Redirect>
+                <Redirect to='/'></Redirect>
             )
         } else {
             return (
