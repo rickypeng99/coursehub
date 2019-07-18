@@ -72,6 +72,11 @@ class MenuAppBar extends React.Component {
         this.props.history.push('/user/' + this.state.username)
     }
 
+    handleMyAccount = () => {
+        this.setState({ anchorEl: null });
+        this.props.history.push('/user/' + this.state.username + '/settings')
+    }
+
     logout = () => {
         this.props.dispatch(userActions.logout());
         this.setState({
@@ -137,7 +142,7 @@ class MenuAppBar extends React.Component {
                             onClose={this.handleClose}
                         >
                             <MenuItem onClick={this.handleMyProfile}>Profile</MenuItem>
-                            <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                            <MenuItem onClick={this.handleMyAccount}>My account</MenuItem>
                             <MenuItem onClick={this.logout}>Log out</MenuItem>
                         </Menu>
                     </div>

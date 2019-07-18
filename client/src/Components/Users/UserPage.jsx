@@ -212,16 +212,16 @@ class User extends Component {
             course_CRN: 30109,
             receiver: this.state.netId
         })
-        .then((response) => {
-            var comments = this.state.comments
-            comments.push(response.data.data)
-            this.setState({
-                comments: comments
+            .then((response) => {
+                var comments = this.state.comments
+                comments.push(response.data.data)
+                this.setState({
+                    comments: comments
+                })
             })
-        })
-        .catch((error) => {
-            console.log("error")
-        })
+            .catch((error) => {
+                console.log("error")
+            })
     }
 
     /**
@@ -252,6 +252,26 @@ class User extends Component {
         this.props.history.push('/login')
     })
 
+    deleteCommentHandler = (event, data) => {
+        var comment_id = event.target.value;
+        axios.delete('api/comment/' + comment_id)
+        .then(result => {
+            console.log("hi")
+            var comments = this.state.comments;
+            for(var i = 0; i < comments.length; i++){
+                if(comments[i].comment_id == comment_id){
+                    comments.splice(i, 1)
+                    break;
+                }
+            }
+            this.setState({
+                comments: comments
+            })
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
     render() {
         var {
             netId, username, loggedIn, firstName, lastName, major, classTaking, comments, description, loaded, image, commenting, commentsLoaded, efficiency, responsiveness, communication
@@ -293,7 +313,7 @@ class User extends Component {
             const showComments = () => {
                 if (commentsLoaded) {
                     return (
-                        <List relaxed='very' animated>
+                        <List animated>
                             {getCommentList}
                         </List>
                     )
@@ -306,6 +326,7 @@ class User extends Component {
             }
 
             const getCommentList = comments.map((comment, index) => {
+                const disabled = comment.user_id != username
                 return (
                     <List.Item className={classes.comment}>
                         <div className={classes.vertical}>
@@ -316,21 +337,37 @@ class User extends Component {
                             <Rating icon="star" defaultRating={comment.communication} maxRating={5} disabled />
                             <Typography> Responsiveness: </Typography>
                             <Rating icon="star" defaultRating={comment.responsiveness} maxRating={5} disabled />
+
                         </div>
                         <List.Content>
                             <List.Header>{comment.user_id}</List.Header>
                             <p>{" on course with CRN: " + comment.course_CRN}</p>
                             {/* <p>{" Commented on " + comment.date}</p> */}
+                            <Button color = "red" floated='right' disabled = {disabled} value = {comment.comment_id} onClick = {this.deleteCommentHandler}>Delete</Button>
+
                             <List.Description>
                                 {comment.content}
                             </List.Description>
                         </List.Content>
+
                     </List.Item>
                 )
             })
 
             const commentDisabled = commenting == null || commenting.length == 0 || efficiency == null || responsiveness == null || communication == null;
 
+            /**
+             * make descriptions to correspond the \n
+             * @param {*} description input description
+             */
+            const formatDescription = ((description) => {
+                var array = description.split("\n");
+                return array.map((each, index) => {
+                    return (
+                        <p>{each}</p>
+                    )
+                })
+            })
 
             return (
                 <div className={classes.root}>
@@ -411,7 +448,7 @@ class User extends Component {
                                         <Grid item xs={12}>
                                             <Paper className={classes.paper}>
                                                 <Typography variant='h4' color='primary'>About me</Typography>
-                                                <Typography variant='p' color='primary'>{description}</Typography>
+                                                <Typography variant='p' color='primary'>{formatDescription(description)}</Typography>
                                             </Paper>
                                         </Grid>
                                     </Grid>
@@ -448,7 +485,7 @@ class User extends Component {
 
                                                 <Button
                                                     type='submit'
-                                                    disabled = {commentDisabled}
+                                                    disabled={commentDisabled}
                                                 >Comment</Button>
                                             </Form>
 
