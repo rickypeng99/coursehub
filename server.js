@@ -20,6 +20,12 @@ var app = express();
 // Use environment defined port or 4000
 var port = process.env.PORT || 4000;
 
+process.on('uncaughtException', function(err) {
+  // handle the error safely
+  console.log(err)
+})
+
+
 // Connect to a Mysql
 connection.connect();
 // connection.query('SELECT * FROM hero_stat', function(error, results, fields){
