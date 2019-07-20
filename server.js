@@ -21,11 +21,6 @@ var app = express();
 // Use environment defined port or 4000
 var port = process.env.PORT || 4000;
 
-process.on('uncaughtException', function(err) {
-  // handle the error safely
-  console.log(err)
-})
-
 
 // Connect to a Mysql
 connection.connect();
@@ -57,5 +52,23 @@ require('./routes')(app, router, connection);
 // Start the server
 app.timeout = 0;
 
-app.listen(port);
+var server = app.listen(port);
 console.log('Server running on port ' + port);
+
+
+process.on('uncaughtException', function(err) {
+  // handle the error safely
+  console.log(err)  
+  server.close();
+
+})
+
+
+server.on('close', function() {
+  console.log("restarting")
+  connection.connect();
+  app.timeout = 0;
+  server = app.listen(port);
+  console.log('Server running on port ' + port);
+
+});

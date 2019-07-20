@@ -77,7 +77,9 @@ class Course extends Component {
             crn: this.props.match.params.id,
             courseCode: undefined,
             courseName: undefined,
-            loaded: false
+            loaded: false,
+            groupLoaded: false,
+            queueLoaded: false
         }
     }
 

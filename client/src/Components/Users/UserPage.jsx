@@ -160,19 +160,24 @@ class User extends Component {
                     image: imageAddress,
                     loaded: true
                 })
+
+                axios.get('api/user/' + netId + '/comment')
+                    .then(result => {
+                        this.setState({
+                            comments: result.data.data,
+                            commentsLoaded: true,
+
+                        })
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
             })
             .catch(error => {
                 console.log(error);
             })
 
-        axios.get('api/user/' + netId + '/comment')
-            .then(result => {
-                this.setState({
-                    comments: result.data.data,
-                    commentsLoaded: true,
 
-                })
-            })
 
 
 
@@ -255,22 +260,22 @@ class User extends Component {
     deleteCommentHandler = (event, data) => {
         var comment_id = event.target.value;
         axios.delete('api/comment/' + comment_id)
-        .then(result => {
-            console.log("hi")
-            var comments = this.state.comments;
-            for(var i = 0; i < comments.length; i++){
-                if(comments[i].comment_id == comment_id){
-                    comments.splice(i, 1)
-                    break;
+            .then(result => {
+                console.log("hi")
+                var comments = this.state.comments;
+                for (var i = 0; i < comments.length; i++) {
+                    if (comments[i].comment_id == comment_id) {
+                        comments.splice(i, 1)
+                        break;
+                    }
                 }
-            }
-            this.setState({
-                comments: comments
+                this.setState({
+                    comments: comments
+                })
             })
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)
+            })
     }
     render() {
         var {
@@ -343,7 +348,7 @@ class User extends Component {
                             <List.Header>{comment.user_id}</List.Header>
                             <p>{" on course with CRN: " + comment.course_CRN}</p>
                             {/* <p>{" Commented on " + comment.date}</p> */}
-                            <Button color = "red" floated='right' disabled = {disabled} value = {comment.comment_id} onClick = {this.deleteCommentHandler}>Delete</Button>
+                            <Button color="red" floated='right' disabled={disabled} value={comment.comment_id} onClick={this.deleteCommentHandler}>Delete</Button>
 
                             <List.Description>
                                 {comment.content}
