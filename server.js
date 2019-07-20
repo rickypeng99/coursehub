@@ -2,6 +2,7 @@ var express = require('express'),
     router = express.Router(),
     bodyParser = require('body-parser'),
     mysql = require('mysql'),
+    shell = require('shelljs')
     //local mysql db connection
     connection = mysql.createConnection({
       host: 'coursehub.mysql.database.azure.com',
@@ -59,16 +60,13 @@ console.log('Server running on port ' + port);
 process.on('uncaughtException', function(err) {
   // handle the error safely
   console.log(err)  
-  server.close();
+  //server.close();
 
 })
 
 
-server.on('close', function() {
-  console.log("restarting")
-  connection.connect();
-  app.timeout = 0;
-  server = app.listen(port);
-  console.log('Server running on port ' + port);
+// server.on('close', function() {
+//   console.log("restarting")
+//   shell.exec('forever restart {/server.js}');
 
-});
+// });
