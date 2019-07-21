@@ -1,9 +1,9 @@
-module.exports = function (router, connection) {
+module.exports = function (router, pool) {
 
     commentRoute = router.route('/comment')
 
     commentRoute.get((req, res) => {
-        connection.query('SELECT * FROM comments', function (error, results, fields) {
+        pool.query('SELECT * FROM comments', function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "No comments returned!" })
             } else {
@@ -27,7 +27,7 @@ module.exports = function (router, connection) {
 
         var receiver = req.body.receiver
 
-        connection.query('INSERT into comments SET ?', comment, function (error, results, fields) {
+        pool.query('INSERT into comments SET ?', comment, function (error, results, fields) {
             if (error) {
                 res.status(500).send({ data: [], message: error })
             }
@@ -36,7 +36,7 @@ module.exports = function (router, connection) {
                     "net_id": receiver,
                     "comment_id": results.insertId
                 }
-                connection.query('INSERT into users_comments SET ?', commentRelation, function (error, results, fields) {
+                pool.query('INSERT into users_comments SET ?', commentRelation, function (error, results, fields) {
                     if (error) {
 
                     } else {
@@ -52,12 +52,12 @@ module.exports = function (router, connection) {
     commentIdRoute = router.route('/comment/:id')
     commentIdRoute.delete((req, res) => {
         var comment_id = req.params.id;
-        connection.query('DELETE FROM users_comments WHERE comment_id = ?', comment_id, function (error, results, fields) {
+        pool.query('DELETE FROM users_comments WHERE comment_id = ?', comment_id, function (error, results, fields) {
             if (error) {
                 res.status(500).send({ data: error, message: "deleting comments outside" + error });
 
             } else {
-                connection.query('DELETE FROM comments WHERE comment_id = ?', comment_id, function (error, results, fields) {
+                pool.query('DELETE FROM comments WHERE comment_id = ?', comment_id, function (error, results, fields) {
                     if (error) {
                         res.status(500).send({ data: error, message: "deleting comments inside" + error });
                     } else {

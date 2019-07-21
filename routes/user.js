@@ -11,7 +11,7 @@ var replaced = ((original, change) => {
 })
 
 
-module.exports = function (router, connection) {
+module.exports = function (router, pool) {
 
     var bcrypt = require('bcryptjs');
 
@@ -23,7 +23,7 @@ module.exports = function (router, connection) {
 
     userIdRoute.get((req, res) => {
         var net_id = req.params.id;
-        connection.query('SELECT * FROM users WHERE net_id = ?', net_id, function (error, results, fields) {
+        pool.query('SELECT * FROM users WHERE net_id = ?', net_id, function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "404: Couldn't find user with netId " + net_id })
             }
@@ -40,7 +40,7 @@ module.exports = function (router, connection) {
 
         //GET the user that we are trying to update
         var net_id = req.params.id;
-        connection.query('SELECT * FROM users WHERE net_id = ?', net_id, function (error, results, fields) {
+        pool.query('SELECT * FROM users WHERE net_id = ?', net_id, function (error, results, fields) {
             //couldn't find the user, thus couldn't update
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "404: Couldn't find user with netId " + net_id })
@@ -74,7 +74,7 @@ module.exports = function (router, connection) {
                 //update others
 
 
-                connection.query('UPDATE users SET password = ?, major = ?, first_name = ?, middle_name = ?, last_name = ?, description =? WHERE net_id = ?', [password, major, first_name, middle_name, last_name, description, net_id], function (error, results, fields) {
+                pool.query('UPDATE users SET password = ?, major = ?, first_name = ?, middle_name = ?, last_name = ?, description =? WHERE net_id = ?', [password, major, first_name, middle_name, last_name, description, net_id], function (error, results, fields) {
                     if (error || results.length < 1) {
                         res.status(404).send({ data: [], message: "404: Couldn't find user with netId " + net_id })
                     }
@@ -95,7 +95,7 @@ module.exports = function (router, connection) {
 
     userCommentsRoute.get((req, res) => {
         var net_id = req.params.id;
-        connection.query('SELECT * FROM comments WHERE comment_id IN (SELECT comment_id FROM users_comments WHERE net_id = ?)', net_id, function (error, results, fields) {
+        pool.query('SELECT * FROM comments WHERE comment_id IN (SELECT comment_id FROM users_comments WHERE net_id = ?)', net_id, function (error, results, fields) {
             if (error) {
                 res.status(500).send({ data: [], message: "500: Server error in user comments " + error})
             } else if(results.length < 1){
@@ -111,7 +111,7 @@ module.exports = function (router, connection) {
     var userRoute = router.route('/user');
     //get users' detail
     userRoute.get((req, res) => {
-        connection.query('SELECT * FROM users', function (error, results, fields) {
+        pool.query('SELECT * FROM users', function (error, results, fields) {
             if (error) {
                 res.status(404).send({ data: [], message: "Error in getting users" })
             }
@@ -138,7 +138,7 @@ module.exports = function (router, connection) {
             "internal_point": 500 + 200 * req.body.gpa,
             "password": hash
         }
-        connection.query('INSERT into users SET ?', users, function (error, results, fields) {
+        pool.query('INSERT into users SET ?', users, function (error, results, fields) {
             if (error) {
                 res.status(500).send({ data: [], message: error })
             }
@@ -154,7 +154,7 @@ module.exports = function (router, connection) {
     loginRoute.post((req, res) => {
         var net_id = req.body.net_id;
         var password = req.body.password;
-        connection.query('SELECT * FROM users WHERE net_id = ?', net_id, (error, results, fields) => {
+        pool.query('SELECT * FROM users WHERE net_id = ?', net_id, (error, results, fields) => {
             if (error) {
                 res.status(404).send({ data: [], message: error })
             }

@@ -2,14 +2,14 @@ var express = require('express'),
     router = express.Router(),
     bodyParser = require('body-parser'),
     mysql = require('mysql'),
-    shell = require('shelljs')
     //local mysql db connection
-    connection = mysql.createConnection({
+    pool = mysql.createPool({
+      connectionLimit : 10,
       host: 'coursehub.mysql.database.azure.com',
       user: 'coursehub@coursehub',
       password: '!Admin12345',
       database: 'coursehub',
-      port: 3306,
+      //port: 3306,
       ssl: true
     
       });
@@ -24,7 +24,7 @@ var port = process.env.PORT || 4000;
 
 
 // Connect to a Mysql
-connection.connect();
+//connection.connect();
 // connection.query('SELECT * FROM hero_stat', function(error, results, fields){
 //   if (error) throw error;
 //   console.log(results)
@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 
 
 // Use routes as a module (see index.js)
-require('./routes')(app, router, connection);
+require('./routes')(app, router, pool);
 
 // Start the server
 app.timeout = 0;

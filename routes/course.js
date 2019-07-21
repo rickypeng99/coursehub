@@ -1,4 +1,4 @@
-module.exports = function (router, connection) {
+module.exports = function (router, pool) {
 
 
     /**
@@ -9,7 +9,7 @@ module.exports = function (router, connection) {
 
 
     courseRoute.get((req, res) => {
-        connection.query('SELECT * FROM courses', function (error, results, fields) {
+        pool.query('SELECT * FROM courses', function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "Error in returning all courses"})
             }
@@ -28,7 +28,7 @@ module.exports = function (router, connection) {
 
         var crn = req.params.id;
 
-        connection.query('SELECT * FROM courses WHERE CRN = ?', crn, function (error, results, fields) {
+        pool.query('SELECT * FROM courses WHERE CRN = ?', crn, function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "404: Couldn't find course with crn " + crn })
             }
@@ -50,7 +50,7 @@ module.exports = function (router, connection) {
 
         var crn = req.params.id;
 
-        connection.query('SELECT * FROM groups WHERE course_CRN = ?', crn, function (error, results, fields) {
+        pool.query('SELECT * FROM groups WHERE course_CRN = ?', crn, function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "404: Couldn't find course with crn " + crn })
             }
@@ -67,7 +67,7 @@ module.exports = function (router, connection) {
 
         var crn = req.params.id;
 
-        connection.query('SELECT * FROM matching_queue WHERE course_CRN = ?', crn, function (error, results, fields) {
+        pool.query('SELECT * FROM matching_queue WHERE course_CRN = ?', crn, function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "404: Couldn't find course with crn " + crn })
             }
