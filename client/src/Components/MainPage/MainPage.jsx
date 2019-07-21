@@ -42,6 +42,10 @@ class MainPage extends Component {
         })
     })
 
+    register = (() => {
+        this.props.history.push('/register')
+    })
+
     render() {
 
         if (this.state.loggedIn) {
@@ -63,6 +67,7 @@ class MainPage extends Component {
                 <div>
                     <p>This is the test main page, please log in!</p>
                     <Button onClick={this.login}>Login</Button>
+                    <Button onClick={this.register}>Register</Button>
                 </div>
 
 
