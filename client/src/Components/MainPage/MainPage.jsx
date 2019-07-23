@@ -78,15 +78,17 @@ class MainPage extends Component {
     })
 
     queryHandler = ((event) => {
-        this.setState({ tempQuery: event.target.value})
+        this.setState({ tempQuery: event.target.value })
         //this.setState({ [event.target.name]: event.target.value });
 
     })
 
     searchHandler = (() => {
         var query = this.state.tempQuery;
-        this.setState({ query: query, 
-        searched: true});
+        this.setState({
+            query: query,
+            searched: true
+        });
     })
 
     enterCourse = ((value) => {
@@ -96,7 +98,7 @@ class MainPage extends Component {
 
 
         var query = this.state.tempQuery
-        var loaded= this.state
+        var loaded = this.state
 
         if (!this.state.loggedIn) {
             //console.log(this.state.username)
@@ -202,8 +204,8 @@ class MainPage extends Component {
 
 
                     )
-                } 
-                
+                }
+
                 else {
                     const imgStyle = {
                         //width: "50%",
@@ -215,7 +217,7 @@ class MainPage extends Component {
                     }
                     return (
                         <div style={mainStyleWithoutSearch}>
-                                <img style={imgStyle} src={require('../../Common/images/mainLogo.png')} onDragStart={this.preventDragHandler}/>
+                            {/* <img style={imgStyle} src={require('../../Common/images/mainLogo.png')} onDragStart={this.preventDragHandler} /> */}
 
                             <div style={inputBoxStyle}>
                                 <Input
@@ -235,18 +237,18 @@ class MainPage extends Component {
 
 
                             </div>
-                           
+
                         </div>
                     )
 
                 }
 
-             
-           
+
+
             }
 
-            else{
-                return(
+            else {
+                return (
                     <p>Loaidng</p>
                 )
             }
@@ -264,11 +266,11 @@ function mapStateToProps(state) {
 
 const mainPage = (props) => {
 
-    
+
 
     return (
 
-            <MainPage {...props}></MainPage>
+        <MainPage {...props}></MainPage>
 
     )
 }

@@ -101,6 +101,7 @@ class Course extends Component {
              */
 
             groupName: "",
+            modalOpen: false,
         }
     }
 
@@ -247,6 +248,10 @@ class Course extends Component {
         }
     }
 
+
+    /**
+     * Creating group modals 
+     */
     createGroup = (() => {
         console.log(this.state.groupName)
 
@@ -256,6 +261,14 @@ class Course extends Component {
         this.setState({groupName: event.target.value})
         //console.log(this.state.groupName)
 
+    })
+
+    handleOpen = (() => {
+        this.setState({modalOpen: true})
+    })
+
+    handleClose = (() => {
+        this.setState({modalOpen: false})
     })
 
     render() {
@@ -313,10 +326,17 @@ class Course extends Component {
             )
         })
 
+        //modal for creating groups
         const ModalModalExample = (() => {
             var lastName;
             return (
-                <Modal trigger={<Button className={classes.button} primary>Click to create a new group</Button>}>
+                <Modal 
+                trigger={
+                    <Button className={classes.button} primary onClick = {this.handleOpen}>Click to create a new group</Button>
+                }
+                open={this.state.modalOpen}
+                onClose={this.handleClose}
+                >
                     <Modal.Header>Create a group</Modal.Header>
                     <Modal.Content>
                             <p>Last name</p>
@@ -329,7 +349,7 @@ class Course extends Component {
                             />
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button positive onClick={this.createGroup}>Confirm</Button>
+                        <Button positive onClick={this.handleClose}>Confirm</Button>
                     </Modal.Actions>
                 </Modal>
             )
