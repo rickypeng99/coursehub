@@ -107,6 +107,17 @@ module.exports = function (router, pool) {
         })
     })
 
+    /**
+     * get groups of the user
+     */
+
+    // var userGroupsRoute = router.route('user/:id/group')
+
+    // userGroupsRoute.get((req, res) => {
+    //     var net_id = req.params.id;
+    //     pool.query('SELECT * FROM users ')
+    // })
+
 
     var userRoute = router.route('/user');
     //get users' detail
@@ -172,6 +183,9 @@ module.exports = function (router, pool) {
         })
 
     })
+
+
+
 
 
 

@@ -9,7 +9,7 @@ module.exports = function (router, pool) {
 
 
     courseRoute.get((req, res) => {
-        pool.query('SELECT * FROM courses', function (error, results, fields) {
+        pool.query('SELECT * FROM courses WHERE type  LIKE "%Lecture%"  ORDER BY dept, idx', function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "Error in returning all courses"})
             }

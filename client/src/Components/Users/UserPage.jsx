@@ -373,6 +373,32 @@ class User extends Component {
                     )
                 })
             })
+            const isSelf = username == netId;
+
+            const notLoggedInOrSelf = (() => {
+                if (!loggedIn) {
+                    return (
+                        <div>
+                            <Header as='h2' icon inverted>
+                                Please log in to comment!
+                            </Header>
+                            <br></br>
+                            <Button onClick={this.login}>Login</Button>
+
+                        </div>
+
+                    )
+                } else if(isSelf){
+                    return(
+                        
+                            <Header as='h2' icon inverted>
+                                You can't comment on your own page!
+                            </Header>
+
+                    )
+                }
+
+            })
 
             return (
                 <div className={classes.root}>
@@ -466,7 +492,7 @@ class User extends Component {
                                 <Grid item xs={12}>
                                     <Paper className={classes.paper}>
                                         <Typography variant='h4' color='primary'>Comments</Typography>
-                                        <Dimmer.Dimmable active={!loggedIn}>
+                                        <Dimmer.Dimmable active={!loggedIn || isSelf}>
                                             <Form onSubmit={this.submitHandler}>
                                                 <Form.Field>
                                                     <TextArea
@@ -494,12 +520,8 @@ class User extends Component {
                                                 >Comment</Button>
                                             </Form>
 
-                                            <Dimmer active={!loggedIn}>
-                                                <Header as='h2' icon inverted>
-                                                    Please log in to comment!
-                                                </Header>
-                                                <br></br>
-                                                <Button onClick={this.login}>Login</Button>
+                                            <Dimmer active={!loggedIn || isSelf}>
+                                                {notLoggedInOrSelf()}
                                             </Dimmer>
 
                                         </Dimmer.Dimmable>

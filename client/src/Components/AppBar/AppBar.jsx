@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 //import { getCookie, setCookie } from '../../Common/cookie';
 import { userActions } from '../../Store/actions/userActions';
 import {withRouter} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const styles = {
     root: {
@@ -86,6 +87,14 @@ class MenuAppBar extends React.Component {
         })
     }
 
+    login = (() => {
+        this.props.history.push('/login')
+    })
+
+    register = (() => {
+        this.props.history.push('/register')
+    })
+
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.loggedIn !== this.state.auth) {
@@ -147,6 +156,13 @@ class MenuAppBar extends React.Component {
                         </Menu>
                     </div>
 
+                )
+            } else{
+                return(
+                    <div>
+                        <Button color="inherit" onClick = {this.login}>Login</Button>
+                        <Button color="inherit" onClick = {this.register}>Register</Button>
+                    </div>
                 )
             }
         }
