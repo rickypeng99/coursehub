@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Input, Checkbox, Dropdown, Label, List, Card, Image, Rating } from 'semantic-ui-react';
+import { Form, Button, Input, Checkbox, Dropdown, Label, List, Card, Image, Rating, Modal, Header } from 'semantic-ui-react';
 import { userActions } from '../../Store/actions/userActions';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
@@ -20,7 +20,16 @@ const styles = theme => ({
     paper: {
         padding: theme.spacing(2),
         //textAlign: 'center',
-        color: theme.palette.text.secondary
+        color: theme.palette.text.secondary,
+        //overflowY: "scroll" 
+    },
+
+    paperGroups: {
+        padding: theme.spacing(2),
+        //textAlign: 'center',
+        color: theme.palette.text.secondary,
+        overflowY: "scroll",
+        height: "500px"
     },
 
     paper_image: {
@@ -46,6 +55,7 @@ const styles = theme => ({
 
     },
     courseCard: {
+
         cursor: "pointer",
         '&:hover': {
             backgroundColor: '#f0f0f0',
@@ -63,6 +73,10 @@ const styles = theme => ({
     comment: {
         cursor: "pointer",
 
+    },
+
+    button: {
+        width: "100%"
     }
 });
 
@@ -79,7 +93,14 @@ class Course extends Component {
             courseName: undefined,
             loaded: false,
             groupLoaded: false,
-            queueLoaded: false
+            queueLoaded: false,
+
+
+            /**
+             * Creating groups
+             */
+
+            groupName: "",
         }
     }
 
@@ -87,61 +108,133 @@ class Course extends Component {
         //get course data
         var crn = this.props.match.params.id
         axios.get('api/course/' + crn)
-        .then((response) => {
-            var course = response.data.data[0];
-            this.setState({
-                crn: crn,
-                courseCode: course.dept + course.idx,
-                courseName: course.title,
-                queue: [
-                    {
-                        firstName: "Ruiqi",
-                        lastName: "Peng",
-                        skills: ['Full stack'],
-                        major: "Statistics & Computer Science"
-                    },
-                    {
-                        firstName: "Yipeng",
-                        lastName: "Han",
-                        skills: ['Web Scraping']
-                    },
-                    {       
-                        firstName: "Weiman",
-                        lastName: "Yan",
-                        skills: ["Electric engineering"]
-                    }
-                ],
-    
-                groups: [
-                    {
-                        groupId: 1,
-                        groupName: "The Four",
-                        projectName: "Coursehub",
-                        founder: "Zhicong Fan",
-                        student_current: 1,
-                        student_limit: 4,
-                        needed_skills: ["Full stack"]
-                    },
-                    {
-                        groupId: 2,
-                        groupName: "Abdu",
-                        projectName: "Abdu",
-                        founder: "Abdu",
-                        student_current: 2,
-                        student_limit: 4,
-                        needed_skills: ["C++", "Java"]
-                    }
-    
-                ],
-                loaded: true
+            .then((response) => {
+                var course = response.data.data[0];
+                this.setState({
+                    crn: crn,
+                    courseCode: course.dept + course.idx,
+                    courseName: course.title,
+                    queue: [
+                        {
+                            firstName: "Ruiqi",
+                            lastName: "Peng",
+                            skills: ['Full stack'],
+                            major: "Statistics & Computer Science"
+                        },
+                        {
+                            firstName: "Yipeng",
+                            lastName: "Han",
+                            skills: ['Web Scraping']
+                        },
+                        {
+                            firstName: "Weiman",
+                            lastName: "Yan",
+                            skills: ["Electric engineering"]
+                        }
+                    ],
+
+                    groups: [
+                        {
+                            groupId: 1,
+                            groupName: "The Four",
+                            projectName: "Coursehub",
+                            founder: "Zhicong Fan",
+                            student_current: 1,
+                            student_limit: 4,
+                            needed_skills: ["Full stack"]
+                        },
+                        {
+                            groupId: 1,
+                            groupName: "The Four",
+                            projectName: "Coursehub",
+                            founder: "Zhicong Fan",
+                            student_current: 1,
+                            student_limit: 4,
+                            needed_skills: ["Full stack"]
+                        },
+                        {
+                            groupId: 1,
+                            groupName: "The Four",
+                            projectName: "Coursehub",
+                            founder: "Zhicong Fan",
+                            student_current: 1,
+                            student_limit: 4,
+                            needed_skills: ["Full stack"]
+                        },
+                        {
+                            groupId: 1,
+                            groupName: "The Four",
+                            projectName: "Coursehub",
+                            founder: "Zhicong Fan",
+                            student_current: 1,
+                            student_limit: 4,
+                            needed_skills: ["Full stack"]
+                        },
+                        {
+                            groupId: 1,
+                            groupName: "The Four",
+                            projectName: "Coursehub",
+                            founder: "Zhicong Fan",
+                            student_current: 1,
+                            student_limit: 4,
+                            needed_skills: ["Full stack"]
+                        },
+                        {
+                            groupId: 1,
+                            groupName: "The Four",
+                            projectName: "Coursehub",
+                            founder: "Zhicong Fan",
+                            student_current: 1,
+                            student_limit: 4,
+                            needed_skills: ["Full stack"]
+                        },
+                        {
+                            groupId: 1,
+                            groupName: "The Four",
+                            projectName: "Coursehub",
+                            founder: "Zhicong Fan",
+                            student_current: 1,
+                            student_limit: 4,
+                            needed_skills: ["Full stack"]
+                        },
+                        {
+                            groupId: 1,
+                            groupName: "The Four",
+                            projectName: "Coursehub",
+                            founder: "Zhicong Fan",
+                            student_current: 1,
+                            student_limit: 4,
+                            needed_skills: ["Full stack"]
+                        },
+                        {
+                            groupId: 1,
+                            groupName: "The Four",
+                            projectName: "Coursehub",
+                            founder: "Zhicong Fan",
+                            student_current: 1,
+                            student_limit: 4,
+                            needed_skills: ["Full stack"]
+                        },
+                        {
+                            groupId: 2,
+                            groupName: "Abdu",
+                            projectName: "Abdu",
+                            founder: "Abdu",
+                            student_current: 2,
+                            student_limit: 4,
+                            needed_skills: ["C++", "Java"]
+                        }
+
+                    ],
+                    loaded: true
+                })
+
+            })
+            .catch((error) => {
+                console.log(error)
             })
 
-        })
-        .catch((error) => {
-            console.log(error)
-        })
 
-        
     }
 
     componentWillReceiveProps(nextProps) {
@@ -153,7 +246,17 @@ class Course extends Component {
                 });
         }
     }
-    
+
+    createGroup = (() => {
+        console.log(this.state.groupName)
+
+    })
+
+    createGroupChangeHandler = ((event) => {
+        this.setState({groupName: event.target.value})
+        //console.log(this.state.groupName)
+
+    })
 
     render() {
         var classes = this.props.classes;
@@ -166,7 +269,7 @@ class Course extends Component {
             loaded
         } = this.state
 
-
+        //overflow-y: scroll;
 
         const getQueue = queue.map((student, index) => {
             return (
@@ -194,7 +297,7 @@ class Course extends Component {
                         <Card.Content>
                             <Typography variant='p' color='primary'>{group.groupName}
                             </Typography>
-                            <Label color = "red">{group.student_current + "/" + group.student_limit}</Label>
+                            <Label color="red">{group.student_current + "/" + group.student_limit}</Label>
                             <br></br>
                             {group.founder}
                         </Card.Content>
@@ -209,6 +312,30 @@ class Course extends Component {
                 </List.Item>
             )
         })
+
+        const ModalModalExample = (() => {
+            var lastName;
+            return (
+                <Modal trigger={<Button className={classes.button} primary>Click to create a new group</Button>}>
+                    <Modal.Header>Create a group</Modal.Header>
+                    <Modal.Content>
+                            <p>Last name</p>
+                            <Input
+                                name="lastName"
+                                value={lastName}
+                                onChange={this.createGroupChangeHandler}
+                                type="text"
+                                placeholder="Smith"
+                            />
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button positive onClick={this.createGroup}>Confirm</Button>
+                    </Modal.Actions>
+                </Modal>
+            )
+        }
+
+        )
 
         if (loaded) {
             return (
@@ -226,12 +353,24 @@ class Course extends Component {
                                 <Grid item xs={6}>
                                     <Paper className={classes.paper}>
                                         <Typography variant='h4' color='primary'>Matching queue</Typography>
+                                    </Paper>
+                                    <div>
+                                        <Button className={classes.button} color="green">Click to join this class!</Button>
+                                    </div>
+                                    <Paper className={classes.paperGroups}>
                                         {getQueue}
                                     </Paper>
                                 </Grid>
                                 <Grid item xs={6}>
+
                                     <Paper className={classes.paper}>
                                         <Typography variant='h4' color='primary'>Groups</Typography>
+                                    </Paper>
+                                    <div>
+                                        {/* <Button className={classes.button} primary>Click to create a new group</Button> */}
+                                        {ModalModalExample()}
+                                    </div>
+                                    <Paper className={classes.paperGroups}>
                                         {getGroup}
                                     </Paper>
 
