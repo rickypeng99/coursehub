@@ -66,14 +66,10 @@ module.exports = function (router, pool) {
                 var skills = req.body.skills;
                 var group_id = results.insertId;
                 var tuples = skills.map((skill, index) => {
-                    return({
-                        group_id: group_id,
-                        skill: skill,
-                        must: 1
-                    })
+                    return([group_id, skill, 1])
                 })
 
-                pool.query('INSERT INTO groups_skills SET ?', tuples, function (error, results, fields){
+                pool.query('INSERT INTO groups_skills (group_id, skill, must) VALUES ?', [tuples], function (error, results, fields){
                     if(error){
                         res.status(500).send({ data: [], message: error })
 
@@ -117,6 +113,10 @@ module.exports = function (router, pool) {
         })
 
     })
+
+
+
+
 
 
 
