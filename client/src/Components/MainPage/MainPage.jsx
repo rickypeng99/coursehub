@@ -183,17 +183,13 @@ class MainPage extends Component {
                     return (
                         <div style={mainStyle}>
                             <div style={inputBoxStyle}>
-                                <Input
-                                    style={inputStyle}
-                                    size='massive'
-                                    //icon='search'
-                                    placeholder='Search by course number or keywords'
-                                    value={query}
-                                    name="query"
-                                    icon={<Icon name='search' inverted circular link onClick={this.searchHandler}
-                                    />}
-                                    onChange={this.queryHandler}
-                                />
+                                <SearchInput
+                                    inputStyle={inputStyle}
+                                    query={query}
+                                    searchHandler={this.searchHandler}
+                                    queryHandler={this.queryHandler}
+                                >
+                                </SearchInput>
 
 
                             </div>
@@ -209,7 +205,7 @@ class MainPage extends Component {
                 else {
                     const imgStyle = {
                         //width: "50%",
-                        width: "50%",
+                        width: "30%",
                         margin: "10px",
                         userDrag: "none",
                         userSelect: "none",
@@ -217,24 +213,17 @@ class MainPage extends Component {
                     }
                     return (
                         <div style={mainStyleWithoutSearch}>
-                            {/* <img style={imgStyle} src={require('../../Common/images/mainLogo.png')} onDragStart={this.preventDragHandler} /> */}
+                            <img style={imgStyle} src={require('../../Common/images/mainLogo.png')} onDragStart={this.preventDragHandler} />
 
                             <div style={inputBoxStyle}>
-                                <Input
-                                    style={inputStyle}
-                                    size='massive'
-                                    //icon='search'
-                                    placeholder='Search by course number or keywords'
 
-                                    value={query}
-                                    name="query"
-                                    icon={<Icon name='search' inverted circular link onClick={this.searchHandler}
-                                    />}
-                                    //label={<Dropdown defaultValue='CS' options={options} />}
-                                    //labelPosition='right'
-                                    onChange={this.queryHandler}
-                                />
-
+                                <SearchInput
+                                    inputStyle={inputStyle}
+                                    query={query}
+                                    searchHandler={this.searchHandler}
+                                    queryHandler={this.queryHandler}
+                                >
+                                </SearchInput>
 
                             </div>
 
@@ -256,6 +245,28 @@ class MainPage extends Component {
         }
     }
 }
+
+
+function SearchInput(props) {
+    return (
+        <Input
+            style={props.inputStyle}
+            size='massive'
+            //icon='search'
+            placeholder='Search by course number or keywords'
+
+            value={props.query}
+            name="query"
+            icon={<Icon name='search' inverted circular link onClick={props.searchHandler}
+            />}
+            //label={<Dropdown defaultValue='CS' options={options} />}
+            //labelPosition='right'
+            onChange={props.queryHandler}
+        />
+    )
+}
+
+
 function mapStateToProps(state) {
     const { user, loggedIn } = state.auth;
     return {

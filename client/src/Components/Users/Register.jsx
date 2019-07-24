@@ -101,7 +101,7 @@ class Register extends Component {
             major: this.state.major
         })
             .then(result => {
-                console.log(result.data.data)
+                //console.log(result.data.data)
                 this.props.history.push('/login')
             })
             .catch(error => {

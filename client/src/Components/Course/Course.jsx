@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import { get } from 'http';
 import axios from 'axios';
-
+import GroupModal from '../Course/Modal'
 
 const styles = theme => ({
     root: {
@@ -95,19 +95,32 @@ class Course extends Component {
             groupLoaded: false,
             queueLoaded: false,
 
+            username: null,
+            loggedIn: false,
 
             /**
-             * Creating groups
+             * user specific
              */
 
-            groupName: "",
-            modalOpen: false,
+            isInGroup: false,
+            isInMatchingQueue: false,
+            isFounder: false,
+            
         }
     }
 
     componentDidMount() {
+
+        this.setState(
+            {
+                username: this.props.user,
+                loggedIn: this.props.loggedIn
+            });
+
         //get course data
         var crn = this.props.match.params.id
+
+        
         axios.get('api/course/' + crn)
             .then((response) => {
                 var course = response.data.data[0];
@@ -246,29 +259,16 @@ class Course extends Component {
                     loggedIn: nextProps.loggedIn
                 });
         }
+        if (nextProps.location !== this.props.location) {
+            window.location.reload();
+
+        }
     }
 
 
-    /**
-     * Creating group modals 
-     */
-    createGroup = (() => {
-        console.log(this.state.groupName)
 
-    })
-
-    createGroupChangeHandler = ((event) => {
-        this.setState({groupName: event.target.value})
-        //console.log(this.state.groupName)
-
-    })
-
-    handleOpen = (() => {
-        this.setState({modalOpen: true})
-    })
-
-    handleClose = (() => {
-        this.setState({modalOpen: false})
+    createGroup = ((props) => {
+        console.log(props)
     })
 
     render() {
@@ -279,6 +279,8 @@ class Course extends Component {
             crn,
             courseCode,
             courseName,
+            username, 
+            loggedIn,
             loaded
         } = this.state
 
@@ -326,38 +328,9 @@ class Course extends Component {
             )
         })
 
-        //modal for creating groups
-        const ModalModalExample = (() => {
-            var lastName;
-            return (
-                <Modal 
-                trigger={
-                    <Button className={classes.button} primary onClick = {this.handleOpen}>Click to create a new group</Button>
-                }
-                open={this.state.modalOpen}
-                onClose={this.handleClose}
-                >
-                    <Modal.Header>Create a group</Modal.Header>
-                    <Modal.Content>
-                            <p>Last name</p>
-                            <Input
-                                name="lastName"
-                                value={lastName}
-                                onChange={this.createGroupChangeHandler}
-                                type="text"
-                                placeholder="Smith"
-                            />
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <Button positive onClick={this.handleClose}>Confirm</Button>
-                    </Modal.Actions>
-                </Modal>
-            )
-        }
-
-        )
-
         if (loaded) {
+            //console.log("fuckscscsac" + username)
+            var courseNameForModal = courseCode + " - " + courseName + " " + crn
             return (
                 <div className={classes.root}>
                     <Grid container spacing={2} direction="column">
@@ -388,7 +361,8 @@ class Course extends Component {
                                     </Paper>
                                     <div>
                                         {/* <Button className={classes.button} primary>Click to create a new group</Button> */}
-                                        {ModalModalExample()}
+                                        {/* {ModalModalExample()} */}
+                                        <GroupModal isFounder = {this.setState.isFounder} isInGroup = {this.state.isInGroup} isInMatchingQueue = {this.state.isInMatchingQueue} classes = {classes} createGroup = {this.createGroup} courseName = {courseNameForModal} username = {username}></GroupModal>
                                     </div>
                                     <Paper className={classes.paperGroups}>
                                         {getGroup}

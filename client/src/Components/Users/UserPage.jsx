@@ -135,7 +135,7 @@ class User extends Component {
         //requests to get the user's detail
         axios.get('api/user/' + netId)
             .then(result => {
-                console.log(result.data.data);
+                //console.log(result.data.data);
                 this.setState({
                     netId: this.props.match.params.id,
                     firstName: result.data.data[0].first_name,
@@ -261,7 +261,7 @@ class User extends Component {
         var comment_id = event.target.value;
         axios.delete('api/comment/' + comment_id)
             .then(result => {
-                console.log("hi")
+                //console.log("hi")
                 var comments = this.state.comments;
                 for (var i = 0; i < comments.length; i++) {
                     if (comments[i].comment_id == comment_id) {
@@ -285,8 +285,8 @@ class User extends Component {
         if (loaded) {
             var classes = this.props.classes
 
-            console.log(loggedIn)
-            console.log(username)
+            //console.log(loggedIn)
+            //console.log(username)
 
             // const getMajorList = major.map((single, index) => {
             //     return (

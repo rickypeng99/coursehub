@@ -4,7 +4,7 @@
  */
 
 
- 
+
 
 module.exports = function (router, pool) {
 
@@ -19,7 +19,7 @@ module.exports = function (router, pool) {
     groupRoute.get((req, res) => {
         pool.query('SELECT * FROM groups', function (error, results, fields) {
             if (error || results.length < 1) {
-                res.status(404).send({ data: [], message: "Error in returning all groups"})
+                res.status(404).send({ data: [], message: "Error in returning all groups" })
             }
             else {
                 res.status(200).send({ data: results, message: "All groups returned" })
@@ -27,6 +27,76 @@ module.exports = function (router, pool) {
         })
 
     })
+
+
+    /**
+     * create a group
+     */
+
+    groupRoute.post((req, res) => {
+        /**
+        * group_id
+        * founder
+        * name 
+        * course_CRN
+        * students_limit
+        * students_current
+        * status (1/0)
+        * description
+        * 
+        * group_id
+        * skill
+        * must (1/0)
+        */
+        var group = {
+            founder: req.body.founder,
+            name: req.body.name,
+            course_CRN: req.body.course_CRN,
+            students_limit: req.body.students_limit,
+            students_current: 1,
+            status: 1,
+            description: req.body.description
+        }
+        pool.query('INSERT into groups SET ?', group, function (error, results, fields) {
+            if (error) {
+                res.status(500).send({ data: [], message: error })
+            }
+            else {
+                //insert into group skills
+                var skills = req.body.skills;
+                var group_id = results.insertId;
+                var tuples = skills.map((skill, index) => {
+                    return({
+                        group_id: group_id,
+                        skill: skill,
+                        must: 1
+                    })
+                })
+
+                pool.query('INSERT INTO groups_skills SET ?', tuples, function (error, results, fields){
+                    if(error){
+                        res.status(500).send({ data: [], message: error })
+
+                    } else{
+                        //insert into groups_users
+                        var firstUser = {
+                            group_id: group_id,
+                            net_id: req.body.founder
+                        }
+                        pool.query('INSERT INTO groups_users SET ?', firstUser, function (error, results, fields){
+                            if(error){
+                                res.status(500).send({ data: [], message: error })
+                            } else{
+                                res.status(200).send({ data: group, message: "Group created" })
+
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    })
+
     /**
     * get information of a specific group
     */
@@ -47,6 +117,8 @@ module.exports = function (router, pool) {
         })
 
     })
+
+
 
     /**
      * 
