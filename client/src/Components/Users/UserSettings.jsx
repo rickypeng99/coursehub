@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import file from '../../Common/data/majors'
 import { Typography } from '@material-ui/core';
+import { language_list, topic_list } from '../../Common/data/availableSkills';
 
 require('./User.css');
 
@@ -72,12 +73,15 @@ class UserSetting extends Component {
             //thsese two states are options
             majors: [],
             //courses: []
+            skills: [],
 
             /**
              * loaded form GET
              */
             loaded: false,
         }
+        this.availableSkills = []
+
     }
 
     submitHandler = () => {
@@ -88,7 +92,9 @@ class UserSetting extends Component {
             first_name: this.state.firstName,
             last_name: this.state.lastName,
             description: this.state.description,
-            major: this.state.major
+            major: this.state.major,
+            skills: this.state.skills
+
         })
             .then(result => {
                 console.log(result.data.data)
@@ -108,6 +114,12 @@ class UserSetting extends Component {
         this.setState({ major: data.value })
     })
 
+    skillsChangeHandler = ((e, data) => {
+
+        this.setState({ skills: data.value })
+        //console.log(data.value)
+    })
+
     /**
      * For printing updated states
      */
@@ -121,24 +133,54 @@ class UserSetting extends Component {
                 text: read[i]['major']
             })
         }
+        //added skills
+        var skillsTemp = language_list.concat(topic_list).sort()
+
+        for (var i = 0; i < skillsTemp.length; i++) {
+            this.availableSkills.push({
+                key: skillsTemp[i],
+                value: skillsTemp[i],
+                text: skillsTemp[i]
+            })
+        }  
+
         var netId = this.props.match.params.id
+
+        this.setState({
+            username: this.props.user,
+            loggedIn: this.props.loggedIn,
+
+        })
+
         axios.get('api/user/' + netId)
             .then((response) => {
 
                 var user = response.data.data[0];
-                this.setState({
-                    netId: this.props.match.params.id,
-                    firstName: user.first_name,
-                    middleName: user.middle_name,
-                    lastName: user.last_name,
-                    description: user.description,
-                    major: user.major,
-                    majors: majors,
-                    //courses: courses,
-                    username: this.props.user,
-                    loggedIn: this.props.loggedIn,
-                    loaded: true
+
+                axios.get('api/skill/user/' + netId)
+                .then(response => {
+                    var skills = []
+                    for(var i = 0; i < response.data.data.length; i++){
+                        skills.push(response.data.data[i].skill);
+                    }
+                    this.setState({
+                        netId: this.props.match.params.id,
+                        firstName: user.first_name,
+                        middleName: user.middle_name,
+                        lastName: user.last_name,
+                        description: user.description,
+                        major: user.major,
+                        majors: majors,
+                        //courses: courses,
+                        skills: skills,
+                        loaded: true
+                    })
                 })
+                .catch(error => {
+
+                })
+
+                
             })
             .catch(error => {
                 console.log(error)
@@ -163,6 +205,9 @@ class UserSetting extends Component {
                         description={this.state.description}
                         majors={this.state.majors}
                         dropDownMajorHandler={this.dropDownMajorHandler}
+                        availableSkills={this.availableSkills}
+                        skillsChangeHandler={this.skillsChangeHandler}
+                        skills = {this.state.skills}
                     />
                 </div>
 
@@ -192,19 +237,21 @@ function SettingForm(props) {
     var submitHandler = props.submitHandler
     var majors = props.majors
     var dropDownMajorHandler = props.dropDownMajorHandler
-
+    var availableSkills = props.availableSkills
+    var skillsChangeHandler = props.skillsChangeHandler
+    var skills = props.skills
     return (
         <div className={classes.root}>
             <Grid container spacing={1} direction="column">
 
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                     <Paper className={classes.outGrid}>
-                        <Typography variant='h4'>Settings</Typography>
                     </Paper>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12}>
                     <Paper className={classes.outGrid}>
+                        <Typography variant='h4' color='primary'>Settings</Typography>
 
                         <Form onSubmit={submitHandler}>
 
@@ -259,7 +306,21 @@ function SettingForm(props) {
                                 />
                             </Form.Field>
 
+                            <Grid item xs={12} sm={12} className={classes.grid}>
+                                <Form.Field className={classes.input} error={skills.length < 1}>
+                                    <p>Skills</p>
 
+                                    <Dropdown
+                                        placeholder='skills'
+                                        multiple
+                                        search
+                                        selection
+                                        options={availableSkills}
+                                        onChange={skillsChangeHandler}
+                                        defaultValue={skills}
+                                    />
+                                </Form.Field>
+                            </Grid>
                             <Form.Field className={classes.input}>
                                 <p>About me</p>
                                 <TextArea

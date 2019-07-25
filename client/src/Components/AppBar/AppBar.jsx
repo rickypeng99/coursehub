@@ -151,7 +151,7 @@ class MenuAppBar extends React.Component {
                             onClose={this.handleClose}
                         >
                             <MenuItem onClick={this.handleMyProfile}>Profile</MenuItem>
-                            <MenuItem onClick={this.handleMyAccount}>My account</MenuItem>
+                            <MenuItem onClick={this.handleMyAccount}>Account settings</MenuItem>
                             <MenuItem onClick={this.logout}>Log out</MenuItem>
                         </Menu>
                     </div>

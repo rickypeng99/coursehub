@@ -2,15 +2,17 @@ h1{
     font-size: 50px;
   }
 
-
+body{
+   background-image: url('../../Common/images/background_login.jpg');
+    background-size: cover;
+}
 .signInContainer{    
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('../../Common/images/background_login.jpg');
-    background-size: cover;
+   
 }
 
 .buttonContainer{

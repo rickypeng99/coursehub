@@ -99,7 +99,13 @@ class User extends Component {
             commenting: null, //contents to comment
             efficiency: null,
             communication: null,
-            responsiveness: null
+            responsiveness: null,
+
+            /**
+             * skills section
+             */
+            skillsLoaded: false,
+            skills: []
 
         }
     }
@@ -161,23 +167,40 @@ class User extends Component {
                     loaded: true
                 })
 
-                axios.get('api/user/' + netId + '/comment')
-                    .then(result => {
-                        this.setState({
-                            comments: result.data.data,
-                            commentsLoaded: true,
 
-                        })
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
             })
             .catch(error => {
                 console.log(error);
             })
 
+        axios.get('api/user/' + netId + '/comment')
+            .then(result => {
+                this.setState({
+                    comments: result.data.data,
+                    commentsLoaded: true,
 
+                })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+        axios.get('api/skill/user/' + netId)
+            .then(result => {
+
+                var skills = [];
+                for (var i = 0; i < result.data.data.length; i++) {
+                    skills.push(result.data.data[i].skill);
+                }
+                this.setState({
+                    skills: skills,
+                    skillsLoaded: true,
+
+                })
+            })
+            .catch(error => {
+                console.log(error);
+            })
 
 
 
@@ -279,7 +302,7 @@ class User extends Component {
     }
     render() {
         var {
-            netId, username, loggedIn, firstName, lastName, major, classTaking, comments, description, loaded, image, commenting, commentsLoaded, efficiency, responsiveness, communication
+            netId, username, loggedIn, firstName, lastName, major, classTaking, comments, description, loaded, image, commenting, commentsLoaded, efficiency, responsiveness, communication, skills, skillsLoaded
         } = this.state
 
         if (loaded) {
@@ -288,19 +311,27 @@ class User extends Component {
             //console.log(loggedIn)
             //console.log(username)
 
-            // const getMajorList = major.map((single, index) => {
-            //     return (
-            //         <List.Item key={single}>
-            //             <Label color='red' horizontal>
-            //                 {single.substring(single.indexOf('-') + 1)}
-            //             </Label>
-            //             <Typography color="primary">
-            //                 {single}
-
-            //             </Typography>
-            //         </List.Item>
-            //     )
-            // })
+            const getSkillList = () => {
+                if(skillsLoaded){
+                    return(
+                        skills.map((skill, index) => {
+                            return (
+                                    <Label>
+                                        {skill}
+                                    </Label>
+                            )
+                        })
+                    )
+                    
+                } else{
+                    return (
+                        <p>Loading skills...</p>
+                    )
+                }
+            }
+            
+            
+            
 
             const getCoursesList = classTaking.map((course, index) => {
                 //console.log(course)
@@ -388,11 +419,11 @@ class User extends Component {
                         </div>
 
                     )
-                } else if(isSelf){
-                    return(
-                        
-                            <Header as='h2' icon inverted>
-                                You can't comment on your own page!
+                } else if (isSelf) {
+                    return (
+
+                        <Header as='h2' icon inverted>
+                            You can't comment on your own page!
                             </Header>
 
                     )
@@ -434,7 +465,12 @@ class User extends Component {
                                                 {/* </List> */}
                                             </Paper>
                                         </Grid>
-
+                                        <Grid item xs={12}>
+                                            <Paper className={classes.paper}>
+                                                <Typography variant='h4' color='primary'>Skills</Typography>
+                                                    {getSkillList()}
+                                            </Paper>
+                                        </Grid>
 
 
                                         <Grid item xs={12}>

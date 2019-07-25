@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import axios from 'axios';
-
+import { language_list, topic_list } from '../../Common/data/availableSkills';
 
 class GroupModal extends Component {
 
@@ -40,40 +40,6 @@ class GroupModal extends Component {
 
 
     componentDidMount() {
-        var language_list = ["CSS", "Html", "SQL", "PHP", "Haskell", "C++", "C", "Python", "Java", "C#", "R", "Java Script", "Go", "Swift", "Ruby"]
-        var topic_list = ["Mathematical foundations",
-            "Algorithms",
-            "Data Structures",
-            "Artificial intelligence",
-            "Automated reasoning",
-            "Computer vision",
-            "Machine learning",
-            "Evolutionary computing",
-            "Natural language processing",
-            "Robotics",
-            "Networking",
-            "Computer security",
-            "Cryptography",
-            "Computer architecture",
-            "Operating systems",
-            "Computer graphics",
-            "Image processsing",
-            "Information visualization",
-            "Parallel computing",
-            "Concurrency",
-            "Distributed computing",
-            "Relatinal databases",
-            "Structured Storage",
-            "Data mining",
-            "Programming languages",
-            "Compilers",
-            "Scientific computing",
-            "Formal methods",
-            "Software engineering",
-            "Algorithm design",
-            "Computer programming",
-            "Human-computer interaction",
-            "Reverse engineering"]
 
         var skillsTemp = language_list.concat(topic_list).sort()
 
@@ -128,6 +94,11 @@ class GroupModal extends Component {
         this.setState({ modalOpen: true })
     })
 
+    cancel = (() => {
+        this.setState({ modalOpen: false })
+
+    })
+
 
 
 
@@ -155,7 +126,7 @@ class GroupModal extends Component {
         var {
             groupName,
             students_limit,
-            skills, 
+            skills,
             description
         } = this.state
         var classes = this.props.classes;
@@ -258,6 +229,7 @@ class GroupModal extends Component {
 
                 </Modal.Content>
                 <Modal.Actions>
+                    <Button negative onClick={this.cancel}>Cancel</Button>
                     <Button positive onClick={this.createGroup}>Confirm</Button>
                 </Modal.Actions>
             </Modal>

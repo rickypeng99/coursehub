@@ -67,7 +67,7 @@ module.exports = function (router, pool) {
 
         var crn = req.params.id;
 
-        pool.query('SELECT * FROM matching_queue WHERE course_CRN = ?', crn, function (error, results, fields) {
+        pool.query('SELECT * FROM users_matching_queue WHERE course_CRN = ?', crn, function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "404: Couldn't find course with crn " + crn })
             }

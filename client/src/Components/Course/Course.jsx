@@ -161,29 +161,38 @@ class Course extends Component {
 
                 //get all promises to get skills for each group
                 var promises = []
-                for(var i = 0; i < groups.length; i++){
+                for (var i = 0; i < groups.length; i++) {
                     promises.push(axios.get('api/skill/group/' + groups[i].group_id))
                 }
                 Promise.all(promises)
-                .then(response => {
-                    //add the array of skills to each group
-                    for(var i = 0; i < response.length; i++){
-                        var currentSkill = response[i].data.data;
-                        groups[i].skills = currentSkill
-                    }
-                    console.log(groups)
-                    this.setState({
-                        groups: groups,
-                        groupLoaded: true
+                    .then(response => {
+                        //add the array of skills to each group
+                        for (var i = 0; i < response.length; i++) {
+                            var currentSkill = response[i].data.data;
+                            groups[i].skills = currentSkill
+                        }
+                        console.log(groups)
+                        this.setState({
+                            groups: groups,
+                            groupLoaded: true
+                        })
                     })
-                })
-                .catch(error => {
-                    console.log(error)
-                })                
+                    .catch(error => {
+                        console.log(error)
+                    })
             })
             .catch(error => {
                 console.log(error)
             })
+
+        //get queue
+        // axios.get('api/course/' + crn + 'queue')
+        //     .then(response => {
+        //         var queue = response.data.data;
+        //         this.setState({
+        //             queue
+        //         })
+        //     })
 
     }
 
@@ -207,18 +216,18 @@ class Course extends Component {
         console.log(props)
 
         axios.post('api/group', props)
-        .then(response => {
-            var newGroup = response.data.data;
-            var tempGroups = this.state.groups;
-            tempGroups.push(newGroup);
-            console.log(tempGroups)
-            this.setState({
-                groups: tempGroups
+            .then(response => {
+                var newGroup = response.data.data;
+                var tempGroups = this.state.groups;
+                tempGroups.push(newGroup);
+                console.log(tempGroups)
+                this.setState({
+                    groups: tempGroups
+                })
             })
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)
+            })
     })
 
     render() {
@@ -265,15 +274,21 @@ class Course extends Component {
                         <List.Item className={classes.card}>
                             <Card className={classes.courseCard}>
                                 <Card.Content>
-                                    <Typography variant='p' color='primary'>{group.name}
-                                    </Typography>
+                                    <Typography variant='p' color='primary'>{group.name}</Typography>                                
                                     <Label color="red">{group.students_current + "/" + group.students_limit}</Label>
                                     <br></br>
-                                    {group.founder}
+                                    <Typography variant='p'>{group.founder}</Typography>
+                                    <br></br>
+
+                                    <Typography variant='p' color='primary'>{group.description}</Typography>
+
+
                                 </Card.Content>
                                 <Card.Content>
+                                    <p>Neede skills: </p>
                                     {group.skills.map((skill, index) => {
-                                        if(skill.skill == undefined){
+                                        //this is for groups that are newly created, such that we can perform state change instaead of reloading the website
+                                        if (skill.skill == undefined) {
                                             return (
                                                 <Label>{skill}</Label>
                                             )
@@ -288,8 +303,8 @@ class Course extends Component {
                     )
                 })
                 )
-            } else{
-                return(
+            } else {
+                return (
                     <p>Loading groups...</p>
                 )
             }

@@ -10,6 +10,9 @@ import axios from 'axios';
 import file from '../../Common/data/majors'
 //import courseFile from '../../Common/data/courses'
 import Background from '../../Common/images/illinois.webp'
+import { language_list, topic_list } from '../../Common/data/availableSkills';
+import { Typography } from '@material-ui/core';
+
 require('./User.css');
 
 const styles = theme => ({
@@ -80,8 +83,11 @@ class Register extends Component {
             registered: false,
             //thsese two states are options
             majors: [],
-            courses: []
+            courses: [],
+            skills: []
         }
+
+        this.availableSkills = []
     }
 
     submitHandler = () => {
@@ -98,7 +104,8 @@ class Register extends Component {
             last_name: this.state.lastName,
             gpa: this.state.gpa,
             description: this.state.description,
-            major: this.state.major
+            major: this.state.major,
+            skills: this.state.skills
         })
             .then(result => {
                 //console.log(result.data.data)
@@ -116,10 +123,18 @@ class Register extends Component {
 
     dropDownMajorHandler = ((event, data) => {
         this.setState({ major: data.value })
+        console.log(data.value)
+
     })
 
     dropDownCourseHandler = ((event, data) => {
         this.setState({ classTaking: data.value })
+    })
+
+    skillsChangeHandler = ((e, data) => {
+
+        this.setState({ skills: data.value })
+        console.log(data.value)
     })
 
     /**
@@ -139,19 +154,15 @@ class Register extends Component {
                 text: read[i]['major']
             })
         }
-        //var read = courseFile['data']
-        // var courses = []
-        // for (var i = 0; i < read.length; i++) {
-        //     courses.push({
-        //         key: read[i]['name'],
-        //         value: read[i]['crn'],
-        //         text: read[i]['name']
-        //     })
-        // }
+        var skillsTemp = language_list.concat(topic_list).sort()
 
-
-        //console.log(courses)
-
+        for (var i = 0; i < skillsTemp.length; i++) {
+            this.availableSkills.push({
+                key: skillsTemp[i],
+                value: skillsTemp[i],
+                text: skillsTemp[i]
+            })
+        }        
         this.setState({
             majors: majors,
             //courses: courses,
@@ -186,6 +197,9 @@ class Register extends Component {
                         dropDownMajorHandler={this.dropDownMajorHandler}
                         dropDownCourseHandler={this.dropDownCourseHandler}
                         courses={this.state.courses}
+                        availableSkills={this.availableSkills}
+                        skillsChangeHandler={this.skillsChangeHandler}
+                        skills = {this.state.skills}
                     />
                 </div>
 
@@ -207,12 +221,14 @@ function RegisterForm(props) {
     var description = props.description
     var major = props.major
     var netId = props.netId
-    //var classTaking = props.classTaking
     var gpa = props.gpa
     var changeHandler = props.changeHandler
     var submitHandler = props.submitHandler
     var majors = props.majors
     var dropDownMajorHandler = props.dropDownMajorHandler
+    var availableSkills = props.availableSkills
+    var skillsChangeHandler = props.skillsChangeHandler
+    var skills = props.skills
     //var dropDownCourseHandler = props.dropDownCourseHandler
     //var courses = props.courses
 
@@ -230,11 +246,12 @@ function RegisterForm(props) {
     //     }
     // }
 
-    const error = firstName == null || firstName == undefined || lastName == null || lastName == undefined || netId == null || netId == undefined || password == null || password == undefined || gpa == null || gpa == undefined || major == null || major == undefined;
+    const error = firstName == null || firstName == undefined || lastName == null || lastName == undefined || netId == null || netId == undefined || password == null || password == undefined || gpa == null || gpa == undefined || major == null || major == undefined || skills.length < 1;
 
     return (
         <div className={classes.root}>
             <Paper className={classes.outGrid}>
+                <Typography variant='h4' color='primary'>Register</Typography>
 
                 <Form onSubmit={submitHandler}>
 
@@ -351,6 +368,21 @@ function RegisterForm(props) {
                                     type="number"
                                     step='0.01'
                                     placeholder='This is only for calculation of the internal point'
+                                />
+                            </Form.Field>
+                        </Grid>
+
+                        <Grid item xs={12} sm={12} className={classes.grid}>
+                            <Form.Field className={classes.input} error = {skills.length < 1}>
+                                <p>Skills</p>
+
+                                <Dropdown
+                                    placeholder='skills'
+                                    multiple
+                                    search
+                                    selection
+                                    options={availableSkills}
+                                    onChange={skillsChangeHandler}
                                 />
                             </Form.Field>
                         </Grid>

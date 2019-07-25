@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 
 require('./User.css');
 
@@ -95,6 +96,8 @@ class Login extends Component {
             return (
                 <div className={classes.root}>
                     <Paper className={classes.outGrid}>
+                        <Typography variant='h4' color='primary'>Login</Typography>
+
                         <Form onSubmit={this.submitHandler}>
                             <Form.Field>
                                 <p>Username</p>

@@ -69,8 +69,6 @@ module.exports = function (router, pool) {
                     hash = bcrypt.hashSync(password, salt);
                     password = hash
                 }
-
-
                 //update others
 
 
@@ -79,7 +77,35 @@ module.exports = function (router, pool) {
                         res.status(404).send({ data: [], message: "404: Couldn't find user with netId " + net_id })
                     }
                     else {
-                        res.status(200).send({ data: results, message: "Successfully updated user with id " + net_id })
+
+                        /**
+                         * dealing with skills
+                        */
+
+                        //delete all skills that this user currently has
+                        pool.query('DELETE FROM users_skills WHERE net_id = ?', net_id, function (error, results, fields) {
+                            if (error) {
+                                res.status(500).send({ data: error, message: error })
+                            } else {
+                                var skills = req.body.skills;
+                                if (skills.length > 0) {
+                                    var tuples = skills.map((skill, index) => {
+                                        return ([net_id, skill])
+                                    })
+                                    pool.query('INSERT INTO users_skills (net_id, skill) VALUES ?', [tuples], function (error, results, fields) {
+                                        if (error) {
+                                            res.status(500).send({ data: [], message: error })
+                                        } else {
+                                            res.status(200).send({ data: net_id, message: "Successfully updated user with id " + net_id })
+                                        }
+                                    })
+
+                                }
+                            }
+                        })
+
+
+                        
 
                     }
                 })
@@ -97,8 +123,8 @@ module.exports = function (router, pool) {
         var net_id = req.params.id;
         pool.query('SELECT * FROM comments WHERE comment_id IN (SELECT comment_id FROM users_comments WHERE net_id = ?)', net_id, function (error, results, fields) {
             if (error) {
-                res.status(500).send({ data: [], message: "500: Server error in user comments " + error})
-            } else if(results.length < 1){
+                res.status(500).send({ data: [], message: "500: Server error in user comments " + error })
+            } else if (results.length < 1) {
                 res.status(200).send({ data: [], message: "no comment found from user with netId " + net_id })
             }
             else {
@@ -154,7 +180,19 @@ module.exports = function (router, pool) {
                 res.status(500).send({ data: [], message: error })
             }
             else {
-                res.status(200).send({ data: req.body.net_id, message: "user registered" })
+                //insert skills
+                var skills = req.body.skills;
+                var net_id = req.body.net_id;
+                var tuples = skills.map((skill, index) => {
+                    return ([net_id, skill])
+                })
+                pool.query('INSERT INTO users_skills (net_id, skill) VALUES ?', [tuples], function (error, results, fields) {
+                    if (error) {
+                        res.status(500).send({ data: [], message: error })
+                    } else {
+                        res.status(200).send({ data: req.body.net_id, message: results })
+                    }
+                })
             }
         })
     })
