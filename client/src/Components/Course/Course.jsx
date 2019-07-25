@@ -157,23 +157,29 @@ class Course extends Component {
         axios.get('api/course/' + crn + '/group')
             .then(response => {
                 var groups = response.data.data;
-                console.log(groups)
-
+                //console.log(groups[0].group_id)
 
                 //get all promises to get skills for each group
                 var promises = []
                 for(var i = 0; i < groups.length; i++){
-                    promises.push(axios.get('api/group/' + groups[i].group_id + "/skill"
-                    ))
+                    promises.push(axios.get('api/skill/group/' + groups[i].group_id))
                 }
                 Promise.all(promises)
-
-
-                //axios.get('api/')
-                this.setState({
-                    groups: groups,
-                    groupLoaded: true
+                .then(response => {
+                    //add the array of skills to each group
+                    for(var i = 0; i < response.length; i++){
+                        var currentSkill = response[i].data.data;
+                        groups[i].skills = currentSkill
+                    }
+                    console.log(groups)
+                    this.setState({
+                        groups: groups,
+                        groupLoaded: true
+                    })
                 })
+                .catch(error => {
+                    console.log(error)
+                })                
             })
             .catch(error => {
                 console.log(error)
@@ -199,6 +205,20 @@ class Course extends Component {
 
     createGroup = ((props) => {
         console.log(props)
+
+        axios.post('api/group', props)
+        .then(response => {
+            var newGroup = response.data.data;
+            var tempGroups = this.state.groups;
+            tempGroups.push(newGroup);
+            console.log(tempGroups)
+            this.setState({
+                groups: tempGroups
+            })
+        })
+        .catch(error => {
+            console.log(error)
+        })
     })
 
     render() {
@@ -240,6 +260,7 @@ class Course extends Component {
         const getGroup = () => {
             if (groupLoaded) {
                 return (groups.map((group, index) => {
+                    //console.log(group.skills)
                     return (
                         <List.Item className={classes.card}>
                             <Card className={classes.courseCard}>
@@ -251,11 +272,16 @@ class Course extends Component {
                                     {group.founder}
                                 </Card.Content>
                                 <Card.Content>
-                                    {/* {group.needed_skills.map((skill, index) => {
+                                    {group.skills.map((skill, index) => {
+                                        if(skill.skill == undefined){
+                                            return (
+                                                <Label>{skill}</Label>
+                                            )
+                                        }
                                         return (
-                                            <Label>{skill}</Label>
+                                            <Label>{skill.skill}</Label>
                                         )
-                                    })} */}
+                                    })}
                                 </Card.Content>
                             </Card>
                         </List.Item>
@@ -293,7 +319,7 @@ class Course extends Component {
                                         <Typography variant='h4' color='primary'>Matching queue</Typography>
                                     </Paper>
                                     <div>
-                                        <Button className={classes.button} color="green">Click to join this class!</Button>
+                                        <Button className={classes.button} color="green">Click to join the queue!</Button>
                                     </div>
                                     <Paper className={classes.paperGroups}>
                                         {getQueue}
@@ -307,7 +333,7 @@ class Course extends Component {
                                     <div>
                                         {/* <Button className={classes.button} primary>Click to create a new group</Button> */}
                                         {/* {ModalModalExample()} */}
-                                        <GroupModal isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} isInMatchingQueue={this.state.isInMatchingQueue} classes={classes} createGroup={this.createGroup} courseName={courseNameForModal} username={username}></GroupModal>
+                                        <GroupModal isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} isInMatchingQueue={this.state.isInMatchingQueue} classes={classes} createGroup={this.createGroup} courseName={courseNameForModal} username={username} crn={this.state.crn}></GroupModal>
                                     </div>
                                     <Paper className={classes.paperGroups}>
                                         {getGroup()}

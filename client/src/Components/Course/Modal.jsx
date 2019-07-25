@@ -97,12 +97,16 @@ class GroupModal extends Component {
         this.setState({ modalOpen: false })
 
         var createdGroup = {
-            groupName: this.state.groupName,
-
+            name: this.state.groupName,
+            founder: this.props.username,
+            students_limit: this.state.students_limit,
+            course_CRN: this.props.crn,
+            skills: this.state.skills,
+            description: this.state.description
         }
 
         //passing to the newly created group to the course page
-        this.props.createGroup(this.state.groupName)
+        this.props.createGroup(createdGroup)
 
     })
 

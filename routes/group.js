@@ -83,6 +83,7 @@ module.exports = function (router, pool) {
                             if(error){
                                 res.status(500).send({ data: [], message: error })
                             } else{
+                                group.skills = req.body.skills
                                 res.status(200).send({ data: group, message: "Group created" })
 
                             }
@@ -113,10 +114,6 @@ module.exports = function (router, pool) {
         })
 
     })
-
-
-
-
 
 
 
