@@ -159,6 +159,16 @@ class Course extends Component {
                 var groups = response.data.data;
                 console.log(groups)
 
+
+                //get all promises to get skills for each group
+                var promises = []
+                for(var i = 0; i < groups.length; i++){
+                    promises.push(axios.get('api/group/' + groups[i].group_id + "/skill"
+                    ))
+                }
+                Promise.all(promises)
+
+
                 //axios.get('api/')
                 this.setState({
                     groups: groups,
