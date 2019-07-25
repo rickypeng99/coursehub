@@ -65,16 +65,16 @@ class MenuAppBar extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({ anchorEl: null });
+        this.setState({ anchorEl: false});
     };
 
     handleMyProfile = () => {
-        this.setState({ anchorEl: null });
+        this.setState({ anchorEl: false});
         this.props.history.push('/user/' + this.state.username)
     }
 
     handleMyAccount = () => {
-        this.setState({ anchorEl: null });
+        this.setState({ anchorEl: false});
         this.props.history.push('/user/' + this.state.username + '/settings')
     }
 
@@ -82,7 +82,7 @@ class MenuAppBar extends React.Component {
         this.props.dispatch(userActions.logout());
         this.setState({
             username: this.props.username,
-            anchorEl: null,
+            anchorEl: false,
             auth: false
         })
     }
@@ -120,7 +120,7 @@ class MenuAppBar extends React.Component {
     render() {
         const { classes } = this.props;
         const { auth, anchorEl } = this.state;
-        const open = Boolean(anchorEl);
+        const open = anchorEl;
 
 
         const showUserOrLogin = () => {
@@ -179,14 +179,6 @@ class MenuAppBar extends React.Component {
         return (
 
             <div className={classes.root} >
-                {/* <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          />
-        </FormGroup> */}
                 < AppBar position="fixed" >
                     <Toolbar className={classes.toolBar}>
                         <div className={classes.toolBar2}>

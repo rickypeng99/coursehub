@@ -1,5 +1,5 @@
 /**
- * Dealing with joining or managing groups and maching queue
+ * Dealing with joining or managing groups
  * 
  */
 
@@ -114,31 +114,6 @@ module.exports = function (router, pool) {
         })
 
     })
-
-
-
-    /**
-     * 
-     * 这里还没有改完
-     */
-
-    queueUpdateRoute = router.route('/queue/:id');
-    queueUpdateRoute.get((req, res) => {
-
-        var crn = req.params.id;
-
-        pool.query('SELECT * FROM matching_queue WHERE  = ?', crn, function (error, results, fields) {
-            if (error || results.length < 1) {
-                res.status(404).send({ data: [], message: "404: Couldn't find course with crn " + crn })
-            }
-            else {
-                res.status(200).send({ data: results, message: "Matching queue of Course with CRN " + crn + " returned" })
-
-            }
-        })
-
-    })
-
 
 
     return router;

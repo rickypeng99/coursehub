@@ -76,7 +76,11 @@ const styles = theme => ({
     },
 
     button: {
-        width: "100%"
+        width: "50%"
+    },
+
+    buttonContainer: {
+        display: "flex"
     }
 });
 
@@ -104,7 +108,7 @@ class Course extends Component {
 
             isInGroup: false,
             isInMatchingQueue: false,
-            isFounder: false,
+            //isFounder: false,
 
         }
     }
@@ -117,6 +121,8 @@ class Course extends Component {
                 loggedIn: this.props.loggedIn
             });
 
+
+
         //get course data
         var crn = this.props.match.params.id
 
@@ -124,31 +130,23 @@ class Course extends Component {
         axios.get('api/course/' + crn)
             .then((response) => {
                 var course = response.data.data[0];
-                this.setState({
-                    crn: crn,
-                    courseCode: course.dept + course.idx,
-                    courseName: course.title,
-                    queue: [
-                        {
-                            firstName: "Ruiqi",
-                            lastName: "Peng",
-                            skills: ['Full stack'],
-                            major: "Statistics & Computer Science"
-                        },
-                        {
-                            firstName: "Yipeng",
-                            lastName: "Han",
-                            skills: ['Web Scraping']
-                        },
-                        {
-                            firstName: "Weiman",
-                            lastName: "Yan",
-                            skills: ["Electric engineering"]
-                        }
-                    ],
-                    loaded: true
-                })
 
+                //load the cuurent user's status
+                axios.get('api/course/' + crn + '/user/' + this.props.user)
+                    .then(response => {
+                        var status = response.data.data;
+                        this.setState({
+                            isInGroup: status.isInGroup,
+                            isInMatchingQueue: status.isInMatchingQueue,
+                            crn: crn,
+                            courseCode: course.dept + course.idx,
+                            courseName: course.title,
+                            loaded: true
+                        })
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
             })
             .catch((error) => {
                 console.log(error)
@@ -193,38 +191,42 @@ class Course extends Component {
                 console.log(error)
             })
 
-        // //get queue
-        // axios.get('api/course/' + crn + 'queue')
-        //     .then(response => {
-        //         var queue = response.data.data;
-        //         if (queue.length > 0) {
-        //             var promises = []
-        //             for (var i = 0; i < groups.length; i++) {
-        //                 promises.push(axios.get('api/skill/group/' + groups[i].group_id))
-        //             }
-        //             Promise.all(promises)
-        //                 .then(response => {
-        //                     //add the array of skills to each group
-        //                     for (var i = 0; i < response.length; i++) {
-        //                         var currentSkill = response[i].data.data;
-        //                         groups[i].skills = currentSkill
-        //                     }
-        //                     console.log(groups)
-        //                     this.setState({
-        //                         groups: groups,
-        //                         groupLoaded: true
-        //                     })
-        //                 })
-        //                 .catch(error => {
-        //                     console.log(error)
-        //                 })
-        //         }
-
-
-        //         this.setState({
-        //             queue
-        //         })
-        //     })
+        //get queue
+        axios.get('api/course/' + crn + '/queue')
+            .then(response => {
+                var queue = response.data.data;
+                if (queue.length > 0) {
+                    var promises = []
+                    for (var i = 0; i < queue.length; i++) {
+                        promises.push(axios.get('api/skill/user/' + queue[i].net_id))
+                    }
+                    Promise.all(promises)
+                        .then(response => {
+                            //add the array of skills to each group
+                            for (var i = 0; i < response.length; i++) {
+                                var currentSkill = response[i].data.data;
+                                queue[i].skills = currentSkill
+                            }
+                            //console.log("fuckfuckfufcfk")
+                            //console.log(queue)
+                            this.setState({
+                                queue: queue,
+                                queueLoaded: true
+                            })
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+                } else {
+                    this.setState({
+                        queue: queue,
+                        queueLoaded: true
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
     }
 
@@ -254,10 +256,59 @@ class Course extends Component {
                 tempGroups.push(newGroup);
                 console.log(tempGroups)
                 this.setState({
-                    groups: tempGroups
+                    groups: tempGroups,
+                    isInGroup: true
                 })
             })
             .catch(error => {
+                console.log(error)
+            })
+    })
+
+    joinQueue = (() => {
+        axios.post('api/queue/' + this.state.crn, {
+            'net_id': this.props.user
+        })
+            .then((response) => {
+                console.log(response.data)
+                axios.get('api/user/' + this.props.user + '/skill')
+                    .then(response => {
+                        var addedUser = response.data.data;
+                        var queue = this.state.queue;
+                        queue.push(addedUser);
+                        this.setState({
+                            queue: queue,
+                            isInMatchingQueue: true
+                        })
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+
+
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    })
+
+    removeFromQueue = (() => {
+        axios.delete('api/queue/' + this.state.crn + "/user/" + this.props.user)
+            .then((response) => {
+                var queue = this.state.queue;
+                for (var i = 0; i < queue.length; i++) {
+                    if (queue[i].net_id == this.props.user) {
+                        queue.splice(i, 1);
+
+                    }
+                }
+                this.setState({
+                    queue: queue,
+                    isInMatchingQueue: false
+                })
+
+            })
+            .catch((error) => {
                 console.log(error)
             })
     })
@@ -274,29 +325,52 @@ class Course extends Component {
             loggedIn,
             loaded,
             groupLoaded,
-            queueLoaded
+            queueLoaded, 
+            isInMatchingQueue,
+            isInGroup
         } = this.state
 
         //overflow-y: scroll;
 
-        const getQueue = queue.map((student, index) => {
-            return (
-                <List.Item className={classes.card}>
-                    <Card className={classes.courseCard}>
-                        <Card.Content>
-                            <Typography variant='p' color='primary'>{student.firstName + " " + student.lastName}</Typography>
-                        </Card.Content>
-                        <Card.Content>
-                            {student.skills.map((skill, index) => {
-                                return (
-                                    <Label>{skill}</Label>
-                                )
-                            })}
-                        </Card.Content>
-                    </Card>
-                </List.Item>
-            )
-        })
+        const getQueue = () => {
+            if (queueLoaded) {
+                console.log("fuck you")
+                console.log(queue)
+                return (
+                    queue.map((student, index) => {
+                        return (
+                            <List.Item className={classes.card}>
+                                <Card className={classes.courseCard}>
+                                    <Card.Content>
+                                        <Typography variant='p' color='primary'>{student.first_name + " " + student.last_name}</Typography>
+                                    </Card.Content>
+                                    <Card.Content>
+                                        {student.skills.map((skill, index) => {
+                                            if (skill.skill == undefined) {
+                                                return (
+                                                    <Label>{skill}</Label>
+                                                )
+                                            }
+                                            return (
+                                                <Label>{skill.skill}</Label>
+                                            )
+                                        })}
+                                    </Card.Content>
+                                </Card>
+                            </List.Item>
+                        )
+                    })
+                )
+            } else {
+                return (
+                    <p>Loading queue...</p>
+                )
+            }
+        }
+
+
+
+
 
         const getGroup = () => {
             //dealing if the groups are loaded from axios
@@ -374,11 +448,12 @@ class Course extends Component {
                                     <Paper className={classes.paper}>
                                         <Typography variant='h4' color='primary'>Matching queue</Typography>
                                     </Paper>
-                                    <div>
-                                        <Button className={classes.button} color="green">Click to join the queue!</Button>
+                                    <div className={classes.buttonContainer}>
+                                        <Button className={classes.button} color="green" onClick={this.joinQueue} disabled = {isInMatchingQueue}>Click to join the queue!</Button>
+                                        <Button className={classes.button} color="red" onClick={this.removeFromQueue} disabled = {!isInMatchingQueue}>Click to leave the queue!</Button>
                                     </div>
                                     <Paper className={classes.paperGroups}>
-                                        {getQueue}
+                                        {getQueue()}
                                     </Paper>
                                 </Grid>
                                 <Grid item xs={6}>
@@ -386,10 +461,11 @@ class Course extends Component {
                                     <Paper className={classes.paper}>
                                         <Typography variant='h4' color='primary'>Groups</Typography>
                                     </Paper>
-                                    <div>
+                                    <div className={classes.buttonContainer}>
                                         {/* <Button className={classes.button} primary>Click to create a new group</Button> */}
                                         {/* {ModalModalExample()} */}
                                         <GroupModal isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} isInMatchingQueue={this.state.isInMatchingQueue} classes={classes} createGroup={this.createGroup} courseName={courseNameForModal} username={username} crn={this.state.crn}></GroupModal>
+                                        <Button inline className={classes.button} color="orange">Click to find matched groups</Button>
                                     </div>
                                     <Paper className={classes.paperGroups}>
                                         {getGroup()}

@@ -34,6 +34,36 @@ module.exports = function (router, pool) {
     })
 
 
+    //get a user with specific id alongside with its skills
+
+    var userIdWithSkillRoute = router.route('/user/:id/skill');
+
+    userIdWithSkillRoute.get((req, res) => {
+        var net_id = req.params.id;
+        pool.query('SELECT * FROM users WHERE net_id = ?', net_id, function (error, results, fields) {
+            if (error || results.length < 1) {
+                res.status(404).send({ data: [], message: "404: Couldn't find user with netId " + net_id })
+            }
+            else {
+                var user = results[0];
+                pool.query('SELECT * FROM users_skills WHERE net_id = ?', net_id, function (error, results, fields){
+                    if(error){
+                        res.status(404).send({ data: [], message: "404: Couldn't find any skill listed for this user " + id})
+                    } else{
+                        var skills = []
+                        for(var i = 0; i < results.length; i++){
+                            skills.push(results[i].skill)
+                        }
+                        user.skills = skills
+                        res.status(200).send({ data: user, message: "User with id " + net_id + " and skills returned" })
+                    }
+                })
+               
+            }
+        })
+    })
+
+
     //put - update specific user's detail
     userIdRoute.put((req, res) => {
 
