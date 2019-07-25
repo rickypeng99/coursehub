@@ -51,8 +51,10 @@ module.exports = function (router, pool) {
         var crn = req.params.id;
 
         pool.query('SELECT * FROM groups WHERE course_CRN = ?', crn, function (error, results, fields) {
-            if (error || results.length < 1) {
+            if (error) {
                 res.status(404).send({ data: [], message: "404: Couldn't find course with crn " + crn })
+            } else if(results.length < 1){
+                res.status(200).send({ data: [], message: "No groups retutned for course with " + crn })
             }
             else {
                 res.status(200).send({ data: results, message: "All groups of Course with CRN " + crn + " returned" })

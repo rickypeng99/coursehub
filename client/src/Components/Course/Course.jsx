@@ -158,37 +158,69 @@ class Course extends Component {
             .then(response => {
                 var groups = response.data.data;
                 //console.log(groups[0].group_id)
+                if (groups.length > 0) {
+                    var promises = []
+                    for (var i = 0; i < groups.length; i++) {
+                        promises.push(axios.get('api/skill/group/' + groups[i].group_id))
+                    }
+                    Promise.all(promises)
+                        .then(response => {
+                            //add the array of skills to each group
+                            for (var i = 0; i < response.length; i++) {
+                                var currentSkill = response[i].data.data;
+                                groups[i].skills = currentSkill
+                            }
+                            console.log(groups)
+                            this.setState({
+                                groups: groups,
+                                groupLoaded: true
+                            })
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+                } else {
+                    this.setState({
+                        groups: groups,
+                        groupLoaded: true
+                    })
+                }
 
                 //get all promises to get skills for each group
-                var promises = []
-                for (var i = 0; i < groups.length; i++) {
-                    promises.push(axios.get('api/skill/group/' + groups[i].group_id))
-                }
-                Promise.all(promises)
-                    .then(response => {
-                        //add the array of skills to each group
-                        for (var i = 0; i < response.length; i++) {
-                            var currentSkill = response[i].data.data;
-                            groups[i].skills = currentSkill
-                        }
-                        console.log(groups)
-                        this.setState({
-                            groups: groups,
-                            groupLoaded: true
-                        })
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
+
             })
             .catch(error => {
                 console.log(error)
             })
 
-        //get queue
+        // //get queue
         // axios.get('api/course/' + crn + 'queue')
         //     .then(response => {
         //         var queue = response.data.data;
+        //         if (queue.length > 0) {
+        //             var promises = []
+        //             for (var i = 0; i < groups.length; i++) {
+        //                 promises.push(axios.get('api/skill/group/' + groups[i].group_id))
+        //             }
+        //             Promise.all(promises)
+        //                 .then(response => {
+        //                     //add the array of skills to each group
+        //                     for (var i = 0; i < response.length; i++) {
+        //                         var currentSkill = response[i].data.data;
+        //                         groups[i].skills = currentSkill
+        //                     }
+        //                     console.log(groups)
+        //                     this.setState({
+        //                         groups: groups,
+        //                         groupLoaded: true
+        //                     })
+        //                 })
+        //                 .catch(error => {
+        //                     console.log(error)
+        //                 })
+        //         }
+
+
         //         this.setState({
         //             queue
         //         })
@@ -267,42 +299,51 @@ class Course extends Component {
         })
 
         const getGroup = () => {
+            //dealing if the groups are loaded from axios
             if (groupLoaded) {
-                return (groups.map((group, index) => {
-                    //console.log(group.skills)
-                    return (
-                        <List.Item className={classes.card}>
-                            <Card className={classes.courseCard}>
-                                <Card.Content>
-                                    <Typography variant='p' color='primary'>{group.name}</Typography>                                
-                                    <Label color="red">{group.students_current + "/" + group.students_limit}</Label>
-                                    <br></br>
-                                    <Typography variant='p'>{group.founder}</Typography>
-                                    <br></br>
+                //dealing with courses that have no group 
+                if (groups.length > 0) {
+                    return (groups.map((group, index) => {
+                        //console.log(group.skills)
+                        return (
+                            <List.Item className={classes.card}>
+                                <Card className={classes.courseCard}>
+                                    <Card.Content>
+                                        <Typography variant='p' color='primary'>{group.name}</Typography>
+                                        <Label color="red">{group.students_current + "/" + group.students_limit}</Label>
+                                        <br></br>
+                                        <Typography variant='p'>{group.founder}</Typography>
+                                        <br></br>
 
-                                    <Typography variant='p' color='primary'>{group.description}</Typography>
+                                        <Typography variant='p' color='primary'>{group.description}</Typography>
 
 
-                                </Card.Content>
-                                <Card.Content>
-                                    <p>Neede skills: </p>
-                                    {group.skills.map((skill, index) => {
-                                        //this is for groups that are newly created, such that we can perform state change instaead of reloading the website
-                                        if (skill.skill == undefined) {
+                                    </Card.Content>
+                                    <Card.Content>
+                                        <p>Neede skills: </p>
+                                        {group.skills.map((skill, index) => {
+                                            //this is for groups that are newly created, such that we can perform state change instaead of reloading the website
+                                            if (skill.skill == undefined) {
+                                                return (
+                                                    <Label>{skill}</Label>
+                                                )
+                                            }
                                             return (
-                                                <Label>{skill}</Label>
+                                                <Label>{skill.skill}</Label>
                                             )
-                                        }
-                                        return (
-                                            <Label>{skill.skill}</Label>
-                                        )
-                                    })}
-                                </Card.Content>
-                            </Card>
-                        </List.Item>
+                                        })}
+                                    </Card.Content>
+                                </Card>
+                            </List.Item>
+                        )
+                    })
                     )
-                })
-                )
+                } else {
+                    return (
+                        <p>This course currently doesn't have any group</p>
+                    )
+                }
+
             } else {
                 return (
                     <p>Loading groups...</p>

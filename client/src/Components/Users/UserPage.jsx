@@ -224,6 +224,9 @@ class User extends Component {
         }
     }
 
+    /**
+     * changing profile pic hasn't been finished yet
+     */
     fileChange = e => {
         this.setState({ file: e.target.files[0] }, () => {
             console.log("File chosen --->", this.state.file);
