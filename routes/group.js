@@ -102,7 +102,7 @@ module.exports = function (router, pool) {
 
         var id = req.params.id;
 
-        pool.query('SELECT * FROM groups WHERE CRN = ?', crn, function (error, results, fields) {
+        pool.query('SELECT * FROM groups WHERE group_id = ?', id, function (error, results, fields) {
             if (error || results.length < 1) {
                 res.status(404).send({ data: [], message: "404: Couldn't find group with id " + id })
             }

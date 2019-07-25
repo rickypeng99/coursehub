@@ -105,7 +105,7 @@ class Course extends Component {
             isInGroup: false,
             isInMatchingQueue: false,
             isFounder: false,
-            
+
         }
     }
 
@@ -120,7 +120,7 @@ class Course extends Component {
         //get course data
         var crn = this.props.match.params.id
 
-        
+
         axios.get('api/course/' + crn)
             .then((response) => {
                 var course = response.data.data[0];
@@ -146,100 +146,6 @@ class Course extends Component {
                             skills: ["Electric engineering"]
                         }
                     ],
-
-                    groups: [
-                        {
-                            groupId: 1,
-                            groupName: "The Four",
-                            projectName: "Coursehub",
-                            founder: "Zhicong Fan",
-                            student_current: 1,
-                            student_limit: 4,
-                            needed_skills: ["Full stack"]
-                        },
-                        {
-                            groupId: 1,
-                            groupName: "The Four",
-                            projectName: "Coursehub",
-                            founder: "Zhicong Fan",
-                            student_current: 1,
-                            student_limit: 4,
-                            needed_skills: ["Full stack"]
-                        },
-                        {
-                            groupId: 1,
-                            groupName: "The Four",
-                            projectName: "Coursehub",
-                            founder: "Zhicong Fan",
-                            student_current: 1,
-                            student_limit: 4,
-                            needed_skills: ["Full stack"]
-                        },
-                        {
-                            groupId: 1,
-                            groupName: "The Four",
-                            projectName: "Coursehub",
-                            founder: "Zhicong Fan",
-                            student_current: 1,
-                            student_limit: 4,
-                            needed_skills: ["Full stack"]
-                        },
-                        {
-                            groupId: 1,
-                            groupName: "The Four",
-                            projectName: "Coursehub",
-                            founder: "Zhicong Fan",
-                            student_current: 1,
-                            student_limit: 4,
-                            needed_skills: ["Full stack"]
-                        },
-                        {
-                            groupId: 1,
-                            groupName: "The Four",
-                            projectName: "Coursehub",
-                            founder: "Zhicong Fan",
-                            student_current: 1,
-                            student_limit: 4,
-                            needed_skills: ["Full stack"]
-                        },
-                        {
-                            groupId: 1,
-                            groupName: "The Four",
-                            projectName: "Coursehub",
-                            founder: "Zhicong Fan",
-                            student_current: 1,
-                            student_limit: 4,
-                            needed_skills: ["Full stack"]
-                        },
-                        {
-                            groupId: 1,
-                            groupName: "The Four",
-                            projectName: "Coursehub",
-                            founder: "Zhicong Fan",
-                            student_current: 1,
-                            student_limit: 4,
-                            needed_skills: ["Full stack"]
-                        },
-                        {
-                            groupId: 1,
-                            groupName: "The Four",
-                            projectName: "Coursehub",
-                            founder: "Zhicong Fan",
-                            student_current: 1,
-                            student_limit: 4,
-                            needed_skills: ["Full stack"]
-                        },
-                        {
-                            groupId: 2,
-                            groupName: "Abdu",
-                            projectName: "Abdu",
-                            founder: "Abdu",
-                            student_current: 2,
-                            student_limit: 4,
-                            needed_skills: ["C++", "Java"]
-                        }
-
-                    ],
                     loaded: true
                 })
 
@@ -247,7 +153,21 @@ class Course extends Component {
             .catch((error) => {
                 console.log(error)
             })
+        //get groups
+        axios.get('api/course/' + crn + '/group')
+            .then(response => {
+                var groups = response.data.data;
+                console.log(groups)
 
+                //axios.get('api/')
+                this.setState({
+                    groups: groups,
+                    groupLoaded: true
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
     }
 
@@ -279,9 +199,11 @@ class Course extends Component {
             crn,
             courseCode,
             courseName,
-            username, 
+            username,
             loggedIn,
-            loaded
+            loaded,
+            groupLoaded,
+            queueLoaded
         } = this.state
 
         //overflow-y: scroll;
@@ -305,28 +227,41 @@ class Course extends Component {
             )
         })
 
-        const getGroup = groups.map((group, index) => {
-            return (
-                <List.Item className={classes.card}>
-                    <Card className={classes.courseCard}>
-                        <Card.Content>
-                            <Typography variant='p' color='primary'>{group.groupName}
-                            </Typography>
-                            <Label color="red">{group.student_current + "/" + group.student_limit}</Label>
-                            <br></br>
-                            {group.founder}
-                        </Card.Content>
-                        <Card.Content>
-                            {group.needed_skills.map((skill, index) => {
-                                return (
-                                    <Label>{skill}</Label>
-                                )
-                            })}
-                        </Card.Content>
-                    </Card>
-                </List.Item>
-            )
-        })
+        const getGroup = () => {
+            if (groupLoaded) {
+                return (groups.map((group, index) => {
+                    return (
+                        <List.Item className={classes.card}>
+                            <Card className={classes.courseCard}>
+                                <Card.Content>
+                                    <Typography variant='p' color='primary'>{group.name}
+                                    </Typography>
+                                    <Label color="red">{group.students_current + "/" + group.students_limit}</Label>
+                                    <br></br>
+                                    {group.founder}
+                                </Card.Content>
+                                <Card.Content>
+                                    {/* {group.needed_skills.map((skill, index) => {
+                                        return (
+                                            <Label>{skill}</Label>
+                                        )
+                                    })} */}
+                                </Card.Content>
+                            </Card>
+                        </List.Item>
+                    )
+                })
+                )
+            } else{
+                return(
+                    <p>Loading groups...</p>
+                )
+            }
+        }
+
+
+
+
 
         if (loaded) {
             //console.log("fuckscscsac" + username)
@@ -362,10 +297,10 @@ class Course extends Component {
                                     <div>
                                         {/* <Button className={classes.button} primary>Click to create a new group</Button> */}
                                         {/* {ModalModalExample()} */}
-                                        <GroupModal isFounder = {this.setState.isFounder} isInGroup = {this.state.isInGroup} isInMatchingQueue = {this.state.isInMatchingQueue} classes = {classes} createGroup = {this.createGroup} courseName = {courseNameForModal} username = {username}></GroupModal>
+                                        <GroupModal isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} isInMatchingQueue={this.state.isInMatchingQueue} classes={classes} createGroup={this.createGroup} courseName={courseNameForModal} username={username}></GroupModal>
                                     </div>
                                     <Paper className={classes.paperGroups}>
-                                        {getGroup}
+                                        {getGroup()}
                                     </Paper>
 
 
