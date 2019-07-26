@@ -12,7 +12,7 @@ import GroupModal from '../Course/Modal'
 
 const styles = theme => ({
     root: {
-        margin: "100px",
+        marginTop: "100px",
         paddingTop: '10px',
         paddingLeft: '10%',
         paddingRight: '10%',
@@ -325,7 +325,7 @@ class Course extends Component {
             loggedIn,
             loaded,
             groupLoaded,
-            queueLoaded, 
+            queueLoaded,
             isInMatchingQueue,
             isInGroup
         } = this.state
@@ -340,11 +340,13 @@ class Course extends Component {
                     queue.map((student, index) => {
                         return (
                             <List.Item className={classes.card}>
-                                <Card className={classes.courseCard}>
+                                <Card fluid className={classes.courseCard}>
                                     <Card.Content>
-                                        <Typography variant='p' color='primary'>{student.first_name + " " + student.last_name}</Typography>
+                                        <Typography color='primary'>{student.first_name + " " + student.last_name}</Typography>
+                                        <Typography>{student.net_id}</Typography>
                                     </Card.Content>
                                     <Card.Content>
+                                        <p>Skills:</p>
                                         {student.skills.map((skill, index) => {
                                             if (skill.skill == undefined) {
                                                 return (
@@ -373,6 +375,9 @@ class Course extends Component {
 
 
         const getGroup = () => {
+            const typoLabelStyle = {
+                display: "flex"
+            }
             //dealing if the groups are loaded from axios
             if (groupLoaded) {
                 //dealing with courses that have no group 
@@ -381,15 +386,16 @@ class Course extends Component {
                         //console.log(group.skills)
                         return (
                             <List.Item className={classes.card}>
-                                <Card className={classes.courseCard}>
+                                <Card fluid className={classes.courseCard}>
                                     <Card.Content>
-                                        <Typography variant='p' color='primary'>{group.name}</Typography>
-                                        <Label color="red">{group.students_current + "/" + group.students_limit}</Label>
-                                        <br></br>
-                                        <Typography variant='p'>{group.founder}</Typography>
-                                        <br></br>
+                                        <div style = {typoLabelStyle}>
+                                            <Typography color='primary'>{group.name}</Typography>
+                                            <Label color="red">{group.students_current + "/" + group.students_limit}</Label>
+                                        </div>
 
-                                        <Typography variant='p' color='primary'>{group.description}</Typography>
+                                        <Typography>{group.founder}</Typography>
+
+                                        <Typography color='primary'>{group.description}</Typography>
 
 
                                     </Card.Content>
@@ -449,8 +455,8 @@ class Course extends Component {
                                         <Typography variant='h4' color='primary'>Matching queue</Typography>
                                     </Paper>
                                     <div className={classes.buttonContainer}>
-                                        <Button className={classes.button} color="green" onClick={this.joinQueue} disabled = {isInMatchingQueue}>Click to join the queue!</Button>
-                                        <Button className={classes.button} color="red" onClick={this.removeFromQueue} disabled = {!isInMatchingQueue}>Click to leave the queue!</Button>
+                                        <Button className={classes.button} color="green" onClick={this.joinQueue} disabled={isInMatchingQueue}>Click to join the queue!</Button>
+                                        <Button className={classes.button} color="red" onClick={this.removeFromQueue} disabled={!isInMatchingQueue}>Click to leave the queue!</Button>
                                     </div>
                                     <Paper className={classes.paperGroups}>
                                         {getQueue()}

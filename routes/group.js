@@ -94,6 +94,12 @@ module.exports = function (router, pool) {
         })
     })
 
+
+    /**
+     * delete all groups of a specific user
+     */
+    
+
     /**
     * get information of a specific group
     */

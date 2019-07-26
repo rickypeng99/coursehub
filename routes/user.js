@@ -46,19 +46,19 @@ module.exports = function (router, pool) {
             }
             else {
                 var user = results[0];
-                pool.query('SELECT * FROM users_skills WHERE net_id = ?', net_id, function (error, results, fields){
-                    if(error){
-                        res.status(404).send({ data: [], message: "404: Couldn't find any skill listed for this user " + id})
-                    } else{
+                pool.query('SELECT * FROM users_skills WHERE net_id = ?', net_id, function (error, results, fields) {
+                    if (error) {
+                        res.status(404).send({ data: [], message: "404: Couldn't find any skill listed for this user " + id })
+                    } else {
                         var skills = []
-                        for(var i = 0; i < results.length; i++){
+                        for (var i = 0; i < results.length; i++) {
                             skills.push(results[i].skill)
                         }
                         user.skills = skills
                         res.status(200).send({ data: user, message: "User with id " + net_id + " and skills returned" })
                     }
                 })
-               
+
             }
         })
     })
@@ -117,7 +117,7 @@ module.exports = function (router, pool) {
                             if (error) {
                                 res.status(500).send({ data: error, message: error })
                             } else {
-                                var skills = req.body.skills;
+                                var skills = replaced([], req.body.skills);
                                 if (skills.length > 0) {
                                     var tuples = skills.map((skill, index) => {
                                         return ([net_id, skill])
@@ -135,7 +135,7 @@ module.exports = function (router, pool) {
                         })
 
 
-                        
+
 
                     }
                 })
@@ -253,6 +253,44 @@ module.exports = function (router, pool) {
     })
 
 
+    /**
+     * get all groups for a specific users
+     */
+    var userIdGroupRoute = router.route('/user/:id/group')
+
+    userIdGroupRoute.get((req, res) => {
+        var net_id = req.params.id;
+        pool.query('select * from groups g JOIN courses c ON (g.course_CRN = c.CRN) WHERE g.group_id IN (SELECT group_id from groups_users where net_id = ?)', net_id, function (error, results, fields) {
+            if (error) {
+                res.status(404).send({ data: error, message: error })
+            } else {
+
+                res.status(200).send({ data: results, message: "Successfully returned all groups that this user is affiliated to" })
+            }
+
+        })
+    })
+
+
+
+    /**
+     * get all queue for a specific user, returning courses that contains that matches the queue
+     */
+
+    var userIdQueueRoute = router.route('/user/:id/queue')
+
+    userIdQueueRoute.get((req, res) => {
+        var net_id = req.params.id;
+        pool.query('SELECT * FROM courses WHERE crn IN (SELECT course_CRN from users_matching_queue WHERE user_id = ?)', net_id, function (error, results, fields) {
+            if (error) {
+                res.status(404).send({ data: error, message: error })
+            } else {
+
+                res.status(200).send({ data: results, message: "Successfully returned all queues that this user is affiliated to" })
+            }
+
+        })
+    })
 
 
 

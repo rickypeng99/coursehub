@@ -14,7 +14,7 @@ import axios from 'axios';
 
 const styles = theme => ({
     root: {
-        margin: "100px",
+        marginTop: "100px",
         paddingTop: '10px',
         paddingLeft: '10%',
         paddingRight: '10%',
@@ -105,8 +105,16 @@ class User extends Component {
              * skills section
              */
             skillsLoaded: false,
-            skills: []
+            skills: [],
 
+            /**
+             * queue & groups section
+             */
+
+            queueLoaded: false,
+            queue: [], 
+            groupLoaded: false,
+            groups: []
         }
     }
     fileInputRef = React.createRef();
@@ -201,7 +209,8 @@ class User extends Component {
             .catch(error => {
                 console.log(error);
             })
-
+        
+        axios.get('api/')
 
 
         // this.setState({

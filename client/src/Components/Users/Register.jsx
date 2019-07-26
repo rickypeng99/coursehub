@@ -35,7 +35,10 @@ const styles = theme => ({
         // alignItems: "center"
     },
     outGrid: {
-        margin: "10%",
+        marginTop: "100px",
+        paddingTop: '10px',
+        marginLeft: '10%',
+        marginRight: '10%',
         padding: theme.spacing(2),
         //textAlign: 'center',
         color: theme.palette.text.secondary,
