@@ -471,33 +471,40 @@ class Course extends Component {
         const getQueue = () => {
             if (queueLoaded) {
                 //console.log(queue)
-                return (
-                    queue.map((student, index) => {
-                        return (
-                            <List.Item className={classes.card}>
-                                <Card fluid className={classes.courseCard}>
-                                    <Card.Content>
-                                        <Typography color='primary'>{student.first_name + " " + student.last_name}</Typography>
-                                        <Typography>{student.net_id}</Typography>
-                                    </Card.Content>
-                                    <Card.Content>
-                                        <p>Skills:</p>
-                                        {student.skills.map((skill, index) => {
-                                            if (skill.skill == undefined) {
+                if (queue.length > 0) {
+                    return (
+                        queue.map((student, index) => {
+                            return (
+                                <List.Item className={classes.card}>
+                                    <Card fluid className={classes.courseCard}>
+                                        <Card.Content>
+                                            <Typography color='primary'>{student.first_name + " " + student.last_name}</Typography>
+                                            <Typography>{student.net_id}</Typography>
+                                        </Card.Content>
+                                        <Card.Content>
+                                            <p>Skills:</p>
+                                            {student.skills.map((skill, index) => {
+                                                if (skill.skill == undefined) {
+                                                    return (
+                                                        <Label>{skill}</Label>
+                                                    )
+                                                }
                                                 return (
-                                                    <Label>{skill}</Label>
+                                                    <Label>{skill.skill}</Label>
                                                 )
-                                            }
-                                            return (
-                                                <Label>{skill.skill}</Label>
-                                            )
-                                        })}
-                                    </Card.Content>
-                                </Card>
-                            </List.Item>
-                        )
-                    })
-                )
+                                            })}
+                                        </Card.Content>
+                                    </Card>
+                                </List.Item>
+                            )
+                        })
+                    )
+                } else {
+                    return(
+                        <p>This course curretly has no one in its matching queue</p>
+                    )
+                }
+
             } else {
                 return (
                     <p>Loading queue...</p>
