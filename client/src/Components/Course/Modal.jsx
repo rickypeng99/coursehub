@@ -132,7 +132,7 @@ class GroupModal extends Component {
         var classes = this.props.classes;
         var courseName = this.props.courseName;
         var username = this.props.username;
-
+        var isInGroup = this.props.isInGroup;
 
         const inputStyle = {
             //flexShrink: 0,
@@ -156,7 +156,7 @@ class GroupModal extends Component {
         return (
             <Modal
                 trigger={
-                    <Button className={classes.button} primary onClick={this.handleOpen}>Click to create a new group</Button>
+                    <Button className={classes.button} primary onClick={this.handleOpen} disabled = {isInGroup}>Click to create a new group</Button>
                 }
                 open={this.state.modalOpen}
             >

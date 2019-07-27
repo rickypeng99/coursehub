@@ -85,6 +85,7 @@ class MenuAppBar extends React.Component {
             anchorEl: false,
             auth: false
         })
+        this.props.history.push('/login')
     }
 
     login = (() => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Input, Checkbox, Dropdown, Label, List, Card, Image, Rating, Modal, Header } from 'semantic-ui-react';
+import { Form, Button, Input, Checkbox, Dropdown, Label, List, Card, Image, Rating, Modal, Header, Tab, Segment, Menu } from 'semantic-ui-react';
 import { userActions } from '../../Store/actions/userActions';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
@@ -81,6 +81,9 @@ const styles = theme => ({
 
     buttonContainer: {
         display: "flex"
+    },
+    tab: {
+        width: "50%"
     }
 });
 
@@ -103,13 +106,20 @@ class Course extends Component {
             loggedIn: false,
 
             /**
-             * user specific
+             * logged in user's status
              */
 
             isInGroup: false,
             isInMatchingQueue: false,
             //isFounder: false,
 
+            /**
+             * viewing options
+             */
+            viewMyProfile: true,
+            viewMyGroup: true,
+            myGroup: null,
+            myProfile: null,
         }
     }
 
@@ -141,8 +151,59 @@ class Course extends Component {
                             crn: crn,
                             courseCode: course.dept + course.idx,
                             courseName: course.title,
-                            loaded: true
+                            loaded: true,
+                            myGroup: status.group
                         })
+
+                        //get groups
+                        axios.get('api/course/' + crn + '/group')
+                            .then(response => {
+                                var groups = response.data.data;
+                                //console.log(groups[0].group_id)
+                                if (groups.length > 0) {
+                                    var promises = []
+                                    for (var i = 0; i < groups.length; i++) {
+                                        promises.push(axios.get('api/skill/group/' + groups[i].group_id))
+                                    }
+                                    Promise.all(promises)
+                                        .then(response => {
+                                            //add the array of skills to each group
+                                            var myGroup = this.state.myGroup
+                                            var mygroup_id = null
+                                            if (myGroup) {
+                                                mygroup_id = myGroup.group_id
+                                            }
+                                            for (var i = 0; i < response.length; i++) {
+                                                var currentSkill = response[i].data.data;
+                                                groups[i].skills = currentSkill
+                                                if (mygroup_id) {
+                                                    if (mygroup_id == groups[i].group_id) {
+                                                        myGroup.skills = currentSkill
+                                                    }
+                                                }
+                                            }
+                                            this.setState({
+                                                myGroup: myGroup,
+                                                groups: groups,
+                                                groupLoaded: true
+                                            })
+                                        })
+                                        .catch(error => {
+                                            console.log(error)
+                                        })
+                                } else {
+                                    this.setState({
+                                        groups: groups,
+                                        groupLoaded: true
+                                    })
+                                }
+
+                                //get all promises to get skills for each group
+
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
                     })
                     .catch((error) => {
                         console.log(error)
@@ -151,78 +212,56 @@ class Course extends Component {
             .catch((error) => {
                 console.log(error)
             })
-        //get groups
-        axios.get('api/course/' + crn + '/group')
-            .then(response => {
-                var groups = response.data.data;
-                //console.log(groups[0].group_id)
-                if (groups.length > 0) {
-                    var promises = []
-                    for (var i = 0; i < groups.length; i++) {
-                        promises.push(axios.get('api/skill/group/' + groups[i].group_id))
-                    }
-                    Promise.all(promises)
-                        .then(response => {
-                            //add the array of skills to each group
-                            for (var i = 0; i < response.length; i++) {
-                                var currentSkill = response[i].data.data;
-                                groups[i].skills = currentSkill
-                            }
-                            console.log(groups)
-                            this.setState({
-                                groups: groups,
-                                groupLoaded: true
-                            })
-                        })
-                        .catch(error => {
-                            console.log(error)
-                        })
-                } else {
-                    this.setState({
-                        groups: groups,
-                        groupLoaded: true
-                    })
-                }
 
-                //get all promises to get skills for each group
-
-            })
-            .catch(error => {
-                console.log(error)
-            })
 
         //get queue
         axios.get('api/course/' + crn + '/queue')
             .then(response => {
                 var queue = response.data.data;
-                if (queue.length > 0) {
-                    var promises = []
-                    for (var i = 0; i < queue.length; i++) {
-                        promises.push(axios.get('api/skill/user/' + queue[i].net_id))
-                    }
-                    Promise.all(promises)
-                        .then(response => {
-                            //add the array of skills to each group
-                            for (var i = 0; i < response.length; i++) {
-                                var currentSkill = response[i].data.data;
-                                queue[i].skills = currentSkill
+
+
+                //get profile for current user (incase he didn't join the matching queue)
+
+                axios.get('api/user/' + this.props.user + '/skill')
+                    .then(response => {
+                        var myProfile = response.data.data;
+                        if (queue.length > 0) {
+                            var promises = []
+                            for (var i = 0; i < queue.length; i++) {
+                                promises.push(axios.get('api/skill/user/' + queue[i].net_id))
                             }
-                            //console.log("fuckfuckfufcfk")
-                            //console.log(queue)
+                            Promise.all(promises)
+                                .then(response => {
+                                    //add the array of skills to each queue
+
+                                    for (var i = 0; i < response.length; i++) {
+                                        var currentSkill = response[i].data.data;
+                                        queue[i].skills = currentSkill
+                                    }
+
+                                    this.setState({
+                                        queue: queue,
+                                        queueLoaded: true,
+                                        myProfile: myProfile
+                                    })
+                                })
+                                .catch(error => {
+                                    console.log(error)
+                                })
+                        } else {
+
                             this.setState({
                                 queue: queue,
-                                queueLoaded: true
+                                queueLoaded: true,
+                                myProfile: myProfile
                             })
-                        })
-                        .catch(error => {
-                            console.log(error)
-                        })
-                } else {
-                    this.setState({
-                        queue: queue,
-                        queueLoaded: true
+                        }
                     })
-                }
+                    .catch((error) => {
+                        console.log(error)
+                    })
+
+
             })
             .catch(error => {
                 console.log(error)
@@ -254,8 +293,10 @@ class Course extends Component {
                 var newGroup = response.data.data;
                 var tempGroups = this.state.groups;
                 tempGroups.push(newGroup);
-                console.log(tempGroups)
+                var myGroup = newGroup;
+
                 this.setState({
+                    myGroup: myGroup,
                     groups: tempGroups,
                     isInGroup: true
                 })
@@ -313,6 +354,97 @@ class Course extends Component {
             })
     })
 
+    handleProfileClick = ((e, { name }) => {
+        if (name == 'My profile') {
+            this.setState({
+                viewMyProfile: true
+            })
+        } else {
+            this.setState({
+                viewMyProfile: false
+            })
+        }
+    })
+
+    handleGroupClick = ((e, { name }) => {
+        if (name == 'My group') {
+            this.setState({
+                viewMyGroup: true
+            })
+        } else {
+            this.setState({
+                viewMyGroup: false
+            })
+        }
+    })
+
+    joinGroup = ((group) => {
+        var group_id = group.group_id
+        axios.post('api/group/' + group_id + '/add', {
+            net_id: this.state.username
+        })
+            .then((response) => {
+                var groups = this.state.groups
+                var myGroup = group
+                for (var i = 0; i < groups.length; i++) {
+                    if (groups[i].group_id == group_id) {
+                        groups[i].students_current++;
+                        myGroup = group
+                        break;
+                    }
+                }
+                this.setState({
+                    myGroup: myGroup,
+                    groups: groups,
+                    isInGroup: true
+                })
+
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    })
+
+    //leave group
+    leaveGroup = ((group) => {
+        var group_id = group.group_id
+        axios.post('api/group/' + group_id + '/remove', {
+            net_id: this.state.username
+        })
+            .then((response) => {
+                var groups = this.state.groups
+                var myGroup = null
+                var result = response.data.data;
+
+                if (result == "removed") {
+                    //remove the group from local
+                    for (var i = 0; i < groups.length; i++) {
+                        if (groups[i].group_id == group_id) {
+                            groups.splice(i, 1);
+                            break;
+                        }
+                    }
+                } else {
+                    //modify the students_current
+                    for (var i = 0; i < groups.length; i++) {
+                        if (groups[i].group_id == group_id) {
+                            groups[i].students_current--;
+                            break;
+                        }
+                    }
+                }
+
+                this.setState({
+                    myGroup: myGroup,
+                    groups: groups,
+                    isInGroup: false
+                })
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    })
+
     render() {
         var classes = this.props.classes;
         var {
@@ -327,15 +459,18 @@ class Course extends Component {
             groupLoaded,
             queueLoaded,
             isInMatchingQueue,
-            isInGroup
+            isInGroup,
+            viewMyProfile,
+            viewMyGroup,
+            myGroup,
+            myProfile
         } = this.state
 
         //overflow-y: scroll;
 
         const getQueue = () => {
             if (queueLoaded) {
-                console.log("fuck you")
-                console.log(queue)
+                //console.log(queue)
                 return (
                     queue.map((student, index) => {
                         return (
@@ -388,19 +523,19 @@ class Course extends Component {
                             <List.Item className={classes.card}>
                                 <Card fluid className={classes.courseCard}>
                                     <Card.Content>
-                                        <div style = {typoLabelStyle}>
+                                        <div style={typoLabelStyle}>
                                             <Typography color='primary'>{group.name}</Typography>
                                             <Label color="red">{group.students_current + "/" + group.students_limit}</Label>
                                         </div>
 
-                                        <Typography>{group.founder}</Typography>
+                                        <Typography>{'Founder: ' + group.founder}</Typography>
 
                                         <Typography color='primary'>{group.description}</Typography>
 
 
                                     </Card.Content>
                                     <Card.Content>
-                                        <p>Neede skills: </p>
+                                        <p>Needed skills: </p>
                                         {group.skills.map((skill, index) => {
                                             //this is for groups that are newly created, such that we can perform state change instaead of reloading the website
                                             if (skill.skill == undefined) {
@@ -412,6 +547,8 @@ class Course extends Component {
                                                 <Label>{skill.skill}</Label>
                                             )
                                         })}
+                                        <br></br>
+                                        <Button primary floated='right' disabled={isInGroup} onClick={() => { this.joinGroup(group) }}>Join</Button>
                                     </Card.Content>
                                 </Card>
                             </List.Item>
@@ -432,7 +569,137 @@ class Course extends Component {
         }
 
 
+        const whichProfileSegment = () => {
+            if (viewMyProfile) {
+                if (myProfile && queueLoaded) {
+                    return (
+                        <Segment attached="bottom" className={classes.paperGroups}>
+                            <List.Item className={classes.card}>
+                                <Card fluid className={classes.courseCard}>
+                                    <Card.Content>
+                                        <Typography color='primary'>{myProfile.first_name + " " + myProfile.last_name}</Typography>
+                                        <Typography>{myProfile.net_id}</Typography>
+                                    </Card.Content>
+                                    <Card.Content>
+                                        <p>Skills:</p>
+                                        {myProfile.skills.map((skill, index) => {
+                                            if (skill.skill == undefined) {
+                                                return (
+                                                    <Label>{skill}</Label>
+                                                )
+                                            }
+                                            return (
+                                                <Label>{skill.skill}</Label>
+                                            )
+                                        })}
+                                    </Card.Content>
+                                </Card>
+                            </List.Item>
+                        </Segment>
 
+                    )
+                } else {
+                    return (
+                        <Segment attached="bottom" className={classes.paperGroups}>
+                            <p>Loading your profile...</p>
+                        </Segment>
+                    )
+
+                }
+            } else {
+                return (
+                    <Segment attached="bottom" className={classes.paperGroups}>
+
+                        {getQueue()}
+                    </Segment>
+                )
+            }
+        }
+
+
+        const whichGroupSegment = () => {
+            if (viewMyGroup) {
+                const typoLabelStyle = {
+                    display: "flex"
+                }
+
+                if (myGroup && groupLoaded && myGroup.skills) {
+
+                    //since the group_name is differrent from name. Please dont make such errors again....
+                    const group_name = (() => {
+                        if (!myGroup.group_name) {
+                            return myGroup.name
+                        } else {
+                            return myGroup.group_name
+                        }
+                    })
+
+                    return (
+                        <Segment attached="bottom" className={classes.paperGroups}>
+                            <List.Item className={classes.card}>
+
+                                <Card fluid className={classes.courseCard}>
+                                    <Card.Content>
+                                        <div style={typoLabelStyle}>
+                                            <Typography color='primary'>{group_name()}</Typography>
+                                            <Label color="red">{myGroup.students_current + "/" + myGroup.students_limit}</Label>
+                                        </div>
+
+                                        <Typography>{'Founder: ' + myGroup.founder}</Typography>
+
+                                        <Typography color='primary'>{myGroup.description}</Typography>
+
+
+                                    </Card.Content>
+                                    <Card.Content>
+                                        <p>Needed skills: </p>
+                                        {myGroup.skills.map((skill, index) => {
+                                            //this is for groups that are newly created, such that we can perform state change instaead of reloading the website
+                                            if (skill.skill == undefined) {
+                                                return (
+                                                    <Label>{skill}</Label>
+                                                )
+                                            }
+                                            return (
+                                                <Label>{skill.skill}</Label>
+                                            )
+                                        })}
+                                        <br></br>
+                                        <Button negative floated='right' onClick={() => { this.leaveGroup(myGroup) }}>Leave</Button>
+                                    </Card.Content>
+                                </Card>
+                            </List.Item>
+
+
+                        </Segment>
+                    )
+
+
+                } else if (groupLoaded && !myGroup) {
+                    return (
+                        <Segment attached="bottom" className={classes.paperGroups}>
+                            <p>You are not in any group yet! Create a group or join a group!</p>
+                        </Segment>
+                    )
+
+                } else {
+                    return (
+                        <Segment attached="bottom" className={classes.paperGroups}>
+                            <p>Loading your group...</p>
+                        </Segment>
+
+                    )
+                }
+
+            } else {
+                return (
+                    <Segment attached="bottom" className={classes.paperGroups}>
+
+                        {getGroup()}
+                    </Segment>
+                )
+            }
+        }
 
 
         if (loaded) {
@@ -454,28 +721,66 @@ class Course extends Component {
                                     <Paper className={classes.paper}>
                                         <Typography variant='h4' color='primary'>Matching queue</Typography>
                                     </Paper>
-                                    <div className={classes.buttonContainer}>
-                                        <Button className={classes.button} color="green" onClick={this.joinQueue} disabled={isInMatchingQueue}>Click to join the queue!</Button>
-                                        <Button className={classes.button} color="red" onClick={this.removeFromQueue} disabled={!isInMatchingQueue}>Click to leave the queue!</Button>
+
+
+                                    <Button.Group attached='bottom'>
+                                        <Button className={classes.button} color="green" onClick={this.joinQueue} disabled={isInMatchingQueue || isInGroup}>Click to join the queue!</Button>
+                                        <Button className={classes.button} color="red" onClick={this.removeFromQueue} disabled={!isInMatchingQueue || isInGroup}>Click to leave the queue!</Button>
+                                    </Button.Group>
+                                    {/* tabs */}
+                                    <div>
+                                        <Menu attached="top" tabular >
+                                            <Menu.Item
+                                                name="My profile"
+                                                active={viewMyProfile}
+                                                onClick={this.handleProfileClick}
+                                                className={classes.tab}
+
+                                            />
+                                            <Menu.Item
+                                                name="Others"
+                                                active={!viewMyProfile}
+                                                onClick={this.handleProfileClick}
+                                                className={classes.tab}
+
+                                            />
+                                        </Menu>
+                                        {whichProfileSegment()}
                                     </div>
-                                    <Paper className={classes.paperGroups}>
-                                        {getQueue()}
-                                    </Paper>
+
+                                    {/* Put conditional segments here */}
+
+
                                 </Grid>
                                 <Grid item xs={6}>
 
                                     <Paper className={classes.paper}>
                                         <Typography variant='h4' color='primary'>Groups</Typography>
                                     </Paper>
-                                    <div className={classes.buttonContainer}>
-                                        {/* <Button className={classes.button} primary>Click to create a new group</Button> */}
-                                        {/* {ModalModalExample()} */}
+
+
+                                    <Button.Group attached='top'>
                                         <GroupModal isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} isInMatchingQueue={this.state.isInMatchingQueue} classes={classes} createGroup={this.createGroup} courseName={courseNameForModal} username={username} crn={this.state.crn}></GroupModal>
                                         <Button inline className={classes.button} color="orange">Click to find matched groups</Button>
+                                    </Button.Group>
+                                    <div>
+                                        <Menu attached="top" tabular>
+                                            <Menu.Item
+                                                name="My group"
+                                                active={viewMyGroup}
+                                                onClick={this.handleGroupClick}
+                                                className={classes.tab}
+                                            />
+                                            <Menu.Item
+                                                name="All groups"
+                                                active={!viewMyGroup}
+                                                onClick={this.handleGroupClick}
+                                                className={classes.tab}
+
+                                            />
+                                        </Menu>
+                                        {whichGroupSegment()}
                                     </div>
-                                    <Paper className={classes.paperGroups}>
-                                        {getGroup()}
-                                    </Paper>
 
 
                                 </Grid>

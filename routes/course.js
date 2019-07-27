@@ -98,7 +98,7 @@ module.exports = function (router, pool) {
     })
 
     /**
-     * get the current logged in user status for a specific class (isInGroup? isInMatchingqueue? Neither?)
+     * get the current logged in user status for a specific class (isInGroup? isInMatchingqueue? Neither?) and get the group if the user is currently in a group
      */
 
     courseUserStatusRoute = router.route('/course/:id/user/:net_id')
@@ -112,13 +112,21 @@ module.exports = function (router, pool) {
         }
 
         //see if the user is inside of a group
-        pool.query('SELECT count(*) FROM groups_users WHERE net_id = ? AND group_id IN (SELECT group_id FROM groups WHERE course_CRN = ?)', [net_id, crn], function (error, results, fields){
+        pool.query('SELECT * FROM groups_users natural JOIN groups WHERE net_id = ? and course_CRN = ?', [net_id, crn], function (error, results, fields){
             if(error){
                 res.status(404).send({ data: error, message: error})
             } else{
-                var count = results[0]['count(*)']
-                if(count > 0){
+                if(results.length > 0){
                     status.isInGroup = true
+                    var group = {
+                        group_id: results[0].group_id,
+                        group_name: results[0].name,
+                        founder: results[0].founder,
+                        students_current: results[0].students_current,
+                        students_limit: results[0].students_limit,
+                        description: results[0].description,
+                    }
+                    status.group = group
                 }
                 pool.query('SELECT count(*) FROM users_matching_queue WHERE user_id = ? AND course_CRN = ?', [net_id, crn], function (error, results, fields){
                     if(error){

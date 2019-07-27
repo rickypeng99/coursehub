@@ -94,21 +94,59 @@ class MainPage extends Component {
     enterCourse = ((value) => {
         this.props.history.push('/course/' + value)
     })
+
+    preventDragHandler = (e) => {
+        e.preventDefault();
+    }
     render() {
 
 
         var query = this.state.tempQuery
         var loaded = this.state
+        const inputBoxStyle = {
+            textAlign: "center",
+            marginBottom: "20px",
+            width: "100%"
 
+        }
+
+        const inputStyle = {
+            width: "50%"
+        }
+        const mainStyle = {
+
+            marginTop: "10%"
+
+        }
+
+        const mainStyleWithoutSearch = {
+            height: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+
+        }
+        const imgStyle = {
+            //width: "50%",
+            width: "30%",
+            margin: "10px",
+            userDrag: "none",
+            userSelect: "none",
+            //cursor: "pointer"
+        }
         if (!this.state.loggedIn) {
             //console.log(this.state.username)
             return (
 
 
-                <div>
-                    <p>
-                        Please login to utilize this site!
-                    </p>
+                <div style={mainStyleWithoutSearch}>
+                    <img style={imgStyle} src={require('../../Common/images/mainLogo.png')} onDragStart={this.preventDragHandler} />
+
+                    <div style={inputBoxStyle}>
+                        <Button primary onClick = {()=>{this.props.history.push('/login')}}>Login</Button>
+                    </div>
+
                 </div>
 
             )
@@ -155,30 +193,7 @@ class MainPage extends Component {
                     { key: 'CS', text: 'CS', value: 'CS' },
                     { key: 'ECE', text: 'ECE', value: 'ECE' }
                 ]
-                const inputBoxStyle = {
-                    textAlign: "center",
-                    marginBottom: "20px",
-                    width: "100%"
-
-                }
-
-                const inputStyle = {
-                    width: "50%"
-                }
-                const mainStyle = {
-
-                    marginTop: "10%"
-
-                }
-
-                const mainStyleWithoutSearch = {
-                    height: "100vh",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-
-                }
+                
                 if (this.state.searched) {
                     return (
                         <div style={mainStyle}>
@@ -203,14 +218,7 @@ class MainPage extends Component {
                 }
 
                 else {
-                    const imgStyle = {
-                        //width: "50%",
-                        width: "30%",
-                        margin: "10px",
-                        userDrag: "none",
-                        userSelect: "none",
-                        cursor: "pointer"
-                    }
+                    
                     return (
                         <div style={mainStyleWithoutSearch}>
                             <img style={imgStyle} src={require('../../Common/images/mainLogo.png')} onDragStart={this.preventDragHandler} />
