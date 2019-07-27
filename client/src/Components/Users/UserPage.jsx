@@ -48,6 +48,8 @@ const styles = theme => ({
         '&:hover': {
             backgroundColor: '#f0f0f0',
         },
+        //height: "180px",
+
     },
     image: {
         height: "50%",
@@ -79,7 +81,6 @@ class User extends Component {
             firstName: null,
             lastName: null,
             major: null,
-            classTaking: [],
             gpa: null,
             registered: false,
             comments: [],
@@ -112,7 +113,7 @@ class User extends Component {
              */
 
             queueLoaded: false,
-            queue: [], 
+            queues: [],
             groupLoaded: false,
             groups: []
         }
@@ -156,19 +157,6 @@ class User extends Component {
                     lastName: result.data.data[0].last_name,
                     major: result.data.data[0].major,
                     description: result.data.data[0].description,
-                    classTaking: [
-                        {
-                            name: "CS411 Q3",
-                            crn: "30109"
-                        },
-                        {
-                            name: "STAT420 1UG",
-                            crn: "63856"
-                        },
-                        {
-                            name: "STAT410 1GR",
-                            crn: "65078"
-                        }],
                     //gpa: result.data.,
                     registered: false,
                     image: imageAddress,
@@ -209,14 +197,71 @@ class User extends Component {
             .catch(error => {
                 console.log(error);
             })
-        
-        axios.get('api/')
+        //get all groups of this user
+        axios.get('api/user/' + netId + '/group')
+            .then((response) => {
+                var results = response.data.data;
+                var groups = []
+                if (results.length > 0) {
+                    for (var i = 0; i < results.length; i++) {
+                        var group = {
+                            group_name: results[i].name,
+                            students_current: results[i].students_current,
+                            students_limit: results[i].students_limit,
+                            description: results[i].description,
+                            /**
+                             * course information of this group
+                             */
+                            course_CRN: results[i].course_CRN,
+                            course_dept: results[i].dept,
+                            course_idx: results[i].idx,
+                            course_title: results[i].title,
+                            course_session: results[i].session
+                        }
+                        groups.push(group);
+                    }
 
+                }
 
-        // this.setState({
-        //     netId: this.props.match.params.id,
+                this.setState({
+                    groups: groups,
+                    groupLoaded: true
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
-        // })
+        //get all queues of this user
+        axios.get('api/user/' + netId + '/queue')
+            .then((response) => {
+                var results = response.data.data;
+                var queues = []
+                if (results.length > 0) {
+                    for (var i = 0; i < results.length; i++) {
+                        var queue = {
+                            /**
+                             * course information of this queue
+                             */
+                            course_CRN: results[i].CRN,
+                            course_dept: results[i].dept,
+                            course_idx: results[i].idx,
+                            course_title: results[i].title,
+                            course_session: results[i].session
+                        }
+                        queues.push(queue);
+                    }
+
+                }
+
+                this.setState({
+                    queues: queues,
+                    queueLoaded: true
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -314,7 +359,7 @@ class User extends Component {
     }
     render() {
         var {
-            netId, username, loggedIn, firstName, lastName, major, classTaking, comments, description, loaded, image, commenting, commentsLoaded, efficiency, responsiveness, communication, skills, skillsLoaded
+            netId, username, loggedIn, firstName, lastName, major, groups, comments, description, loaded, image, commenting, commentsLoaded, efficiency, responsiveness, communication, skills, skillsLoaded, groupLoaded, queues, queueLoaded
         } = this.state
 
         if (loaded) {
@@ -324,39 +369,101 @@ class User extends Component {
             //console.log(username)
 
             const getSkillList = () => {
-                if(skillsLoaded){
-                    return(
+                if (skillsLoaded) {
+                    return (
                         skills.map((skill, index) => {
                             return (
-                                    <Label>
-                                        {skill}
-                                    </Label>
+                                <Label>
+                                    {skill}
+                                </Label>
                             )
                         })
                     )
-                    
-                } else{
+
+                } else {
                     return (
                         <p>Loading skills...</p>
                     )
                 }
             }
-            
-            
-            
 
-            const getCoursesList = classTaking.map((course, index) => {
-                //console.log(course)
-                return (
-                    <List.Item className={classes.course}>
-                        <Card className={classes.courseCard}>
-                            <Card.Content header={course.name} color='red' />
-                            <Card.Content description={course.crn} />
-                        </Card>
-                    </List.Item>
 
-                )
-            })
+
+            /**
+             * mapping groups
+             */
+            const getGroupsList = () => {
+                if (groupLoaded) {
+                    return (
+                        groups.map((group, index) => {
+                            //console.log(course)
+                            return (
+                                <List.Item className={classes.course}onClick={() => {this.props.history.push('/course/' + group.course_CRN
+                                )}}>
+                                    <Card className={classes.courseCard}>
+                                        <Card.Content>
+                                            <Typography variant='h5' color='primary'>{group.group_name}</Typography>
+                                            <Typography color='primary'>{group.course_dept + group.course_idx + ' - ' + group.course_title 
+                                            //+ ' ' 
+                                            //+ queue.course_session
+                                            }</Typography>
+                                            <Label color='blue'>Group</Label>
+                                            <Label color='red'>{
+                                                group.students_current + '/' + group.students_limit
+                                            }</Label>
+                                        </Card.Content>
+                                        <Card.Content description={group.description} />
+                                    </Card>
+                                </List.Item>
+
+                            )
+                        }
+                        )
+                    )
+                } else {
+                    return (
+                        <p>Loading the groups that this user has joined</p>
+                    )
+                }
+            }
+
+
+            /**
+             * mapping queues
+             */
+            const getQueuesList = () => {
+                if (queueLoaded) {
+                    return (
+                        queues.map((queue, index) => {
+                            //console.log(course)
+                            return (
+                                <List.Item className={classes.course} onClick={() => {this.props.history.push('/course/' + queue.course_CRN
+                                )}}>
+                                    <Card className={classes.courseCard}>
+                                        <Card.Content>
+                                            
+                                            <Typography variant='h5' color='primary'>{queue.course_dept + queue.course_idx + ' - ' + queue.course_title 
+                                            //+ ' ' 
+                                            //+ queue.course_session
+                                        }</Typography>
+                                            <Label color='orange'>Matching queue</Label>
+                                        </Card.Content>
+                                        {/* <Card.Content description={group.description} /> */}
+                                    </Card>
+                                </List.Item>
+
+                            )
+                        }
+                        )
+                    )
+                } else {
+                    return (
+                        <p>Loading the groups that this user has joined</p>
+                    )
+                }
+            }
+
+
 
             const showComments = () => {
                 if (commentsLoaded) {
@@ -480,7 +587,7 @@ class User extends Component {
                                         <Grid item xs={12}>
                                             <Paper className={classes.paper}>
                                                 <Typography variant='h4' color='primary'>Skills</Typography>
-                                                    {getSkillList()}
+                                                {getSkillList()}
                                             </Paper>
                                         </Grid>
 
@@ -489,7 +596,9 @@ class User extends Component {
                                             <Paper className={classes.paper}>
                                                 <Typography variant='h4' color='primary'>Groups / Matching queue</Typography>
                                                 {/* <ul horizontal selection className={classes.list}> */}
-                                                {getCoursesList}
+                                                {getGroupsList()}
+                                                <br></br>
+                                                {getQueuesList()}
                                                 {/* </ul> */}
                                             </Paper>
                                         </Grid>
