@@ -384,6 +384,7 @@ class Course extends Component {
         var group_id = this.state.myGroup.group_id;
         var invitation_type = 1;
 
+        
         axios.post('api/invitation', {
             sender: sender,
             receiver: receiver,
