@@ -67,7 +67,8 @@ const styles = theme => ({
     comment: {
         cursor: "pointer",
 
-    }
+    },
+    
 });
 
 
@@ -471,11 +472,18 @@ class User extends Component {
 
             const showComments = () => {
                 if (commentsLoaded) {
-                    return (
-                        <List animated>
-                            {getCommentList}
-                        </List>
-                    )
+                    if(this.state.comments.length > 0){
+                        return (
+                            <List animated>
+                                {getCommentList}
+                            </List>
+                        )
+                    } else{
+                        return (
+                            <p>{firstName + ' has no previous comment'}</p>
+                        )
+                    }
+                    
 
                 } else {
                     return (

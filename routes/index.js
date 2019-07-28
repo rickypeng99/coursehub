@@ -8,5 +8,6 @@ module.exports = function (app, router, pool) {
     app.use('/api', require('./group.js')(router, pool));
     app.use('/api', require('./skill.js')(router, pool));
     app.use('/api', require('./queue.js')(router, pool));
+    app.use('/api', require('./invitation.js')(router, pool));
 
 };

@@ -15,8 +15,11 @@ import Menu from '@material-ui/core/Menu';
 import { connect } from 'react-redux';
 //import { getCookie, setCookie } from '../../Common/cookie';
 import { userActions } from '../../Store/actions/userActions';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Badge from '@material-ui/core/Badge';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import axios from 'axios';
 
 const styles = {
     root: {
@@ -51,6 +54,8 @@ class MenuAppBar extends React.Component {
             auth: false,
             anchorEl: false,
             username: "",
+            invitations: 0,
+            invitationsLoaded: false
 
         }
     }
@@ -65,16 +70,16 @@ class MenuAppBar extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({ anchorEl: false});
+        this.setState({ anchorEl: false });
     };
 
     handleMyProfile = () => {
-        this.setState({ anchorEl: false});
+        this.setState({ anchorEl: false });
         this.props.history.push('/user/' + this.state.username)
     }
 
     handleMyAccount = () => {
-        this.setState({ anchorEl: false});
+        this.setState({ anchorEl: false });
         this.props.history.push('/user/' + this.state.username + '/settings')
     }
 
@@ -96,6 +101,9 @@ class MenuAppBar extends React.Component {
         this.props.history.push('/register')
     })
 
+    viewInvitations = (() => {
+        this.props.history.push('/invitation')
+    })
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.loggedIn !== this.state.auth) {
@@ -111,23 +119,72 @@ class MenuAppBar extends React.Component {
             username: this.props.user,
             auth: this.props.loggedIn
         })
-
-
+        axios.get('api/invitation/num/' + this.props.user)
+            .then(response => {
+                var num = response.data.data;
+                this.setState({
+                    invitations: num,
+                    invitationsLoaded: true
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
+
+
+    componentDidUpdate() {
+        axios.get('api/invitation/num/' + this.props.user)
+            .then(response => {
+                var num = response.data.data;
+                if(num != this.state.invitations){
+                    this.setState({
+                        invitations: num,
+                        invitationsLoaded: true
+                    })
+                }
+                
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     preventDragHandler = (e) => {
         e.preventDefault();
     }
-    
+
     render() {
         const { classes } = this.props;
         const { auth, anchorEl } = this.state;
         const open = anchorEl;
 
 
+        const showInvitationNum = () => {
+            if (this.state.invitationsLoaded) {
+                return (
+                    <IconButton aria-label="show 17 new notifications" color="inherit" onClick = {this.viewInvitations}>
+                        <Badge badgeContent={this.state.invitations} color="secondary">
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+                )
+            } else{
+                return(
+                    <IconButton aria-label="show 17 new notifications" color="inherit" onClick = {this.viewInvitations}>
+                        <Badge badgeContent={0} color="secondary">
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+                )
+            }
+        }
+
         const showUserOrLogin = () => {
             if (auth) {
                 return (
                     <div>
+                        {showInvitationNum()}
                         <IconButton
                             aria-owns={open ? 'menu-appbar' : undefined}
                             aria-haspopup="true"
@@ -158,11 +215,11 @@ class MenuAppBar extends React.Component {
                     </div>
 
                 )
-            } else{
-                return(
+            } else {
+                return (
                     <div>
-                        <Button color="inherit" onClick = {this.login}>Login</Button>
-                        <Button color="inherit" onClick = {this.register}>Register</Button>
+                        <Button color="inherit" onClick={this.login}>Login</Button>
+                        <Button color="inherit" onClick={this.register}>Register</Button>
                     </div>
                 )
             }

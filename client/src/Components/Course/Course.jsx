@@ -378,27 +378,37 @@ class Course extends Component {
         }
     })
 
+    invite = ((student) => {
+        var receiver = student.net_id;
+        var sender = this.state.username;
+        var group_id = this.state.myGroup.group_id;
+        var invitation_type = 1;
+
+        axios.post('api/invitation', {
+            sender: sender,
+            receiver: receiver,
+            group_id: group_id,
+            invitation_type: invitation_type
+        })
+            .then(response => {
+                alert("Successfully sent request to " + receiver)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    })
+
+    //join group, will be changed to using invitations later
     joinGroup = ((group) => {
         var group_id = group.group_id
-        axios.post('api/group/' + group_id + '/add', {
-            net_id: this.state.username
+        axios.post('api/invitation', {
+            sender: this.state.username,
+            receiver: group.founder,
+            group_id: group_id,
+            invitation_type: 0
         })
             .then((response) => {
-                var groups = this.state.groups
-                var myGroup = group
-                for (var i = 0; i < groups.length; i++) {
-                    if (groups[i].group_id == group_id) {
-                        groups[i].students_current++;
-                        myGroup = group
-                        break;
-                    }
-                }
-                this.setState({
-                    myGroup: myGroup,
-                    groups: groups,
-                    isInGroup: true
-                })
-
+                alert("Successfully sent request to " + group.founder)
             })
             .catch((error) => {
                 console.log(error)
@@ -493,6 +503,7 @@ class Course extends Component {
                                                     <Label>{skill.skill}</Label>
                                                 )
                                             })}
+                                            <Button primary floated='right' disabled={!isInGroup} onClick={() => { this.invite(student) }}>Invite</Button>
                                         </Card.Content>
                                     </Card>
                                 </List.Item>
@@ -500,7 +511,7 @@ class Course extends Component {
                         })
                     )
                 } else {
-                    return(
+                    return (
                         <p>This course curretly has no one in its matching queue</p>
                     )
                 }
@@ -555,7 +566,7 @@ class Course extends Component {
                                             )
                                         })}
                                         <br></br>
-                                        <Button primary floated='right' disabled={isInGroup} onClick={() => { this.joinGroup(group) }}>Join</Button>
+                                        <Button primary floated='right' disabled={isInGroup} onClick={() => { this.joinGroup(group) }}>Ask to join</Button>
                                     </Card.Content>
                                 </Card>
                             </List.Item>
