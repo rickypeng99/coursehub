@@ -171,61 +171,72 @@ class Invitation extends Component {
 
         if (loaded) {
 
-            const getInvitations = invitations.map((invitation, index) => {
-                var type = () => {
-                    if (invitation.invitation_type == 0) {
-                        return ("Joining request from: ")
-                    } else {
-                        return ("Group invitation from: ")
-                    }
+            const getInvitations = () => {
+                if (invitations.length > 0) {
+                    return (invitations.map((invitation, index) => {
+                        var type = () => {
+                            if (invitation.invitation_type == 0) {
+                                return ("Joining request from: ")
+                            } else {
+                                return ("Group invitation from: ")
+                            }
 
+                        }
+                        return (
+                            <List.Item className={classes.comment} key={invitation.invitation_id}>
+                                <List.Content>
+                                    <List.Header>{type() + invitation.sender}</List.Header>
+                                    <p>{" on group of: " + invitation.name}</p>
+                                    <Button positive floated='right' onClick={() => { this.acceptHandler(invitation) }}>Accept</Button>
+
+                                    <Button color="red" floated='right' onClick={() => { this.rejectHandler(invitation) }}>Reject</Button>
+
+                                </List.Content>
+
+                            </List.Item>)
+                    }))
+                } else{
+                    return(
+                        <p>You currently don't have any invitation</p>
+                    )
                 }
+            }
+
+
+
+
                 return (
-                    <List.Item className={classes.comment} key = {invitation.invitation_id}>
-                        <List.Content>
-                            <List.Header>{type() + invitation.sender}</List.Header>
-                            <p>{" on group of: " + invitation.name}</p>
-                            <Button positive floated='right' onClick={() => { this.acceptHandler(invitation) }}>Accept</Button>
-
-                            <Button color="red" floated='right' onClick={() => { this.rejectHandler(invitation) }}>Reject</Button>
-
-                        </List.Content>
-
-                    </List.Item>)
-            })
-
-            return (
-                <div className={classes.root}>
-                    <Grid container spacing={1} direction="column">=
+                    <div className={classes.root}>
+                        <Grid container spacing={1} direction="column">=
                     <Grid item xs={12}>
-                            <Paper className={classes.outGrid}>
-                                <Typography variant='h4' color='primary'>Invitations</Typography>
-                                <List selection>
-                                    {getInvitations}
-                                </List>
+                                <Paper className={classes.outGrid}>
+                                    <Typography variant='h4' color='primary'>Invitations</Typography>
+                                    <List selection>
+                                        {getInvitations()}
+                                    </List>
 
-                            </Paper>
+                                </Paper>
+                            </Grid>
                         </Grid>
-                    </Grid>
 
 
-                </div>
-            )
-        } else {
-            return (
-                <div className={classes.root}>
-                    <Grid container spacing={1} direction="column">=
+                    </div>
+                )
+            } else {
+                return (
+                    <div className={classes.root}>
+                        <Grid container spacing={1} direction="column">=
                     <Grid item xs={12}>
-                            <Paper className={classes.outGrid}>
-                                <Typography variant='h4' color='primary'>Invitations</Typography>
-                                <p>Loading invitations</p>
-                            </Paper>
+                                <Paper className={classes.outGrid}>
+                                    <Typography variant='h4' color='primary'>Invitations</Typography>
+                                    <p>Loading invitations</p>
+                                </Paper>
+                            </Grid>
                         </Grid>
-                    </Grid>
 
 
-                </div>
-            )
+                    </div>
+                )
         }
 
     }
