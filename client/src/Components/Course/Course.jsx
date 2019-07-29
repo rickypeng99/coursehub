@@ -116,8 +116,8 @@ class Course extends Component {
             /**
              * viewing options
              */
-            viewMyProfile: true,
-            viewMyGroup: true,
+            viewMyProfile: false,
+            viewMyGroup: false,
             myGroup: null,
             myProfile: null,
         }
@@ -530,7 +530,8 @@ class Course extends Component {
                     return (
                         queue.map((student, index) => {
                             return (
-                                <List.Item className={classes.card}>
+                                <List.Item className={classes.card} onClick={() => {this.props.history.push('/user/' + student.net_id
+                                )}}>
                                     <Card fluid className={classes.courseCard}>
                                         <Card.Content>
                                             <Typography color='primary'>{student.first_name + " " + student.last_name}</Typography>
@@ -801,7 +802,7 @@ class Course extends Component {
 
                                             />
                                             <Menu.Item
-                                                name="Others"
+                                                name="Matching queue"
                                                 active={!viewMyProfile}
                                                 onClick={this.handleProfileClick}
                                                 className={classes.tab}

@@ -113,26 +113,31 @@ module.exports = function (router, pool) {
                         */
 
                         //delete all skills that this user currently has
-                        pool.query('DELETE FROM users_skills WHERE net_id = ?', net_id, function (error, results, fields) {
-                            if (error) {
-                                res.status(500).send({ data: error, message: error })
-                            } else {
-                                var skills = replaced([], req.body.skills);
-                                if (skills.length > 0) {
-                                    var tuples = skills.map((skill, index) => {
-                                        return ([net_id, skill])
-                                    })
-                                    pool.query('INSERT INTO users_skills (net_id, skill) VALUES ?', [tuples], function (error, results, fields) {
-                                        if (error) {
-                                            res.status(500).send({ data: [], message: error })
-                                        } else {
-                                            res.status(200).send({ data: net_id, message: "Successfully updated user with id " + net_id })
-                                        }
-                                    })
+                        if (req.body.skills) {
+                            pool.query('DELETE FROM users_skills WHERE net_id = ?', net_id, function (error, results, fields) {
+                                if (error) {
+                                    res.status(500).send({ data: error, message: error })
+                                } else {
+                                    var skills = replaced([], req.body.skills);
+                                    if (skills.length > 0) {
+                                        var tuples = skills.map((skill, index) => {
+                                            return ([net_id, skill])
+                                        })
+                                        pool.query('INSERT INTO users_skills (net_id, skill) VALUES ?', [tuples], function (error, results, fields) {
+                                            if (error) {
+                                                res.status(500).send({ data: [], message: error })
+                                            } else {
+                                                res.status(200).send({ data: net_id, message: "Successfully updated user with id " + net_id })
+                                            }
+                                        })
 
+                                    }
                                 }
-                            }
-                        })
+                            })
+                        } else {
+                            res.status(200).send({ data: net_id, message: "Successfully updated user with id " + net_id })
+                        }
+
 
 
 
