@@ -147,6 +147,23 @@ module.exports = function (router, pool) {
     })
 
 
+    //get average internal_point for each group_id
+
+
+    groupAverageRoute = router.route('/course/:id/group/average')
+    groupAverageRoute.get((req, res) => {
+        var course_CRN = req.params.id
+
+        pool.query('SELECT AVG(U.internal_point) FROM Groups_Users GU, Users U, Groups g WHERE g.group_id = GU.group_id and GU.net_id = U.net_id and GU.group_id IN (select group_id from groups where course_CRN = ?) group by gu.group_id', course_CRN , function (error, results, fields){
+            if(error){
+                res.status(500).send({ data: error, message: error})
+            } else{
+                res.status(200).send({ data: results, message: error})
+            }
+        })
+        
+    })
+
     return router;
 
 

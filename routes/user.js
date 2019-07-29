@@ -202,7 +202,7 @@ module.exports = function (router, pool) {
             "first_name": req.body.first_name,
             "last_name": req.body.last_name,
             "description": req.body.description,
-            "internal_point": 500 + 200 * req.body.gpa,
+            "internal_point": 500 + 50 * req.body.gpa,
             "password": hash
         }
         pool.query('INSERT into users SET ?', users, function (error, results, fields) {

@@ -456,6 +456,50 @@ class Course extends Component {
             })
     })
 
+    /**
+     * recommend groups
+     */
+    recommendGroups =(() => {
+        const skill_ratio = ((userSkills, groupSkills) => {
+            let intersection = userSkills.filter(x => groupSkills.includes(x));
+            //console.log(userSkills)
+            //console.log(groupSkills)
+            return(intersection.length / groupSkills.length)
+        })
+        var crn = this.state.crn;
+        var skills = this.state.myProfile.skills;
+        
+        var internal_point = this.state.myProfile.internal_point;
+        axios.get('api/course/' + crn + '/group/average')
+        .then((response) => {
+            var returnGroups = response.data.data;
+            var groups = this.state.groups;
+            groups.sort(function(a,b) {return parseInt(a.group_id - b.group_id)});
+            returnGroups.sort(function(a,b) {return parseInt(a.group_id - b.group_id)});
+            for(var i = 0; i < groups.length; i++){
+                groups[i].average = returnGroups[i]['AVG(U.internal_point)']
+                var currentSkill = [];
+                for(var j = 0; j < groups[i].skills.length; j++){
+                    currentSkill.push(groups[i].skills[j].skill)
+                }
+                groups[i].skill_ratio = skill_ratio(skills, currentSkill)
+                groups[i].actualPoint = 500 - Math.max(internal_point - groups[i].average, 0) * 0.08 + 0.6 * groups[i].skill_ratio;
+            }
+
+            groups.sort(function(a,b) {return parseInt(b.actualPoint - a.actualPoint)})
+
+            console.log(groups)
+            
+            this.setState({
+                groups: groups
+            })
+
+        })
+
+    })
+
+
+
     render() {
         var classes = this.props.classes;
         var {
@@ -780,7 +824,7 @@ class Course extends Component {
 
                                     <Button.Group attached='top'>
                                         <GroupModal isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} isInMatchingQueue={this.state.isInMatchingQueue} classes={classes} createGroup={this.createGroup} courseName={courseNameForModal} username={username} crn={this.state.crn}></GroupModal>
-                                        <Button inline className={classes.button} color="orange">Click to find matched groups</Button>
+                                        <Button inline className={classes.button} onClick = {this.recommendGroups} color="orange">Click to find matched groups</Button>
                                     </Button.Group>
                                     <div>
                                         <Menu attached="top" tabular>
