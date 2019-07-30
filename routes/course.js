@@ -63,6 +63,7 @@ module.exports = function (router, pool) {
         })
 
     })
+    
 
     //return the user objects instead of just netIds from the matching queue of the given class
 
@@ -71,18 +72,18 @@ module.exports = function (router, pool) {
 
         var crn = req.params.id;
 
-        pool.query('SELECT * FROM users_matching_queue WHERE course_CRN = ?', crn, function (error, results, fields) {
-            if (error) {
-                res.status(404).send({ data: [], message: "404: Couldn't find course with crn " + crn })
-            } else if(results.length < 1) {
-                res.status(200).send({ data: [], message: "No students founded in queue in course " + crn})
-            } else {
-                var users = []
-                for(var i = 0; i < results.length; i++){
-                    users.push(results[i].user_id);
-                }
+        // pool.query('SELECT * FROM users_matching_queue WHERE course_CRN = ?', crn, function (error, results, fields) {
+        //     if (error) {
+        //         res.status(404).send({ data: [], message: "404: Couldn't find course with crn " + crn })
+        //     } else if(results.length < 1) {
+        //         res.status(200).send({ data: [], message: "No students founded in queue in course " + crn})
+        //     } else {
+        //         var users = []
+        //         for(var i = 0; i < results.length; i++){
+        //             users.push(results[i].user_id);
+        //         }
                 //returning the user objects, will also detect redundancy
-                pool.query('SELECT * FROM users WHERE net_id IN(?)', [users], function (error, results, fields){
+                pool.query('SELECT * FROM users WHERE net_id IN (SELECT user_id FROM users_matching_queue WHERE course_CRN = ?)', crn, function (error, results, fields){
                     if(error){
                         res.status(404).send({ data: error, message: "404: Couldn't find course with crn " + crn })
                     } else{
@@ -93,9 +94,8 @@ module.exports = function (router, pool) {
                
 
             }
-        })
 
-    })
+    )
 
     /**
      * get the current logged in user status for a specific class (isInGroup? isInMatchingqueue? Neither?) and get the group if the user is currently in a group
@@ -154,7 +154,7 @@ module.exports = function (router, pool) {
     groupAverageRoute.get((req, res) => {
         var course_CRN = req.params.id
 
-        pool.query('SELECT AVG(U.internal_point) FROM Groups_Users GU, Users U, Groups g WHERE g.group_id = GU.group_id and GU.net_id = U.net_id and GU.group_id IN (select group_id from groups where course_CRN = ?) group by gu.group_id', course_CRN , function (error, results, fields){
+        pool.query('SELECT AVG(U.internal_point) FROM Groups_Users GU, Users U where GU.net_id = U.net_id and GU.group_id IN (select group_id from groups where course_CRN = ?) group by gu.group_id', course_CRN , function (error, results, fields){
             if(error){
                 res.status(500).send({ data: error, message: error})
             } else{

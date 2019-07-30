@@ -9,7 +9,7 @@ import { Typography } from '@material-ui/core';
 import { get } from 'http';
 import axios from 'axios';
 import GroupModal from '../Course/Modal'
-
+import GroupSettingModal from '../Course/GroupSettingModal'
 const styles = theme => ({
     root: {
         marginTop: "100px",
@@ -77,6 +77,9 @@ const styles = theme => ({
 
     button: {
         width: "50%"
+    },
+    buttonQueue: {
+        width: "33%"
     },
 
     buttonContainer: {
@@ -306,6 +309,27 @@ class Course extends Component {
             })
     })
 
+
+    updateGroup = ((props) => {
+        axios.put('api/group/' + props.group_id, props)
+        .then(response => {
+            var group_id = response.data.data;
+            axios.get('api/group/' + group_id + '/skill')
+            .then(response => {
+                var myGroup = response.data.data
+                this.setState({
+                    myGroup: myGroup
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    })
+
     joinQueue = (() => {
         axios.post('api/queue/' + this.state.crn, {
             'net_id': this.props.user
@@ -470,6 +494,15 @@ class Course extends Component {
         var skills = this.state.myProfile.skills;
         
         var internal_point = this.state.myProfile.internal_point;
+        //update current groups
+        // axios.get('api/course/'+ crn  +'/group')
+        // .then(response => {
+
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        // })
+
         axios.get('api/course/' + crn + '/group/average')
         .then((response) => {
             var returnGroups = response.data.data;
@@ -482,11 +515,13 @@ class Course extends Component {
                 for(var j = 0; j < groups[i].skills.length; j++){
                     currentSkill.push(groups[i].skills[j].skill)
                 }
+                console.log(internal_point)
                 groups[i].skill_ratio = skill_ratio(skills, currentSkill)
-                groups[i].actualPoint = 500 - Math.max(internal_point - groups[i].average, 0) * 0.08 + 0.6 * groups[i].skill_ratio;
+                groups[i].actualPoint = Math.max(500 - Math.abs(internal_point - groups[i].average), 0) * 0.08 +  2 * groups[i].skill_ratio;
             }
+        
 
-            groups.sort(function(a,b) {return parseInt(b.actualPoint - a.actualPoint)})
+            groups.sort(function(a,b) {return parseFloat(b.actualPoint - a.actualPoint)})
 
             console.log(groups)
             
@@ -497,6 +532,48 @@ class Course extends Component {
         })
 
     })
+
+
+    /**
+     * recommend student for your group
+     */
+    recommendStudents =(() => {
+        const skill_ratio = ((userSkills, groupSkills) => {
+            let intersection = userSkills.filter(x => groupSkills.includes(x));
+            return(intersection.length / groupSkills.length)
+        })
+        //get skills of my current group
+        var group_id = this.state.myGroup.group_id;
+        //get average internal point of my current group
+        axios.get('api/group/' + group_id + '/average')
+        .then(response => {
+            var myAverage = response.data.data[0]["AVG(U.internal_point)"]
+            var students = this.state.queue;
+            
+            for(var i = 0; i < students.length; i++){
+                var internal_point = students[i].internal_point;
+                var studentsSkills = students[i].skills.map((skill, index) => {
+                    return skill.skill;
+                })
+                var myGroupSkill = this.state.myGroup.skills.map((skill, index) => {
+                    return skill.skill;
+                })
+                students[i].skill_ratio = skill_ratio(studentsSkills, myGroupSkill);
+                students[i].actualPoint = Math.max(500 - Math.abs(internal_point - myAverage), 0) * 0.08 + 2 * students[i].skill_ratio;
+            }
+            students.sort(function(a,b) {return parseFloat(b.actualPoint - a.actualPoint)})
+
+            console.log(students)
+            
+            this.setState({
+                queues: students
+            })
+
+        })
+
+           
+        })
+
 
 
 
@@ -729,7 +806,11 @@ class Course extends Component {
                                             )
                                         })}
                                         <br></br>
+                                        <GroupSettingModal 
+                                        group_id={myGroup.group_id}
+                                        isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} classes={classes} updateGroup={this.updateGroup} courseName={courseNameForModal} username={username} crn={this.state.crn}></GroupSettingModal>
                                         <Button negative floated='right' onClick={() => { this.leaveGroup(myGroup) }}>Leave</Button>
+                                        
                                     </Card.Content>
                                 </Card>
                             </List.Item>
@@ -788,8 +869,9 @@ class Course extends Component {
 
 
                                     <Button.Group attached='bottom'>
-                                        <Button className={classes.button} color="green" onClick={this.joinQueue} disabled={isInMatchingQueue || isInGroup}>Click to join the queue!</Button>
-                                        <Button className={classes.button} color="red" onClick={this.removeFromQueue} disabled={!isInMatchingQueue || isInGroup}>Click to leave the queue!</Button>
+                                        <Button className={classes.buttonQueue} color="green" onClick={this.joinQueue} disabled={isInMatchingQueue || isInGroup}>Click to join the queue!</Button>
+                                        <Button className={classes.buttonQueue} color="red" onClick={this.removeFromQueue} disabled={!isInMatchingQueue || isInGroup}>Click to leave the queue!</Button>
+                                        <Button className={classes.buttonQueue} color="orange" onClick={this.recommendStudents} disabled={!isInGroup}>Click to find matched students!</Button>
                                     </Button.Group>
                                     {/* tabs */}
                                     <div>
