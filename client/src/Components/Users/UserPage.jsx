@@ -156,6 +156,7 @@ class User extends Component {
         axios.get('api/user/' + netId)
             .then(result => {
                 //console.log(result.data.data);
+                console.log(result.data.data[0].internal_point)
                 this.setState({
                     netId: this.props.match.params.id,
                     firstName: result.data.data[0].first_name,
@@ -305,9 +306,21 @@ class User extends Component {
             .then((response) => {
                 var comments = this.state.comments
                 comments.push(response.data.data)
-                this.setState({
-                    comments: comments
+
+
+                axios.put('api/comment/' + this.state.netId, {
+                    comment_id: response.data.data.comment_id
                 })
+                .then(response => {
+                    this.setState({
+                        comments: comments
+                    })
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+
+                
             })
             .catch((error) => {
                 console.log("error")

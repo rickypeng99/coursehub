@@ -67,5 +67,51 @@ module.exports = function (router, pool) {
             }
         })
     })
+
+
+    //put - update specific user's internal points
+    commentIdRoute.put((req, res) => {
+
+
+        //GET the user that we are trying to update
+        var net_id = req.params.id;
+        var comment_id = req.body.comment_id
+        pool.query('SELECT * FROM (SELECT * FROM users_comments NATURAL JOIN comments NATURAL JOIN users WHERE net_id = ? and comment_id = ?) temp1 JOIN (SELECT u.net_id,u.internal_point AS binternal FROM users u WHERE u.net_id IN (SELECT DISTINCT c.user_id FROM comments c WHERE user_id <> ? )) temp2', [net_id, comment_id, net_id], function (error, results, fields) {
+            //couldn't find the user, thus couldn't update
+            if (error || results.length < 1) {
+                res.status(404).send({ data: [], message: "404: Couldn't find comment with netId " + net_id })
+            }
+            else {
+                //a is sender, b is receiver
+                var ainternal = results[0].binternal;
+                var binternal = results[0].internal_point;
+                var base = ((results[0].efficiency + results[0].responsiveness + results[0].communication) / 3 - 3) * 25 * (1 - (binternal - ainternal) / 1000);
+                if (base > 0) {
+                    var newinternal = (1000 - binternal) * 0.002 * base + binternal;
+                    //newinternal = newinternal + ainternal;
+                    pool.query('UPDATE users SET internal_point = ? WHERE net_id = ?', [newinternal, net_id], function (error, results, fields) {
+                        if (error || results.length < 1) {
+                            res.status(404).send({ data: [], message: "404: Couldn't find user's internal points with netId " + net_id })
+                        }
+                        else {
+                            res.status(200).send({ data: results, message: "successfully updated user's internal points with id " + net_id })
+                        }
+                    })
+                } else {
+                    var newinternal = (binternal - 200) * 0.004 * base + binternal;
+                    //newinternal = newinternal + ainternal;
+                    pool.query('UPDATE users SET internal_point = ? WHERE net_id = ?', [newinternal, net_id], function (error, results, fields) {
+                        if (error || results.length < 1) {
+                            res.status(404).send({ data: [], message: "404: Couldn't find user's internal points with netId " + net_id })
+                        }
+                        else {
+                            res.status(200).send({ data: results, message: "successfully updated user's internal points with id " + net_id })
+                        }
+                    })
+                }
+
+            }
+        })
+    })
     return router;
 }
