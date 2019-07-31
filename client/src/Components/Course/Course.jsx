@@ -151,20 +151,33 @@ class Course extends Component {
                         var myGroup = status.group;
 
                         //get teammates of my group
-                        axios.get('api/group/' + myGroup.group_id + '/teammate')
-                            .then(response => {
-                                myGroup.teammate = response.data.data;
+                        if (myGroup) {
+                            axios.get('api/group/' + myGroup.group_id + '/teammate')
+                                .then(response => {
+                                    myGroup.teammate = response.data.data;
 
-                                this.setState({
-                                    isInGroup: status.isInGroup,
-                                    isInMatchingQueue: status.isInMatchingQueue,
-                                    crn: crn,
-                                    courseCode: course.dept + course.idx,
-                                    courseName: course.title,
-                                    loaded: true,
-                                    myGroup: status.group
+                                    this.setState({
+                                        isInGroup: status.isInGroup,
+                                        isInMatchingQueue: status.isInMatchingQueue,
+                                        crn: crn,
+                                        courseCode: course.dept + course.idx,
+                                        courseName: course.title,
+                                        loaded: true,
+                                        myGroup: status.group
+                                    })
                                 })
+
+                        } else {
+                            this.setState({
+                                isInGroup: status.isInGroup,
+                                isInMatchingQueue: status.isInMatchingQueue,
+                                crn: crn,
+                                courseCode: course.dept + course.idx,
+                                courseName: course.title,
+                                loaded: true,
+                                myGroup: status.group
                             })
+                        }
 
 
 
