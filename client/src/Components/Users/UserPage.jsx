@@ -549,7 +549,7 @@ class User extends Component {
                         )
                     })
                 } else{
-                    return (<p>{description}</p>)
+                    return (<p>This user has nothing to say</p>)
                 }
                 
             })

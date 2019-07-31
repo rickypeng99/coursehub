@@ -83,7 +83,7 @@ module.exports = function (router, pool) {
         //             users.push(results[i].user_id);
         //         }
                 //returning the user objects, will also detect redundancy
-                pool.query('SELECT * FROM users WHERE net_id IN (SELECT user_id FROM users_matching_queue WHERE course_CRN = ?)', crn, function (error, results, fields){
+                pool.query('SELECT * FROM users JOIN users_matching_queue ON (net_id = user_id) WHERE course_CRN = ? ORDER BY queue_id', crn, function (error, results, fields){
                     if(error){
                         res.status(404).send({ data: error, message: "404: Couldn't find course with crn " + crn })
                     } else{

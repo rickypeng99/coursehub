@@ -160,7 +160,7 @@ class GroupSettingModal extends Component {
                     }
                     open={this.state.modalOpen}
                 >
-                    <Modal.Header>{"Creating a group for " + courseName}</Modal.Header>
+                    <Modal.Header>{"Updating group " + groupName}</Modal.Header>
                     <Modal.Content>
                         <Typography variant={"h5"}>Group settings</Typography>
                         <Grid container spacing={3}>

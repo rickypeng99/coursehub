@@ -343,6 +343,20 @@ module.exports = function (router, pool) {
 
     })
 
+
+    groupIdTeammate = router.route('/group/:id/teammate')
+    groupIdTeammate.get((req, res) => {
+        var group_id = req.params.id
+        
+        pool.query('SELECT * FROM groups_users WHERE group_id = ?', group_id, function (error, results, fields){
+            if (error) {
+                res.status(500).send({ data: error, message: error })
+            } else {
+                res.status(200).send({ data: results, message: "returned group " + group_id + "'s users" })
+            }
+        })
+    })
+
     return router;
 
 

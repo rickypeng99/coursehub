@@ -870,8 +870,8 @@ class Course extends Component {
 
                                     <Button.Group attached='bottom'>
                                         <Button className={classes.buttonQueue} color="green" onClick={this.joinQueue} disabled={isInMatchingQueue || isInGroup}>Click to join the queue!</Button>
-                                        <Button className={classes.buttonQueue} color="red" onClick={this.removeFromQueue} disabled={!isInMatchingQueue || isInGroup}>Click to leave the queue!</Button>
-                                        <Button className={classes.buttonQueue} color="orange" onClick={this.recommendStudents} disabled={!isInGroup}>Click to find matched students!</Button>
+                                        <Button className={classes.buttonQueue} color="red" onClick={this.removeFromQueue} disabled={!isInMatchingQueue || isInGroup}>Leave the queue!</Button>
+                                        <Button className={classes.buttonQueue} color="orange" onClick={this.recommendStudents} disabled={!isInGroup}>Find matched students!</Button>
                                     </Button.Group>
                                     {/* tabs */}
                                     <div>
