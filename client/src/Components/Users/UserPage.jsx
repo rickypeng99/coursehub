@@ -541,12 +541,17 @@ class User extends Component {
              * @param {*} description input description
              */
             const formatDescription = ((description) => {
-                var array = description.split("\n");
-                return array.map((each, index) => {
-                    return (
-                        <p>{each}</p>
-                    )
-                })
+                if(description){
+                    var array = description.split("\n");
+                    return array.map((each, index) => {
+                        return (
+                            <p>{each}</p>
+                        )
+                    })
+                } else{
+                    return (<p>{description}</p>)
+                }
+                
             })
             const isSelf = username == netId;
 
