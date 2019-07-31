@@ -148,15 +148,25 @@ class Course extends Component {
                 axios.get('api/course/' + crn + '/user/' + this.props.user)
                     .then(response => {
                         var status = response.data.data;
-                        this.setState({
-                            isInGroup: status.isInGroup,
-                            isInMatchingQueue: status.isInMatchingQueue,
-                            crn: crn,
-                            courseCode: course.dept + course.idx,
-                            courseName: course.title,
-                            loaded: true,
-                            myGroup: status.group
-                        })
+                        var myGroup = status.group;
+
+                        //get teammates of my group
+                        axios.get('api/group/' + myGroup.group_id + '/teammate')
+                            .then(response => {
+                                myGroup.teammate = response.data.data;
+
+                                this.setState({
+                                    isInGroup: status.isInGroup,
+                                    isInMatchingQueue: status.isInMatchingQueue,
+                                    crn: crn,
+                                    courseCode: course.dept + course.idx,
+                                    courseName: course.title,
+                                    loaded: true,
+                                    myGroup: status.group
+                                })
+                            })
+
+
 
                         //get groups
                         axios.get('api/course/' + crn + '/group')
@@ -312,22 +322,22 @@ class Course extends Component {
 
     updateGroup = ((props) => {
         axios.put('api/group/' + props.group_id, props)
-        .then(response => {
-            var group_id = response.data.data;
-            axios.get('api/group/' + group_id + '/skill')
             .then(response => {
-                var myGroup = response.data.data
-                this.setState({
-                    myGroup: myGroup
-                })
+                var group_id = response.data.data;
+                axios.get('api/group/' + group_id + '/skill')
+                    .then(response => {
+                        var myGroup = response.data.data
+                        this.setState({
+                            myGroup: myGroup
+                        })
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
             })
             .catch(error => {
                 console.log(error)
             })
-        })
-        .catch(error => {
-            console.log(error)
-        })
     })
 
     joinQueue = (() => {
@@ -408,7 +418,7 @@ class Course extends Component {
         var group_id = this.state.myGroup.group_id;
         var invitation_type = 1;
 
-        
+
         axios.post('api/invitation', {
             sender: sender,
             receiver: receiver,
@@ -483,16 +493,16 @@ class Course extends Component {
     /**
      * recommend groups
      */
-    recommendGroups =(() => {
+    recommendGroups = (() => {
         const skill_ratio = ((userSkills, groupSkills) => {
             let intersection = userSkills.filter(x => groupSkills.includes(x));
             //console.log(userSkills)
             //console.log(groupSkills)
-            return(intersection.length / groupSkills.length)
+            return (intersection.length / groupSkills.length)
         })
         var crn = this.state.crn;
         var skills = this.state.myProfile.skills;
-        
+
         var internal_point = this.state.myProfile.internal_point;
         //update current groups
         // axios.get('api/course/'+ crn  +'/group')
@@ -504,32 +514,32 @@ class Course extends Component {
         // })
 
         axios.get('api/course/' + crn + '/group/average')
-        .then((response) => {
-            var returnGroups = response.data.data;
-            var groups = this.state.groups;
-            groups.sort(function(a,b) {return parseInt(a.group_id - b.group_id)});
-            returnGroups.sort(function(a,b) {return parseInt(a.group_id - b.group_id)});
-            for(var i = 0; i < groups.length; i++){
-                groups[i].average = returnGroups[i]['AVG(U.internal_point)']
-                var currentSkill = [];
-                for(var j = 0; j < groups[i].skills.length; j++){
-                    currentSkill.push(groups[i].skills[j].skill)
+            .then((response) => {
+                var returnGroups = response.data.data;
+                var groups = this.state.groups;
+                groups.sort(function (a, b) { return parseInt(a.group_id - b.group_id) });
+                returnGroups.sort(function (a, b) { return parseInt(a.group_id - b.group_id) });
+                for (var i = 0; i < groups.length; i++) {
+                    groups[i].average = returnGroups[i]['AVG(U.internal_point)']
+                    var currentSkill = [];
+                    for (var j = 0; j < groups[i].skills.length; j++) {
+                        currentSkill.push(groups[i].skills[j].skill)
+                    }
+                    console.log(internal_point)
+                    groups[i].skill_ratio = skill_ratio(skills, currentSkill)
+                    groups[i].actualPoint = Math.max(500 - Math.abs(internal_point - groups[i].average), 0) * 0.08 + 2 * groups[i].skill_ratio;
                 }
-                console.log(internal_point)
-                groups[i].skill_ratio = skill_ratio(skills, currentSkill)
-                groups[i].actualPoint = Math.max(500 - Math.abs(internal_point - groups[i].average), 0) * 0.08 +  2 * groups[i].skill_ratio;
-            }
-        
 
-            groups.sort(function(a,b) {return parseFloat(b.actualPoint - a.actualPoint)})
 
-            console.log(groups)
-            
-            this.setState({
-                groups: groups
+                groups.sort(function (a, b) { return parseFloat(b.actualPoint - a.actualPoint) })
+
+                console.log(groups)
+
+                this.setState({
+                    groups: groups
+                })
+
             })
-
-        })
 
     })
 
@@ -537,42 +547,42 @@ class Course extends Component {
     /**
      * recommend student for your group
      */
-    recommendStudents =(() => {
+    recommendStudents = (() => {
         const skill_ratio = ((userSkills, groupSkills) => {
             let intersection = userSkills.filter(x => groupSkills.includes(x));
-            return(intersection.length / groupSkills.length)
+            return (intersection.length / groupSkills.length)
         })
         //get skills of my current group
         var group_id = this.state.myGroup.group_id;
         //get average internal point of my current group
         axios.get('api/group/' + group_id + '/average')
-        .then(response => {
-            var myAverage = response.data.data[0]["AVG(U.internal_point)"]
-            var students = this.state.queue;
-            
-            for(var i = 0; i < students.length; i++){
-                var internal_point = students[i].internal_point;
-                var studentsSkills = students[i].skills.map((skill, index) => {
-                    return skill.skill;
-                })
-                var myGroupSkill = this.state.myGroup.skills.map((skill, index) => {
-                    return skill.skill;
-                })
-                students[i].skill_ratio = skill_ratio(studentsSkills, myGroupSkill);
-                students[i].actualPoint = Math.max(500 - Math.abs(internal_point - myAverage), 0) * 0.08 + 2 * students[i].skill_ratio;
-            }
-            students.sort(function(a,b) {return parseFloat(b.actualPoint - a.actualPoint)})
+            .then(response => {
+                var myAverage = response.data.data[0]["AVG(U.internal_point)"]
+                var students = this.state.queue;
 
-            console.log(students)
-            
-            this.setState({
-                queues: students
+                for (var i = 0; i < students.length; i++) {
+                    var internal_point = students[i].internal_point;
+                    var studentsSkills = students[i].skills.map((skill, index) => {
+                        return skill.skill;
+                    })
+                    var myGroupSkill = this.state.myGroup.skills.map((skill, index) => {
+                        return skill.skill;
+                    })
+                    students[i].skill_ratio = skill_ratio(studentsSkills, myGroupSkill);
+                    students[i].actualPoint = Math.max(500 - Math.abs(internal_point - myAverage), 0) * 0.08 + 2 * students[i].skill_ratio;
+                }
+                students.sort(function (a, b) { return parseFloat(b.actualPoint - a.actualPoint) })
+
+                console.log(students)
+
+                this.setState({
+                    queues: students
+                })
+
             })
 
-        })
 
-           
-        })
+    })
 
 
 
@@ -607,10 +617,12 @@ class Course extends Component {
                     return (
                         queue.map((student, index) => {
                             return (
-                                <List.Item className={classes.card} onClick={() => {this.props.history.push('/user/' + student.net_id
-                                )}}>
-                                    <Card fluid className={classes.courseCard}>
-                                        <Card.Content>
+                                <List.Item className={classes.card}>
+                                    <Card fluid>
+                                        <Card.Content onClick={() => {
+                                            this.props.history.push('/user/' + student.net_id
+                                            )
+                                        }} className={classes.courseCard}>
                                             <Typography color='primary'>{student.first_name + " " + student.last_name}</Typography>
                                             <Typography>{student.net_id}</Typography>
                                         </Card.Content>
@@ -775,6 +787,22 @@ class Course extends Component {
                         }
                     })
 
+                    const teammates = myGroup.teammate.map((student, index) => {
+                        return (
+                            <List.Item className={classes.card}>
+
+                                <Card fluid className={classes.courseCard}>
+                                    <Card.Content onClick={() => {
+                                        this.props.history.push('/user/' + student.net_id
+                                        )
+                                    }}>
+                                        {student.net_id}
+                                    </Card.Content>
+                                </Card>
+                            </List.Item>
+
+                        )
+                    })
                     return (
                         <Segment attached="bottom" className={classes.paperGroups}>
                             <List.Item className={classes.card}>
@@ -806,15 +834,17 @@ class Course extends Component {
                                             )
                                         })}
                                         <br></br>
-                                        <GroupSettingModal 
-                                        group_id={myGroup.group_id}
-                                        isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} classes={classes} updateGroup={this.updateGroup} courseName={courseNameForModal} username={username} crn={this.state.crn}></GroupSettingModal>
+                                        <GroupSettingModal
+                                            group_id={myGroup.group_id}
+                                            isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} classes={classes} updateGroup={this.updateGroup} courseName={courseNameForModal} username={username} crn={this.state.crn}></GroupSettingModal>
                                         <Button negative floated='right' onClick={() => { this.leaveGroup(myGroup) }}>Leave</Button>
-                                        
+
                                     </Card.Content>
                                 </Card>
-                            </List.Item>
+                                <Typography>Teammates:</Typography>
 
+                            </List.Item>
+                            {teammates}
 
                         </Segment>
                     )
@@ -907,7 +937,7 @@ class Course extends Component {
 
                                     <Button.Group attached='top'>
                                         <GroupModal isFounder={this.setState.isFounder} isInGroup={this.state.isInGroup} isInMatchingQueue={this.state.isInMatchingQueue} classes={classes} createGroup={this.createGroup} courseName={courseNameForModal} username={username} crn={this.state.crn}></GroupModal>
-                                        <Button inline className={classes.button} onClick = {this.recommendGroups} color="orange">Click to find matched groups</Button>
+                                        <Button inline className={classes.button} onClick={this.recommendGroups} color="orange">Click to find matched groups</Button>
                                     </Button.Group>
                                     <div>
                                         <Menu attached="top" tabular>
