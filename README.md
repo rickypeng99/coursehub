@@ -4,7 +4,7 @@
 [Youtube link](https://www.youtube.com/watch?v=x4cfmnyi42w&t=94s "Youtube")
 
 
-Coursehub is now up at [HERE](https://glacial-anchorage-80051.herokuapp.com "Coursehub")
+~~Coursehub is now up at [HERE](https://glacial-anchorage-80051.herokuapp.com "Coursehub")~~
 
 
 ## FrontEnd:  
